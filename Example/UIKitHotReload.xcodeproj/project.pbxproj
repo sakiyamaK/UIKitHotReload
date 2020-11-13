@@ -15,6 +15,8 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		ACBCE87FED0A6A8C1E74AE81 /* Pods_UIKitHotReload_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066FABA8FE28A4440EF7C605 /* Pods_UIKitHotReload_Tests.framework */; };
+		B679B106255ED7A4003A16EC /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B105255ED7A4003A16EC /* sample.json */; };
+		B679B10C255ED7BD003A16EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B679B10B255ED7BD003A16EC /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,8 +32,8 @@
 /* Begin PBXFileReference section */
 		066FABA8FE28A4440EF7C605 /* Pods_UIKitHotReload_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitHotReload_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		223049BD18DB41E1740F69D8 /* Pods_UIKitHotReload_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitHotReload_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B0CCB6663738DE24F366159 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		5C787B034F0DA73E69514F4C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		2B0CCB6663738DE24F366159 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		5C787B034F0DA73E69514F4C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		5CD8E942A2C6ADB928D1C781 /* Pods-UIKitHotReload_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitHotReload_Example.debug.xcconfig"; path = "Target Support Files/Pods-UIKitHotReload_Example/Pods-UIKitHotReload_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* UIKitHotReload_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitHotReload_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,7 +48,9 @@
 		7B8C6562F27840E6A58BB1E9 /* Pods-UIKitHotReload_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitHotReload_Example.release.xcconfig"; path = "Target Support Files/Pods-UIKitHotReload_Example/Pods-UIKitHotReload_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8714AB63EBFE3E28AEDEDFF1 /* Pods-UIKitHotReload_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitHotReload_Tests.debug.xcconfig"; path = "Target Support Files/Pods-UIKitHotReload_Tests/Pods-UIKitHotReload_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B1367409C27C475F951267C /* Pods-UIKitHotReload_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitHotReload_Tests.release.xcconfig"; path = "Target Support Files/Pods-UIKitHotReload_Tests/Pods-UIKitHotReload_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		F8C136D317DCB6B7941BF560 /* UIKitHotReload.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = UIKitHotReload.podspec; path = ../UIKitHotReload.podspec; sourceTree = "<group>"; };
+		B679B105255ED7A4003A16EC /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
+		B679B10B255ED7BD003A16EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F8C136D317DCB6B7941BF560 /* UIKitHotReload.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = UIKitHotReload.podspec; path = ../UIKitHotReload.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +81,6 @@
 				8714AB63EBFE3E28AEDEDFF1 /* Pods-UIKitHotReload_Tests.debug.xcconfig */,
 				8B1367409C27C475F951267C /* Pods-UIKitHotReload_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -105,12 +108,14 @@
 		607FACD21AFB9204008FA782 /* Example for UIKitHotReload */ = {
 			isa = PBXGroup;
 			children = (
+				B679B10B255ED7BD003A16EC /* GoogleService-Info.plist */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				B679B104255ED7A4003A16EC /* views */,
 			);
 			name = "Example for UIKitHotReload";
 			path = UIKitHotReload;
@@ -158,6 +163,14 @@
 				066FABA8FE28A4440EF7C605 /* Pods_UIKitHotReload_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B679B104255ED7A4003A16EC /* views */ = {
+			isa = PBXGroup;
+			children = (
+				B679B105255ED7A4003A16EC /* sample.json */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +241,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -248,6 +262,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				B679B106255ED7A4003A16EC /* sample.json in Resources */,
+				B679B10C255ED7BD003A16EC /* GoogleService-Info.plist in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -294,11 +310,27 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UIKitHotReload_Example/Pods-UIKitHotReload_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/UIKitHotReload/UIKitHotReload.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/abseil/absl.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitHotReload.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/absl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -444,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -490,7 +522,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

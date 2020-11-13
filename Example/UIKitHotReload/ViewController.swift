@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import UIKitHotReload
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+      self.view.loadHotReloadUI(collectionName: "views", documentName: "sample") { error in
+        print(error?.localizedDescription)
+      }
     }
 
     override func didReceiveMemoryWarning() {
