@@ -20,9 +20,44 @@ it, simply add the following line to your Podfile:
 pod 'UIKitHotReload'
 ```
 
+## vscode
+### install run on save
+```
+https://github.com/emeraldwalk/vscode-runonsave
+```
+
+### setting realtime update
+
+`path/to/project/.vscode/setting.json`に記載
+
+```
+{
+"emeraldwalk.runonsave":{
+"commands": [
+{
+"match": ".json$",
+"cmd": "node upload_json.js ${file}"
+}
+]
+}
+}
+```
+
+```sh
+{
+"emeraldwalk.runonsave":{
+"commands": [
+{
+"match": ".json$",
+"cmd": "node upload_json.js ${file}"
+}
+]
+}
+}
+```
 ## Author
 
-sakiyama.k@gmail.com, sakiyama.k@gmail.com
+Kei Sakiyama, sakiyama.k@gmail.com
 
 ## License
 
