@@ -20,28 +20,17 @@ it, simply add the following line to your Podfile:
 pod 'UIKitHotReload'
 ```
 
-## vscode
-### install run on save
+## setting realtime update
+
+### vscode
+
+#### run on save
 ```
 https://github.com/emeraldwalk/vscode-runonsave
 ```
 
-### setting realtime update
-
-`path/to/project/.vscode/setting.json`に記載
-
-```
-{
-"emeraldwalk.runonsave":{
-"commands": [
-{
-"match": ".json$",
-"cmd": "node upload_json.js ${file}"
-}
-]
-}
-}
-```
+#### setting 
+`path/to/project/.vscode/settings.json`に記載
 
 ```sh
 {
@@ -49,12 +38,26 @@ https://github.com/emeraldwalk/vscode-runonsave
 "commands": [
 {
 "match": ".json$",
-"cmd": "node upload_json.js ${file}"
+"cmd": "node upload_json.js ${file} <path/to/serviceAccountKey.json> <admin_database_url>"
 }
 ]
 }
 }
 ```
+`<path/to/serviceAccountKey.json>`とfirebaseのサービスアカウントページの`秘密鍵の生成`から生成したもの
+`<admin_database_url>`はfirebaseのサービスアカウントページに記載されたもの
+
+
+### firebase-admin
+
+```sh
+npm install firebase-admin --save
+```
+
+### javascript script
+
+set project root [this script](https://gist.githubusercontent.com/sakiyamaK/972bac65e7f4b82364c97d418b563c06/raw/c1ccc4e0a96dd91691df0d193aff8bcf8ac5f24e/upload_json_to_firestore.js)
+
 ## Author
 
 Kei Sakiyama, sakiyama.k@gmail.com

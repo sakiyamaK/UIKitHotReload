@@ -5,9 +5,6 @@
   "bottom": 750
 },
 "subviews" : [
-    {
-     "component": "views/test3"
-  },
   {
   "class":  "stack",
   "axis": "v",
@@ -58,7 +55,7 @@
      "text_color": [0, 0, 0] ,
      "text_alignment": "left",
      "background_color": [1,1,1],
-          "huggings": [{
+     "huggings": [{
        "axis": "vertical",
        "priority": 1000
      },

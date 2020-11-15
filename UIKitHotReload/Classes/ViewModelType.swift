@@ -9,10 +9,11 @@
 import UIKit
 
 public enum ViewModelType: String {
-  case uistackview, stackview, stack, vstack, hstack, component
+  case uistackview, stackview, stack, vstack, hstack
   case uiview, view
   case uilabel, label
   case uiiamgeview, imageview
+  case uibutton, button
 
   public var view: UIView? {
     switch self {
@@ -25,8 +26,8 @@ public enum ViewModelType: String {
       return UILabel()
     case .uiiamgeview, .imageview:
       return UIImageView()
-    case .component:
-      return nil
+    case .uibutton, .button:
+      return UIButton()
     default:
       return UIView()
     }

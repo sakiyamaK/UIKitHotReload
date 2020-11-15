@@ -1,0 +1,32 @@
+{
+  "class":  "stack",
+  "is_scroll_enabled":  false,
+  "background_color": [1, 1, 1],
+  "distribution": "centering",
+  "alignment": "fill",
+  "subviews" : [
+    {
+      "class":  "view"
+    },
+    {
+      "class": "button",
+      "identifier": "login_button",
+      "text": "ログイン",
+     "text_color": [0, 0, 0] ,
+     "text_alignment": "center",
+     "background_color": [1,1,1],
+     "huggings": [{
+       "axis": "vertical",
+       "priority": 1000
+     },
+     {
+       "axis": "horizontal",
+       "priority": 1000
+     }]      
+    },
+    {
+      "class":  "view"
+    }
+  ]
+}
+

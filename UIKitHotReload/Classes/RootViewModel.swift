@@ -11,7 +11,8 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 public struct RootViewModel: Decodable,
-                             ViewModelProtocol, StackViewModelProtocol, LabelModelProtocol, ImageViewModelProtocol {
+                             ViewModelProtocol, StackViewModelProtocol,
+                             LabelModelProtocol, ImageViewModelProtocol, ButtonModelProtocol {
 
   private enum CodingKeys: String, CodingKey {
     case identifier, width, height, alpha, text
@@ -66,6 +67,10 @@ public struct RootViewModel: Decodable,
       setupView(label)
       setupLabel(label)
       return label
+    } else if let button = viewModelType?.view as? UIButton {
+      setupView(button)
+      setupButton(button)
+      return button
     } else if let imageView = viewModelType?.view as? UIImageView {
       setupView(imageView)
       setupImageView(imageView)

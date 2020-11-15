@@ -14,7 +14,7 @@ private let db = Firestore.firestore()
 
 public extension UIView {
 
-  func loadHotreloadUI(documentRef: DocumentReference, snapshot: Bool = true, completion: ((Error?) -> Void)? = nil) {
+  func loadHotReload(documentRef: DocumentReference, snapshot: Bool = true, completion: ((Error?) -> Void)? = nil) {
     documentRef.addSnapshotListener { (docSnapshot, err) in
       if let _err = err {
         print("Error getting documents: \(_err)")
@@ -51,8 +51,37 @@ public extension UIView {
     }
   }
 
-  func loadHotReloadUI(collectionName: String, documentName: String, snapshot: Bool = true, completion: ((Error?) -> Void)? = nil) {
+  func loadHotReload(collectionName: String, documentName: String, snapshot: Bool = true, completion: ((Error?) -> Void)? = nil) {
     let docRef: DocumentReference = db.collection(collectionName).document(documentName)
-    loadHotreloadUI(documentRef: docRef, snapshot: snapshot, completion: completion)
+    loadHotReload(documentRef: docRef, snapshot: snapshot, completion: completion)
+  }
+
+  func loadHotReload(dirName: String, jsonFileName: String, snapshot: Bool = true, completion: ((Error?) -> Void)? = nil) {
+    loadHotReload(collectionName: dirName, documentName: jsonFileName, snapshot: snapshot, completion: completion)
+  }
+
+  func hotReloadView(identifier: String) -> UIView? {
+    if let stackView = self as? UIStackView {
+      if stackView.arrangedSubviews.isEmpty { return nil }
+      if let view = stackView.arrangedSubviews.first(where: { $0.accessibilityIdentifier == identifier } ) {
+        return view
+      }
+      for subview in stackView.arrangedSubviews {
+        if let view = subview.hotReloadView(identifier: identifier) {
+          return view
+        }
+      }
+    } else {
+      if self.subviews.isEmpty { return nil }
+      if let view = self.subviews.first(where: { $0.accessibilityIdentifier == identifier } ) {
+        return view
+      }
+      for subview in self.subviews {
+        if let view = subview.hotReloadView(identifier: identifier) {
+          return view
+        }
+      }
+    }
+    return nil
   }
 }
