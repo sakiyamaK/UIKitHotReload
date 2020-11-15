@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 public protocol ViewModelProtocol {
   var className: String? { get }
-  var identifier: String? { get }
+  var id: String? { get }
   var _backgroundColor: [CGFloat]?  { get }
   var backgroundColor: UIColor?  { get }
   var _contentMode: String? { get }
@@ -38,7 +38,7 @@ public extension ViewModelProtocol {
 
   func setupView(_ view: UIView) {
 
-    view.accessibilityIdentifier = identifier
+    view.accessibilityIdentifier = id
     view.backgroundColor = backgroundColor
     view.contentMode = contentMode
     view.alpha = alpha ?? 1.0
@@ -61,15 +61,19 @@ public extension ViewModelProtocol {
     }
 
     if let _subviews = _subviewProtocols?.map({
-      ($0.view, $0.edgePriority)
-    }).filter({ $0.0 != nil }) as? [(UIView, EdgePriorityModel?)] {
-      for (_subview, _edgePriority) in _subviews {
+      ($0.view, $0.edgePriority, $0.isSafeArea)
+    }).filter({ $0.0 != nil }) as? [(UIView, EdgePriorityModel?, Bool?)] {
+      for (subview, edgePriority, isSafeArea) in _subviews {
         if view is UIScrollView {
-          (view.subviews.first as! UIStackView).addArrangedSubview(_subview)
+          (view.subviews.first as! UIStackView).addArrangedSubview(subview)
         } else {
-          view.addSubview(_subview)
-          if let _priorities = _edgePriority?.priorities {
-            _subview.edgesEqual(to: view, priorities: _priorities)
+          view.addSubview(subview)
+          let _priorities = (edgePriority ?? EdgePriorityModel()).priorities
+          let _isSafeArea = isSafeArea ?? true
+          if _isSafeArea {
+            subview.edgesEqualToSafeArea(view, priorities: _priorities)
+          } else {
+            subview.edgesEqual(to: view, priorities: _priorities)
           }
         }
       }

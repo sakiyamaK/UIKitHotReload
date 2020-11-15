@@ -22,7 +22,7 @@ final class LoginViewController: UIViewController {
   }
 
   private func setupAction() {
-    if let loginButton = self.view.hotReloadView(identifier: "login_button") as? UIButton {
+    if let loginButton = self.view.hotReloadView(id: "login_button") as? UIButton {
       loginButton.addTarget(self, action: #selector(tapLogin), for: .touchUpInside)
     }
   }

@@ -13,7 +13,6 @@ import FirebaseFirestoreSwift
 private let db = Firestore.firestore()
 
 public extension UIView {
-
   func loadHotReload(documentRef: DocumentReference, snapshot: Bool = true, completion: ((Error?) -> Void)? = nil) {
     documentRef.addSnapshotListener { (docSnapshot, err) in
       if let _err = err {
@@ -60,24 +59,24 @@ public extension UIView {
     loadHotReload(collectionName: dirName, documentName: jsonFileName, snapshot: snapshot, completion: completion)
   }
 
-  func hotReloadView(identifier: String) -> UIView? {
+  func hotReloadView(id: String) -> UIView? {
     if let stackView = self as? UIStackView {
       if stackView.arrangedSubviews.isEmpty { return nil }
-      if let view = stackView.arrangedSubviews.first(where: { $0.accessibilityIdentifier == identifier } ) {
+      if let view = stackView.arrangedSubviews.first(where: { $0.accessibilityIdentifier == id } ) {
         return view
       }
       for subview in stackView.arrangedSubviews {
-        if let view = subview.hotReloadView(identifier: identifier) {
+        if let view = subview.hotReloadView(id: id) {
           return view
         }
       }
     } else {
       if self.subviews.isEmpty { return nil }
-      if let view = self.subviews.first(where: { $0.accessibilityIdentifier == identifier } ) {
+      if let view = self.subviews.first(where: { $0.accessibilityIdentifier == id } ) {
         return view
       }
       for subview in self.subviews {
-        if let view = subview.hotReloadView(identifier: identifier) {
+        if let view = subview.hotReloadView(id: id) {
           return view
         }
       }

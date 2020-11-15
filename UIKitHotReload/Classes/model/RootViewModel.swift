@@ -15,29 +15,30 @@ public struct RootViewModel: Decodable,
                              LabelModelProtocol, ImageViewModelProtocol, ButtonModelProtocol {
 
   private enum CodingKeys: String, CodingKey {
-    case identifier, width, height, alpha, text
+    case id, width, height, alpha, text
     case
-    className = "class",
-    isHidden = "hidden",
-    _backgroundColor = "background_color",
-    _textColor = "text_color",
-    _textAlignment = "text_alignment",
-    _subviewProtocols = "subviews",
-    _huggings = "huggings",
-    _compressionResistances = "compression_resistances",
-    _contentMode = "content_mode",
-    _alignment = "alignment",
-    _distribution = "distribution",
-    _axis = "axis",
-    _imageInfo = "image",
-    _fontInfo = "font",
-    isScrollEnabled = "is_scroll_enabled",
-    numberOfLines = "number_of_lines",
-    edgePriority = "edge_priority"
+      className = "class",
+      isHidden = "hidden",
+      _backgroundColor = "background_color",
+      _textColor = "text_color",
+      _textAlignment = "text_alignment",
+      _subviewProtocols = "subviews",
+      _huggings = "huggings",
+      _compressionResistances = "compression_resistances",
+      _contentMode = "content_mode",
+      _alignment = "alignment",
+      _distribution = "distribution",
+      _axis = "axis",
+      _imageInfo = "image",
+      _fontInfo = "font",
+      isScrollEnabled = "is_scroll_enabled",
+      numberOfLines = "number_of_lines",
+      edgePriority = "edge_priority",
+      isSafeArea = "is_safe_area"
   }
 
   public var className: String?
-  public var identifier: String?
+  public var id: String?
   public var _backgroundColor: [CGFloat]?
   public var width: CGFloat?
   public var height: CGFloat?

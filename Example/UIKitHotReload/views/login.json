@@ -1,32 +1,31 @@
 {
-  "class":  "stack",
-  "is_scroll_enabled":  false,
+  "class": "view",
   "background_color": [1, 1, 1],
-  "distribution": "centering",
-  "alignment": "fill",
-  "subviews" : [
+  "is_safe_area": false,
+  "subviews":[
     {
-      "class":  "view"
-    },
-    {
-      "class": "button",
-      "identifier": "login_button",
-      "text": "ログイン",
-     "text_color": [0, 0, 0] ,
-     "text_alignment": "center",
-     "background_color": [1,1,1],
-     "huggings": [{
-       "axis": "vertical",
-       "priority": 1000
-     },
-     {
-       "axis": "horizontal",
-       "priority": 1000
-     }]      
-    },
-    {
-      "class":  "view"
+      "class": "vstack",
+      "is_safe_area": true,
+      "distribution": "centering",
+      "alignment": "fill",
+      "is_scroll_enabled":  false,      
+      "subviews":[
+        {
+          "class": "view",
+          "background_color": [1,0,0]
+        },
+        {
+          "class": "button",
+          "text": "あああ",
+          "text_color": [0, 0, 0],
+          "background_color": [0, 1, 0],
+          "id": "login_button"
+        },
+        {
+          "class": "view",
+          "background_color": [1,0,0]
+        }
+      ]
     }
   ]
 }
-
