@@ -11,34 +11,26 @@ import UIKit
 public protocol LabelModelProtocol: ViewModelProtocol {
   var text: String? { get }
   var _textColor: [CGFloat]?  { get }
-  var textColor: UIColor?  { get }
   var _textAlignment: String? { get }
-  var textAlignment: NSTextAlignment? { get }
   var _fontInfo: FontInfoModel? { get }
-  var font: UIFont? { get }
-  var numberOfLines: Int? { get }
+  var _numberOfLines: Int? { get }
   func setupLabel(_ label: UILabel)
 }
 
 public extension LabelModelProtocol {
-  var textColor: UIColor? { _textColor?.uiColor }
-  var textAlignment: NSTextAlignment? {  _textAlignment?.textAlignment }
+  var textColor: UIColor { _textColor?.uiColor ?? UIColor.darkText }
+  var textAlignment: NSTextAlignment { _textAlignment?.textAlignment ?? .left }
   var font: UIFont? {  _fontInfo?.font }
+  var numberOfLines: Int { _numberOfLines ?? 1 }
 
   func setupLabel(_ label: UILabel) {
     label.text = text
     if let _font = font {
       label.font = _font
     }
-
-    label.textColor = textColor ?? UIColor.darkText
     label.backgroundColor = backgroundColor ?? .clear
-
-    if let _textAlignment = textAlignment {
-      label.textAlignment = _textAlignment
-    }
-    if let _numberOfLines = numberOfLines {
-      label.numberOfLines = _numberOfLines
-    }
+    label.textColor = textColor
+    label.textAlignment = textAlignment
+    label.numberOfLines = numberOfLines
   }
 }

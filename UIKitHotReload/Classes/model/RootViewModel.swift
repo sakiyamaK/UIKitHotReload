@@ -34,7 +34,7 @@ public struct RootViewModel: Decodable,
       _fontInfo = "font",
       _spacing = "spacing",
       isScrollEnabled = "is_scroll_enabled",
-      numberOfLines = "number_of_lines",
+      _numberOfLines = "number_of_lines",
       _edgePriority = "edge_priority",
       _edgeInsets = "edge_insets",
       _isSafeArea = "is_safe_area"
@@ -65,8 +65,8 @@ public struct RootViewModel: Decodable,
   public var _imageInfo: [String : String]?
   public var _fontInfo: FontInfoModel?
 
-  public var numberOfLines: Int?
   public var isScrollEnabled: Bool?
+  public var _numberOfLines: Int?
   public var _isSafeArea: Bool?
 
   public var view: UIView? {
