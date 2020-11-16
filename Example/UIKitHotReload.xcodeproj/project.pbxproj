@@ -16,8 +16,13 @@
 		ACBCE87FED0A6A8C1E74AE81 /* Pods_UIKitHotReload_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066FABA8FE28A4440EF7C605 /* Pods_UIKitHotReload_Tests.framework */; };
 		B679B106255ED7A4003A16EC /* home.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B105255ED7A4003A16EC /* home.json */; };
 		B679B10C255ED7BD003A16EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B679B10B255ED7BD003A16EC /* GoogleService-Info.plist */; };
-		B679B1412560E7A6003A16EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B1402560E7A6003A16EC /* LoginViewController.swift */; };
-		B679B16425613CDF003A16EC /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B16325613CDF003A16EC /* login.json */; };
+		B679B1412560E7A6003A16EC /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B1402560E7A6003A16EC /* ButtonsViewController.swift */; };
+		B679B16425613CDF003A16EC /* buttons.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B16325613CDF003A16EC /* buttons.json */; };
+		B679B2802562B6BC003A16EC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B27F2562B6BC003A16EC /* MainViewController.swift */; };
+		B679B2842562B6EB003A16EC /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B2832562B6EB003A16EC /* main.json */; };
+		B679B28B2562BA12003A16EC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B28A2562BA12003A16EC /* Router.swift */; };
+		B679B28F2562BBBE003A16EC /* LabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B28E2562BBBE003A16EC /* LabelsViewController.swift */; };
+		B679B2932562BC1A003A16EC /* labels.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B2922562BC1A003A16EC /* labels.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +55,13 @@
 		8B1367409C27C475F951267C /* Pods-UIKitHotReload_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitHotReload_Tests.release.xcconfig"; path = "Target Support Files/Pods-UIKitHotReload_Tests/Pods-UIKitHotReload_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B679B105255ED7A4003A16EC /* home.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home.json; sourceTree = "<group>"; };
 		B679B10B255ED7BD003A16EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B679B1402560E7A6003A16EC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		B679B16325613CDF003A16EC /* login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
+		B679B1402560E7A6003A16EC /* ButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
+		B679B16325613CDF003A16EC /* buttons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = buttons.json; sourceTree = "<group>"; };
+		B679B27F2562B6BC003A16EC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B679B2832562B6EB003A16EC /* main.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
+		B679B28A2562BA12003A16EC /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		B679B28E2562BBBE003A16EC /* LabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
+		B679B2922562BC1A003A16EC /* labels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = labels.json; sourceTree = "<group>"; };
 		F8C136D317DCB6B7941BF560 /* UIKitHotReload.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = UIKitHotReload.podspec; path = ../UIKitHotReload.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +120,7 @@
 		607FACD21AFB9204008FA782 /* Example for UIKitHotReload */ = {
 			isa = PBXGroup;
 			children = (
+				B679B2872562B9BE003A16EC /* Router */,
 				B679B13E2560E78D003A16EC /* ViewController */,
 				B679B10B255ED7BD003A16EC /* GoogleService-Info.plist */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
@@ -170,7 +181,9 @@
 			isa = PBXGroup;
 			children = (
 				B679B105255ED7A4003A16EC /* home.json */,
-				B679B16325613CDF003A16EC /* login.json */,
+				B679B16325613CDF003A16EC /* buttons.json */,
+				B679B2832562B6EB003A16EC /* main.json */,
+				B679B2922562BC1A003A16EC /* labels.json */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -179,9 +192,19 @@
 			isa = PBXGroup;
 			children = (
 				607FACD71AFB9204008FA782 /* HomeViewController.swift */,
-				B679B1402560E7A6003A16EC /* LoginViewController.swift */,
+				B679B1402560E7A6003A16EC /* ButtonsViewController.swift */,
+				B679B27F2562B6BC003A16EC /* MainViewController.swift */,
+				B679B28E2562BBBE003A16EC /* LabelsViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B679B2872562B9BE003A16EC /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B679B28A2562BA12003A16EC /* Router.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,11 +295,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B679B2842562B6EB003A16EC /* main.json in Resources */,
 				B679B106255ED7A4003A16EC /* home.json in Resources */,
 				B679B10C255ED7BD003A16EC /* GoogleService-Info.plist in Resources */,
+				B679B2932562BC1A003A16EC /* labels.json in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
-				B679B16425613CDF003A16EC /* login.json in Resources */,
+				B679B16425613CDF003A16EC /* buttons.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,9 +424,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B679B1412560E7A6003A16EC /* LoginViewController.swift in Sources */,
+				B679B1412560E7A6003A16EC /* ButtonsViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* HomeViewController.swift in Sources */,
+				B679B28B2562BA12003A16EC /* Router.swift in Sources */,
+				B679B28F2562BBBE003A16EC /* LabelsViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				B679B2802562B6BC003A16EC /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

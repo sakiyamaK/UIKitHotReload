@@ -1,0 +1,28 @@
+{
+  "class": "view",
+  "background_color": [1, 1, 1],
+  "is_safe_area": false,
+  "subviews": [
+    {
+      "class": "vstack",
+      "is_safe_area": true,
+      "distribution": "fill_e",
+      "alignment": "fill",
+      "is_scroll_enabled":  false,
+      "spacing": 10,
+      "subviews": [
+        {
+          "class": "button",
+          "id": "to_buttons",
+          "text": "buttons"
+        },
+        {
+          "class": "button",
+          "id": "to_labels",
+          "text": "labels"
+        }
+      ]
+    }
+  ]
+}
+

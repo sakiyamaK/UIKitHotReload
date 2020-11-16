@@ -1,0 +1,127 @@
+{
+  "class": "view",
+  "background_color": [1, 1, 1],
+  "is_safe_area": false,
+  "subviews": [
+    {
+      "class": "vstack",
+      "is_safe_area": true,
+      "distribution": "fill",
+      "alignment": "fill",
+      "is_scroll_enabled":  true,
+      "spacing": 50,
+      "edge_insets":{
+        "top": 10,
+        "left": 10
+      },
+      "subviews": [
+        {
+          "class": "label",
+          "id": "label1",
+          "text": "ラベル１です"
+        },
+        {
+          "class": "label",
+          "id": "label2",
+          "text": "ラベル2です",
+          "font": {
+            "size": 30
+          }          
+        },
+        {
+          "class": "label",
+          "id": "label3",
+          "text": "ラベル3です",
+          "font": {
+            "size": 50
+          }          
+        },
+        {
+          "class": "label",
+          "id": "label1",
+          "text": "ラベル4です"
+        },
+        {
+          "class": "label",
+          "id": "label2",
+          "text": "ラベル5です",
+          "font": {
+            "size": 30
+          }          
+        },
+        {
+          "class": "label",
+          "id": "label3",
+          "text": "ラベル6です",
+          "font": {
+            "size": 50
+          }          
+        },
+        {
+          "class": "label",
+          "id": "label1",
+          "text": "ラベル7です"
+        },
+        {
+          "class": "label",
+          "id": "label2",
+          "text": "ラベル8です",
+          "font": {
+            "size": 30
+          }          
+        },
+        {
+          "class": "label",
+          "id": "label3",
+          "text": "ラベル9です",
+          "font": {
+            "size": 50
+          }          
+        },
+        {
+          "class": "label",
+          "id": "label1",
+          "text": "ラベル１0です"
+        },
+        {
+          "class": "label",
+          "id": "label2",
+          "text": "ラベル11です",
+          "font": {
+            "size": 30
+          }          
+        },
+        {
+          "class": "label",
+          "id": "label3",
+          "text": "ラベル12です",
+          "font": {
+            "size": 50
+          }          
+        },
+        {
+          "class": "label",
+          "id": "label1",
+          "text": "ラベル１3です"
+        },
+        {
+          "class": "label",
+          "id": "label2",
+          "text": "ラベル14です",
+          "font": {
+            "size": 30
+          }          
+        },
+        {
+          "class": "label",
+          "id": "label3",
+          "text": "ラベル15です",
+          "font": {
+            "size": 50
+          }          
+        }
+      ]
+    }
+  ]
+}
+

@@ -8,15 +8,6 @@
 
 import UIKit
 
-public struct UIEdgePriorities {
-  public var top: UILayoutPriority = .required
-  public var leading: UILayoutPriority = .required
-  public var trailing: UILayoutPriority = .required
-  public var bottom: UILayoutPriority = .required
-
-  public init() { }
-}
-
 public extension UIView {
 
   func edgesEqual(to: UILayoutGuide, margin: UIEdgeInsets = .zero, priorities: UIEdgePriorities = .init()) {

@@ -12,6 +12,7 @@ public protocol StackViewModelProtocol: ViewModelProtocol {
   var _alignment: String? { get }
   var _distribution: String? { get }
   var _axis: String? { get }
+  var _spacing: CGFloat? { get }
   var isScrollEnabled: Bool? { get }
   var alignment: UIStackView.Alignment { get }
   var distribution: UIStackView.Distribution { get }
@@ -24,13 +25,14 @@ public extension StackViewModelProtocol {
   var alignment: UIStackView.Alignment { (_alignment ?? "").alignment }
   var distribution: UIStackView.Distribution { (_distribution ?? "").distribution }
   var axis: NSLayoutConstraint.Axis { (_axis ?? "").axis }
+  var spacing: CGFloat { _spacing ?? 0.0 }
+
 
   func setupScrollView(_ scrollView: UIScrollView) {
     guard let stackView = scrollView.subviews.first as? UIStackView else { return }
     scrollView.isScrollEnabled = isScrollEnabled ?? true
     setupStackView(stackView)
-    stackView.edgesEqual(to: scrollView.contentLayoutGuide,
-                         priorities: edgePriority?.priorities ?? UIEdgePriorities.init())
+    stackView.edgesEqual(to: scrollView.contentLayoutGuide, priorities: edgePriority.priorities)
     if !scrollView.isScrollEnabled {
       stackView.widthEqual(to: scrollView.frameLayoutGuide)
       stackView.heightEqual(to: scrollView.frameLayoutGuide)
@@ -48,5 +50,6 @@ public extension StackViewModelProtocol {
     stackView.alignment = alignment
     stackView.distribution = distribution
     stackView.axis = axis
+    stackView.spacing = spacing
   }
 }
