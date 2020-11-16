@@ -54,7 +54,7 @@ https://github.com/emeraldwalk/vscode-runonsave
 npm install firebase-admin --save
 ```
 
-### javascript script
+### javascript
 
 set project root [this script](https://gist.githubusercontent.com/sakiyamaK/972bac65e7f4b82364c97d418b563c06/raw/c1ccc4e0a96dd91691df0d193aff8bcf8ac5f24e/upload_json_to_firestore.js)
 
