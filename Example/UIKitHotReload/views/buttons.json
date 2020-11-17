@@ -6,10 +6,11 @@
     {
       "class": "stack",
       "safe_area": true,
-      "distribution": "centering",
+      "distribution": "fill",
       "alignment": "fill",
       "scroll_enabled":  false,
       "spacing": 10,
+      "background_color": [0, 0, 0],
       "subviews": [
         {
           "class": "view"

@@ -63,9 +63,6 @@ public extension ViewModelProtocol {
       view.layer.maskedCorners = maskedCorners
     }
 
-    print(_masksToBounds)
-    print(masksToBounds)
-
     for hugging in huggings {
       view.setContentHuggingPriority(hugging.priority, for: hugging.axis)
     }
