@@ -23,6 +23,8 @@
 		B679B28B2562BA12003A16EC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B28A2562BA12003A16EC /* Router.swift */; };
 		B679B28F2562BBBE003A16EC /* LabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B28E2562BBBE003A16EC /* LabelsViewController.swift */; };
 		B679B2932562BC1A003A16EC /* labels.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B2922562BC1A003A16EC /* labels.json */; };
+		B679B3002563B236003A16EC /* ViewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B2FF2563B236003A16EC /* ViewsViewController.swift */; };
+		B679B3042563B39D003A16EC /* views.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B3032563B39D003A16EC /* views.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		B679B28A2562BA12003A16EC /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B679B28E2562BBBE003A16EC /* LabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
 		B679B2922562BC1A003A16EC /* labels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = labels.json; sourceTree = "<group>"; };
+		B679B2FF2563B236003A16EC /* ViewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsViewController.swift; sourceTree = "<group>"; };
+		B679B3032563B39D003A16EC /* views.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = views.json; sourceTree = "<group>"; };
 		F8C136D317DCB6B7941BF560 /* UIKitHotReload.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = UIKitHotReload.podspec; path = ../UIKitHotReload.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +188,7 @@
 				B679B16325613CDF003A16EC /* buttons.json */,
 				B679B2832562B6EB003A16EC /* main.json */,
 				B679B2922562BC1A003A16EC /* labels.json */,
+				B679B3032563B39D003A16EC /* views.json */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				B679B1402560E7A6003A16EC /* ButtonsViewController.swift */,
 				B679B27F2562B6BC003A16EC /* MainViewController.swift */,
 				B679B28E2562BBBE003A16EC /* LabelsViewController.swift */,
+				B679B2FF2563B236003A16EC /* ViewsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B679B3042563B39D003A16EC /* views.json in Resources */,
 				B679B2842562B6EB003A16EC /* main.json in Resources */,
 				B679B106255ED7A4003A16EC /* home.json in Resources */,
 				B679B10C255ED7BD003A16EC /* GoogleService-Info.plist in Resources */,
@@ -425,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B679B1412560E7A6003A16EC /* ButtonsViewController.swift in Sources */,
+				B679B3002563B236003A16EC /* ViewsViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* HomeViewController.swift in Sources */,
 				B679B28B2562BA12003A16EC /* Router.swift in Sources */,
 				B679B28F2562BBBE003A16EC /* LabelsViewController.swift in Sources */,

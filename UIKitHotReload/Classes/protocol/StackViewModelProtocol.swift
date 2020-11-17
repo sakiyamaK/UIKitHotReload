@@ -13,10 +13,16 @@ public protocol StackViewModelProtocol: ViewModelProtocol {
   var _distribution: String? { get }
   var _axis: String? { get }
   var _spacing: CGFloat? { get }
-  var isScrollEnabled: Bool? { get }
-  var alignment: UIStackView.Alignment { get }
-  var distribution: UIStackView.Distribution { get }
-  var axis: NSLayoutConstraint.Axis { get }
+  var _isScrollEnabled: Bool? { get }
+  var _scrollEnabled: Bool? { get }
+  var _isPagingEnabled: Bool? { get }
+  var _pagingEnabled: Bool? { get }
+  var _showsVerticalScrollIndicator: Bool? { get }
+  var _vIndicator: Bool? { get }
+  var _showsHorizontalScrollIndicator: Bool? { get }
+  var _hIndicator: Bool? { get }
+  var _contentInsets: EdgeInsetsModel? { get }
+  var _contentOffset: CGPoint? { get }
   func setupScrollView(_ scrollView: UIScrollView)
 }
 
@@ -26,11 +32,26 @@ public extension StackViewModelProtocol {
   var distribution: UIStackView.Distribution { (_distribution ?? "").distribution }
   var axis: NSLayoutConstraint.Axis { (_axis ?? "").axis }
   var spacing: CGFloat { _spacing ?? 0.0 }
-
+  var isScrollEnabled: Bool { (_isScrollEnabled ?? true) && (_scrollEnabled ?? true) }
+  var isPagingEnabled: Bool { (_isPagingEnabled ?? false) || (_pagingEnabled ?? false) }
+  var showsVerticalScrollIndicator: Bool {
+    (_showsVerticalScrollIndicator ?? true) && (_vIndicator ?? true)
+  }
+  var showsHorizontalScrollIndicator: Bool {
+    (_showsHorizontalScrollIndicator ?? true) && (_hIndicator ?? true)
+  }
+  var contentInsets: UIEdgeInsets { (_contentInsets ?? EdgeInsetsModel()).edgeInsets }
+  var contentOffset: CGPoint { _contentOffset ?? .zero }
 
   func setupScrollView(_ scrollView: UIScrollView) {
     guard let stackView = scrollView.subviews.first as? UIStackView else { return }
-    scrollView.isScrollEnabled = isScrollEnabled ?? true
+    scrollView.isScrollEnabled = isScrollEnabled
+    scrollView.isPagingEnabled = isPagingEnabled
+    scrollView.showsVerticalScrollIndicator = showsVerticalScrollIndicator
+    scrollView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator
+    scrollView.contentInset = contentInsets
+    scrollView.contentOffset = contentOffset
+
     setupStackView(stackView)
     stackView.edgesEqual(to: scrollView.contentLayoutGuide, priorities: edgePriority.priorities)
     if !scrollView.isScrollEnabled {

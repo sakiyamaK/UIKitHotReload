@@ -9,7 +9,7 @@
 import UIKit
 
 public enum ViewModelType: String {
-  case uistackview, stackview, stack, vstack, hstack
+  case uistackview, stackview, stack
   case uilabel, label
   case uiiamgeview, imageview
   case uibutton, button
@@ -17,7 +17,7 @@ public enum ViewModelType: String {
 
   public var view: UIView? {
     switch self {
-    case .uistackview, .stackview, .stack, .vstack, .hstack:
+    case .uistackview, .stackview, .stack:
       let scrollView = UIScrollView()
       let stackView = UIStackView()
       scrollView.addSubview(stackView)

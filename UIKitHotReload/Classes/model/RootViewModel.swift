@@ -15,29 +15,45 @@ public struct RootViewModel: Decodable,
                              LabelModelProtocol, ImageViewModelProtocol, ButtonModelProtocol {
 
   private enum CodingKeys: String, CodingKey {
-    case id, width, height, text
     case
+      //ViewModelProtocol
       className = "class",
-      _isHidden = "hidden",
-      _alpha = "alpha",
+      id = "id",
+      width = "width",
+      height = "height",
       _backgroundColor = "background_color",
-      _textColor = "text_color",
-      _textAlignment = "text_alignment",
-      _subviewProtocols = "subviews",
+      _alpha = "alpha",
+      _isHidden = "is_hidden", _hidden = "hidden",
       _huggings = "huggings",
       _compressionResistances = "compression_resistances",
       _contentMode = "content_mode",
+      _subviewProtocols = "subviews",
+      _edgePriority = "edge_priority",
+      _edgeInsets = "edge_insets",
+      _isSafeArea = "is_safe_area", _safeArea = "safe_area",
+      _cornerRadius = "corner_radius",
+      _masksToBounds = "masks_to_bounds",
+      _maskedCorners = "masked_corners",
+      //StackViewModelProtocol
       _alignment = "alignment",
       _distribution = "distribution",
       _axis = "axis",
-      _imageInfo = "image",
-      _fontInfo = "font",
       _spacing = "spacing",
-      isScrollEnabled = "is_scroll_enabled",
+      _isScrollEnabled = "is_scroll_enabled", _scrollEnabled = "scroll_enabled",
+      _isPagingEnabled = "is_paging_enabled", _pagingEnabled = "paging_enabled",
+      _showsVerticalScrollIndicator = "shows_vertical_scroll_indicator", _vIndicator = "v_indicator",
+      _showsHorizontalScrollIndicator = "shows_horizontal_scroll_indicator", _hIndicator = "h_indicator",
+      _contentInsets = "content_insets",
+      _contentOffset = "content_offset",
+
+      //LabelViewModelProtocol, ButtonModelProtocol
+      text = "text",
+      _textColor = "text_color",
+      _textAlignment = "text_alignment",
+      _fontInfo = "font",
       _numberOfLines = "number_of_lines",
-      _edgePriority = "edge_priority",
-      _edgeInsets = "edge_insets",
-      _isSafeArea = "is_safe_area"
+      //ImageViewModelProtocol
+      _imageInfo = "image"
   }
 
   //ViewModelProtocol
@@ -45,29 +61,41 @@ public struct RootViewModel: Decodable,
   public var id: String?
   public var width: CGFloat?
   public var height: CGFloat?
-  public var text: String?
-
   public var _backgroundColor: [CGFloat]?
   public var _alpha: CGFloat?
-  public var _isHidden: Bool?
+  public var _isHidden, _hidden: Bool?
   public var _huggings: [HuggingModel]?
   public var _compressionResistances: [CompressionResistanceModel]?
   public var _contentMode: String?
+  public var _subviewProtocols: [Self]?
+  public var _edgePriority: EdgePriorityModel?
+  public var _edgeInsets: EdgeInsetsModel?
+  public var _isSafeArea, _safeArea: Bool?
+  public var _cornerRadius: CGFloat?
+  public var _masksToBounds: Bool?
+  public var _maskedCorners: [String]?
+
+  //StackViewModelProtocol
   public var _alignment: String?
   public var _distribution: String?
   public var _axis: String?
   public var _spacing: CGFloat?
-  public var _subviewProtocols: [Self]?
-  public var _edgePriority: EdgePriorityModel?
-  public var _edgeInsets: EdgeInsetsModel?
+  public var _isScrollEnabled, _scrollEnabled: Bool?
+  public var _isPagingEnabled, _pagingEnabled: Bool?
+  public var _showsVerticalScrollIndicator, _vIndicator: Bool?
+  public var _showsHorizontalScrollIndicator, _hIndicator: Bool?
+  public var _contentInsets: EdgeInsetsModel?
+  public var _contentOffset: CGPoint?
+
+  //LabelViewModelProtocol, ButtonModelProtocol
+  public var text: String?
   public var _textColor: [CGFloat]?
   public var _textAlignment: String?
-  public var _imageInfo: [String : String]?
   public var _fontInfo: FontInfoModel?
-
-  public var isScrollEnabled: Bool?
   public var _numberOfLines: Int?
-  public var _isSafeArea: Bool?
+
+  //ImageViewModelProtocol
+  public var _imageInfo: [String : String]?
 
   public var view: UIView? {
     if let label = viewModelType?.view as? UILabel {

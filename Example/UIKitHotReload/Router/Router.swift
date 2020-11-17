@@ -10,8 +10,8 @@ import UIKit
 
 final class Router {
 
-  static func showButtons(from: UIViewController, animated: Bool = true) {
-    let to = ButtonsViewController()
+  static func showViews(from: UIViewController, animated: Bool = true) {
+    let to = ViewsViewController()
     show(from: from, to: to, animated: animated)
   }
 
@@ -19,6 +19,12 @@ final class Router {
     let to = LabelsViewController()
     show(from: from, to: to, animated: animated)
   }
+
+  static func showButtons(from: UIViewController, animated: Bool = true) {
+    let to = ButtonsViewController()
+    show(from: from, to: to, animated: animated)
+  }
+
 
   private static func show(from: UIViewController, to: UIViewController, animated: Bool = true) {
     if let navigationController = from.navigationController {

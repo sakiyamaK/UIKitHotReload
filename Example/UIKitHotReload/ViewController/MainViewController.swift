@@ -11,6 +11,7 @@ import UIKitHotReload
 
 final class MainViewController: UIViewController {
 
+  private var views: UIButton? { self.view.hotReloadView(id: "to_views") as? UIButton }
   private var buttons: UIButton? { self.view.hotReloadView(id: "to_buttons") as? UIButton }
   private var labels: UIButton? { self.view.hotReloadView(id: "to_labels") as? UIButton }
 
@@ -26,15 +27,21 @@ final class MainViewController: UIViewController {
   }
 
   private func setupAction() {
-    self.buttons?.addTarget(self, action: #selector(tapButtons), for: .touchUpInside)
-    self.labels?.addTarget(self, action: #selector(tapLabels), for: .touchUpInside)
+    self.views?.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+    self.buttons?.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+    self.labels?.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
   }
 
-  @objc func tapButtons() {
-    Router.showButtons(from: self)
-  }
-
-  @objc func tapLabels() {
-    Router.showLabels(from: self)
+  @objc func tapButton(_ sender: UIButton) {
+    switch sender {
+    case views:
+      Router.showViews(from: self)
+    case labels:
+      Router.showLabels(from: self)
+    case buttons:
+      Router.showButtons(from: self)
+    default:
+      break
+    }
   }
 }

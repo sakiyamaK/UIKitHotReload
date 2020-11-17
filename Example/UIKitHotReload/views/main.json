@@ -4,7 +4,7 @@
   "is_safe_area": false,
   "subviews": [
     {
-      "class": "vstack",
+      "class": "stack",
       "is_safe_area": true,
       "distribution": "fill_e",
       "alignment": "fill",
@@ -13,13 +13,18 @@
       "subviews": [
         {
           "class": "button",
-          "id": "to_buttons",
-          "text": "buttons"
+          "id": "to_views",
+          "text": "UIView Sample"
         },
         {
           "class": "button",
           "id": "to_labels",
-          "text": "labels"
+          "text": "UILabel Sample"
+        },
+        {
+          "class": "button",
+          "id": "to_buttons",
+          "text": "UIButton Sample"
         }
       ]
     }

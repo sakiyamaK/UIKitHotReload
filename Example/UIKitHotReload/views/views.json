@@ -1,0 +1,150 @@
+{
+  "class": "view",
+  "background_color": [1, 1, 1],
+  "safe_area": false,
+  "subviews": [
+    {
+      "class": "stack",
+      "safe_area": true,
+      "distribution": "fill",
+      "alignment": "fill",
+      "scroll_enabled":  true,
+      "spacing": 50,
+      "edge_priority": {
+        "bottom": 790
+      },
+      "edge_insets": {
+        "top": 30
+      },
+      "subviews": [
+        {
+          "class": "stack",
+          "scroll_enabled": false,
+          "distribution": "fill",
+          "alignment": "center",
+          "subviews": [
+            {
+              "class": "view",
+              "width": 30,
+              "height": 30,
+              "background_color": [1, 0, 0]
+            }
+          ]
+        },
+        {
+          "class": "stack",
+          "scroll_enabled": false,
+          "distribution": "fill",
+          "alignment": "center",
+          "subviews": [
+            {
+              "class": "view",
+              "width": 100,
+              "height": 100,
+              "background_color": [0, 1, 0]
+            }
+          ]
+        },
+        {
+          "class": "stack",
+          "scroll_enabled": false,
+          "distribution": "fill",
+          "alignment": "center",
+          "subviews": [
+            {
+              "class": "view",
+              "width": 100,
+              "height": 100,
+              "corner_radius": 40,
+              "masked_corners": ["min_max"],
+              "background_color": [0, 0, 0]
+            }
+          ]
+        },
+        {
+          "class": "stack",
+          "axis": "horizontal",
+          "height": 200,
+          "distribution": "fill",
+          "alignment": "fill",
+          "scroll_enabled":  true,
+          "h_indicator": false,
+          "content_insets": {
+            "left": 12,
+            "right": 12
+          },
+          "spacing": 32,
+          "subviews": [
+            {
+              "class": "view",
+              "width": 100,
+              "hidden": false,
+              "background_color": [1, 0, 0],
+              "subviews": [
+                {
+                  "class": "label",
+                  "text": "1",
+                  "text_alignment": "center",
+                  "text_color": [1, 1, 1],
+                  "font": {
+                    "size": 30
+                  }
+                }
+              ]
+            },
+            {
+              "class": "view",
+              "width": 100,
+              "background_color": [0, 1, 0],
+              "subviews": [
+                {
+                  "class": "label",
+                  "text": "2",
+                  "text_alignment": "center",
+                  "text_color": [1, 1, 1],
+                  "font": {
+                    "size": 30
+                  }
+                }
+              ]
+            },
+            {
+              "class": "view",
+              "width": 100,
+              "background_color": [0, 0, 1],
+              "subviews": [
+                {
+                  "class": "label",
+                  "text": "3",
+                  "text_alignment": "center",
+                  "text_color": [1, 1, 1],
+                  "font": {
+                    "size": 30
+                  }
+                }
+              ]
+            },
+            {
+              "class": "view",
+              "width": 100,
+              "background_color": [1, 0, 0],
+              "subviews": [
+                {
+                  "class": "label",
+                  "text": "4",
+                  "text_alignment": "center",
+                  "text_color": [1, 1, 1],
+                  "font": {
+                    "size": 30
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+

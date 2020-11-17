@@ -28,7 +28,7 @@ public extension LabelModelProtocol {
     if let _font = font {
       label.font = _font
     }
-    label.backgroundColor = backgroundColor ?? .clear
+    label.backgroundColor = backgroundColor
     label.textColor = textColor
     label.textAlignment = textAlignment
     label.numberOfLines = numberOfLines

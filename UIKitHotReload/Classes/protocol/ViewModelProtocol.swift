@@ -20,27 +20,35 @@ public protocol ViewModelProtocol {
   var _contentMode: String? { get }
   var _alpha: CGFloat? { get }
   var _isHidden: Bool? { get }
+  var _hidden: Bool? { get }
   var _edgePriority: EdgePriorityModel? { get }
   var _edgeInsets: EdgeInsetsModel? { get }
   var _huggings: [HuggingModel]?  { get }
   var _compressionResistances: [CompressionResistanceModel]?  { get }
   var _isSafeArea: Bool? { get }
+  var _safeArea: Bool? { get }
   var _subviewProtocols: [Self]? { get }
+  var _cornerRadius: CGFloat? { get }
+  var _masksToBounds: Bool? { get }
+  var _maskedCorners: [String]? { get }
 
   func setupView(_ view: UIView)
 }
 
 public extension ViewModelProtocol {
-  var backgroundColor: UIColor? { _backgroundColor?.uiColor }
+  var backgroundColor: UIColor { _backgroundColor?.uiColor ?? .clear }
   var contentMode: UIView.ContentMode { (_contentMode ?? "").contentMode }
   var viewModelType: ViewModelType? { ViewModelType(rawValue: className?.lowercased() ?? "") }
   var edgePriority: EdgePriorityModel { _edgePriority ?? EdgePriorityModel() }
   var edgeInsets: EdgeInsetsModel { _edgeInsets ?? EdgeInsetsModel() }
   var huggings: [HuggingModel] { _huggings ?? [] }
   var compressionResistances: [CompressionResistanceModel]  { _compressionResistances ?? [] }
-  var isSafeArea: Bool { _isSafeArea ?? true }
+  var isSafeArea: Bool { (_isSafeArea ?? true) && (_safeArea ?? true) }
   var alpha: CGFloat { _alpha ?? 1.0 }
-  var isHidden: Bool { _isHidden ?? false }
+  var isHidden: Bool { (_isHidden ?? false) || (_hidden ?? false) }
+  var cornerRadius: CGFloat { _cornerRadius ?? 0.0 }
+  var masksToBounds: Bool { _masksToBounds ?? false }
+  var maskedCorners: CACornerMask? { _maskedCorners?.maskedCorners }
 
   func setupView(_ view: UIView) {
 
@@ -49,6 +57,14 @@ public extension ViewModelProtocol {
     view.contentMode = contentMode
     view.alpha = alpha
     view.isHidden = isHidden
+    view.layer.cornerRadius = cornerRadius
+    view.layer.masksToBounds = masksToBounds
+    if let maskedCorners = maskedCorners {
+      view.layer.maskedCorners = maskedCorners
+    }
+
+    print(_masksToBounds)
+    print(masksToBounds)
 
     for hugging in huggings {
       view.setContentHuggingPriority(hugging.priority, for: hugging.axis)

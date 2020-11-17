@@ -19,4 +19,24 @@ public extension Array where Element: Numeric {
     let a = (self[safe: 3] as? CGFloat) ?? 1.0
     return UIColor(red: r, green: g, blue: b, alpha: a)
   }
+
+  var cgPoint: CGPoint? {
+    guard
+      let x = (self[0] as? CGFloat),
+      let y = (self[1] as? CGFloat) else {
+      return nil
+    }
+    return CGPoint(x: x, y: y)
+  }
+}
+
+public extension Array where Element: StringProtocol {
+  var maskedCorners: CACornerMask {
+    var maskedCorners: CACornerMask = CACornerMask.init()
+    if self.contains("min_x_min_y") || self.contains("min_min") { maskedCorners = CACornerMask(rawValue: maskedCorners.rawValue + CACornerMask.layerMinXMinYCorner.rawValue) }
+    if self.contains("min_x_max_y") || self.contains("min_max") { maskedCorners = CACornerMask(rawValue: maskedCorners.rawValue + CACornerMask.layerMinXMaxYCorner.rawValue) }
+    if self.contains("max_x_min_y") || self.contains("max_min") { maskedCorners = CACornerMask(rawValue: maskedCorners.rawValue + CACornerMask.layerMaxXMinYCorner.rawValue) }
+    if self.contains("max_x_max_y") || self.contains("max_max") { maskedCorners = CACornerMask(rawValue: maskedCorners.rawValue + CACornerMask.layerMaxXMaxYCorner.rawValue) }
+    return maskedCorners
+  }
 }

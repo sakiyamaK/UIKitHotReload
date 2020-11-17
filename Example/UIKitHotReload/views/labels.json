@@ -1,16 +1,16 @@
 {
   "class": "view",
   "background_color": [1, 1, 1],
-  "is_safe_area": false,
+  "safe_area": false,
   "subviews": [
     {
       "class": "stack",
       "axis": "vertical",
-      "is_safe_area": true,
+      "safe_area": true,
       "distribution": "fill",
       "alignment": "fill",
-      "is_scroll_enabled":  true,
-      "spacing": 10,
+      "scroll_enabled":  true,
+      "spacing": 50,
       "edge_insets": {
         "top": 8,
         "left": 16
@@ -19,108 +19,40 @@
         {
           "class": "label",
           "id": "label1",
-          "text": "ラベル１です"
+          "text": "デフォルトです"
         },
         {
           "class": "label",
           "id": "label2",
-          "text": "ラベル2です",
+          "text": "フォントを変えました",
           "font": {
             "name": "Bradley Hand",
-            "size": 30
+            "size":30
           }          
         },
         {
           "class": "label",
           "id": "label3",
-          "text": "ラベル3です",
-          "font": {
-            "size": 50
-          }          
+          "text": "テキストカラーを変えました",
+          "text_color": [1, 0, 0]
         },
         {
           "class": "label",
           "id": "label4",
-          "text": "ラベル4です"
+          "text": "alignmentをcenterにしました",
+          "text_alignment": "center"
         },
         {
           "class": "label",
           "id": "label5",
-          "text": "ラベル5です",
-          "font": {
-            "size": 30
-          }          
+          "text": "alignmentをrightにしました",
+          "text_alignment": "right"
         },
         {
           "class": "label",
           "id": "label6",
-          "text": "ラベル6です",
-          "font": {
-            "size": 50
-          }          
-        },
-        {
-          "class": "label",
-          "id": "label7",
-          "text": "ラベル7です"
-        },
-        {
-          "class": "label",
-          "id": "label8",
-          "text": "ラベル8です",
-          "font": {
-            "size": 30
-          }          
-        },
-        {
-          "class": "label",
-          "id": "label9",
-          "text": "ラベル9です",
-          "font": {
-            "size": 50
-          }          
-        },
-        {
-          "class": "label",
-          "id": "label10",
-          "text": "ラベル１0です"
-        },
-        {
-          "class": "label",
-          "id": "label11",
-          "text": "ラベル11です",
-          "font": {
-            "size": 30
-          }          
-        },
-        {
-          "class": "label",
-          "id": "label12",
-          "text": "ラベル12です",
-          "font": {
-            "size": 50
-          }          
-        },
-        {
-          "class": "label",
-          "id": "label13",
-          "text": "ラベル１3です"
-        },
-        {
-          "class": "label",
-          "id": "label14",
-          "text": "ラベル14です",
-          "font": {
-            "size": 30
-          }          
-        },
-        {
-          "class": "label",
-          "id": "label15",
-          "text": "ラベル15です",
-          "font": {
-            "size": 50
-          }          
+          "text": "number_of_linesを2にしましたnumber_of_linesを2にしましたnumber_of_linesを2にしましたnumber_of_linesを2にしましたnumber_of_linesを2にしました",
+          "number_of_lines": 2
         }
       ]
     }
