@@ -26,16 +26,27 @@ final class ButtonsViewController: UIViewController {
   }
 
   private func setupAction() {
-    self.button1?.addTarget(self, action: #selector(tapButton1), for: .touchUpInside)
-    self.button2?.addTarget(self, action: #selector(tapButton2), for: .touchUpInside)
+    self.button1?.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+    self.button2?.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
   }
 
-  @objc func tapButton1() {
-    print("button1をタップしました")
+  @objc func tapButton(_ sender: UIButton) {
+    switch sender {
+    case button1:
+      showAlert(message: "button1をタップしました")
+    case button2:
+      showAlert(message: "button2をタップしました")
+    default:
+      break
+    }
   }
 
-  @objc func tapButton2() {
-    print("button2をタップしました")
+  private func showAlert(message: String) {
+    let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+    let action = UIAlertAction(title: "OK",
+                               style: .default,
+                               handler:nil)
+    alert.addAction(action)
+    present(alert, animated: true, completion: nil)
   }
-
 }

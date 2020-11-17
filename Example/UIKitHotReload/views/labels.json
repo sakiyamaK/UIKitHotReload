@@ -10,10 +10,11 @@
       "distribution": "fill",
       "alignment": "fill",
       "scroll_enabled":  true,
-      "spacing": 50,
+      "spacing": 30,
       "edge_insets": {
-        "top": 8,
-        "left": 16
+        "top": 24,
+        "left": 16,
+        "right": 16
       },
       "subviews": [
         {
@@ -53,6 +54,12 @@
           "id": "label6",
           "text": "number_of_linesを2にしましたnumber_of_linesを2にしましたnumber_of_linesを2にしましたnumber_of_linesを2にしましたnumber_of_linesを2にしました",
           "number_of_lines": 2
+        },
+        {
+          "class": "label",
+          "id": "label7",
+          "text": "number_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました",
+          "number_of_lines": 0
         }
       ]
     }

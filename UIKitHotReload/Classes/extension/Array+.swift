@@ -28,6 +28,15 @@ public extension Array where Element: Numeric {
     }
     return CGPoint(x: x, y: y)
   }
+
+  var size: CGSize? {
+    guard
+      let w = (self[0] as? CGFloat),
+      let h = (self[1] as? CGFloat) else {
+      return nil
+    }
+    return CGSize(width: w, height: h)
+  }
 }
 
 public extension Array where Element: StringProtocol {

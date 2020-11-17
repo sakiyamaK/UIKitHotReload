@@ -31,6 +31,10 @@ public protocol ViewModelProtocol {
   var _cornerRadius: CGFloat? { get }
   var _masksToBounds: Bool? { get }
   var _maskedCorners: [String]? { get }
+  var _borderWidth: CGFloat? { get }
+  var _borderColor: [CGFloat]? { get }
+  var _tintColor: [CGFloat]?  { get }
+  var _shadow: ShadowInfoModel? { get }
 
   func setupView(_ view: UIView)
 }
@@ -43,12 +47,16 @@ public extension ViewModelProtocol {
   var edgeInsets: EdgeInsetsModel { _edgeInsets ?? EdgeInsetsModel() }
   var huggings: [HuggingModel] { _huggings ?? [] }
   var compressionResistances: [CompressionResistanceModel]  { _compressionResistances ?? [] }
-  var isSafeArea: Bool { (_isSafeArea ?? true) && (_safeArea ?? true) }
+  var isSafeArea: Bool { (_isSafeArea ?? false) || (_safeArea ?? false) }
   var alpha: CGFloat { _alpha ?? 1.0 }
   var isHidden: Bool { (_isHidden ?? false) || (_hidden ?? false) }
   var cornerRadius: CGFloat { _cornerRadius ?? 0.0 }
   var masksToBounds: Bool { _masksToBounds ?? false }
   var maskedCorners: CACornerMask? { _maskedCorners?.maskedCorners }
+  var borderWidth: CGFloat { _borderWidth ?? 0.0 }
+  var borderColor: UIColor { _borderColor?.uiColor ?? .clear }
+  var tintColor: UIColor  { _tintColor?.uiColor ?? UIColor.clear }
+  var shadow: ShadowInfoModel { _shadow ?? ShadowInfoModel() }
 
   func setupView(_ view: UIView) {
 
@@ -62,6 +70,14 @@ public extension ViewModelProtocol {
     if let maskedCorners = maskedCorners {
       view.layer.maskedCorners = maskedCorners
     }
+    view.layer.borderWidth = borderWidth
+    view.layer.borderColor = borderColor.cgColor
+    view.tintColor = tintColor
+
+    view.layer.shadowColor = shadow.color.cgColor
+    view.layer.shadowOpacity = shadow.opacity
+    view.layer.shadowRadius = shadow.radius
+    view.layer.shadowOffset = shadow.offset
 
     for hugging in huggings {
       view.setContentHuggingPriority(hugging.priority, for: hugging.axis)

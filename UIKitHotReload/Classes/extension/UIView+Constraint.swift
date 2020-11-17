@@ -11,33 +11,62 @@ import UIKit
 public extension UIView {
 
   func edgesEqual(to: UILayoutGuide, margin: UIEdgeInsets = .zero, priorities: UIEdgePriorities = .init()) {
+
     self.translatesAutoresizingMaskIntoConstraints = false
-    let constraints = [
-      self.topAnchor.constraint(equalTo: to.topAnchor, constant: margin.top),
-      self.leadingAnchor.constraint(equalTo: to.leadingAnchor, constant: margin.left),
-      to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: margin.right),
-      to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: margin.bottom)
-    ]
-    constraints[0].priority = priorities.top
-    constraints[1].priority = priorities.leading
-    constraints[2].priority = priorities.trailing
-    constraints[3].priority = priorities.bottom
+
+    var constraints: [NSLayoutConstraint] = []
+
+    if priorities.top.rawValue > 0 {
+      let constraint = self.topAnchor.constraint(equalTo: to.topAnchor, constant: margin.top)
+      constraint.priority = priorities.top
+      constraints.append(constraint)
+    }
+    if priorities.leading.rawValue > 0 {
+      let constraint = self.leadingAnchor.constraint(equalTo: to.leadingAnchor, constant: margin.left)
+      constraint.priority = priorities.leading
+      constraints.append(constraint)
+    }
+    if priorities.trailing.rawValue > 0 {
+      let constraint = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: margin.right)
+      constraint.priority = priorities.trailing
+      constraints.append(constraint)
+    }
+    if priorities.bottom.rawValue > 0 {
+      let constraint = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: margin.bottom)
+      constraint.priority = priorities.bottom
+      constraints.append(constraint)
+    }
 
     NSLayoutConstraint.activate(constraints)
   }
 
   func edgesEqual(to: UIView, margin: UIEdgeInsets = .zero, priorities: UIEdgePriorities = .init()) {
+
     self.translatesAutoresizingMaskIntoConstraints = false
-    let constraints = [
-      self.topAnchor.constraint(equalTo: to.topAnchor, constant: margin.top),
-      self.leadingAnchor.constraint(equalTo: to.leadingAnchor, constant: margin.left),
-      to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: margin.right),
-      to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: margin.bottom)
-    ]
-    constraints[0].priority = priorities.top
-    constraints[1].priority = priorities.leading
-    constraints[2].priority = priorities.trailing
-    constraints[3].priority = priorities.bottom
+
+    var constraints: [NSLayoutConstraint] = []
+
+    if priorities.top.rawValue > 0 {
+      let constraint = self.topAnchor.constraint(equalTo: to.topAnchor, constant: margin.top)
+      constraint.priority = priorities.top
+      constraints.append(constraint)
+    }
+    if priorities.leading.rawValue > 0 {
+      let constraint = self.leadingAnchor.constraint(equalTo: to.leadingAnchor, constant: margin.left)
+      constraint.priority = priorities.leading
+      constraints.append(constraint)
+    }
+
+    if priorities.trailing.rawValue > 0 {
+      let constraint = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: margin.right)
+      constraint.priority = priorities.trailing
+      constraints.append(constraint)
+    }
+    if priorities.bottom.rawValue > 0 {
+      let constraint = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: margin.bottom)
+      constraint.priority = priorities.bottom
+      constraints.append(constraint)
+    }
 
     NSLayoutConstraint.activate(constraints)
   }

@@ -10,16 +10,28 @@
       "alignment": "fill",
       "scroll_enabled":  false,
       "spacing": 10,
-      "background_color": [0, 0, 0],
+      "edge_insets": {
+        "top": 12,
+        "left": 12,
+        "right": 12,
+        "bottom": 12
+      },
       "subviews": [
-        {
-          "class": "view"
-        },
         {
           "class": "button",
           "id": "button1",
           "text": "ボタン1",
+          "font": {
+            "size": 30
+          },
+          "height": 100,
           "text_color": [0, 0, 0],
+          "image": {
+            "name": "square.and.arrow.up"
+          },          
+          "content_edge_insets": {
+            "top": 20
+          },
           "background_color": [0, 1, 0]
         },
         {

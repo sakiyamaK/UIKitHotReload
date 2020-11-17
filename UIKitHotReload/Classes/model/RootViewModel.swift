@@ -34,6 +34,10 @@ public struct RootViewModel: Decodable,
       _cornerRadius = "corner_radius",
       _masksToBounds = "masks_to_bounds",
       _maskedCorners = "masked_corners",
+      _borderWidth = "border_width",
+      _borderColor = "border_color",
+      _tintColor = "tint_color",
+      _shadow = "shadow",
       //StackViewModelProtocol
       _alignment = "alignment",
       _distribution = "distribution",
@@ -45,15 +49,20 @@ public struct RootViewModel: Decodable,
       _showsHorizontalScrollIndicator = "shows_horizontal_scroll_indicator", _hIndicator = "h_indicator",
       _contentInsets = "content_insets",
       _contentOffset = "content_offset",
-
-      //LabelViewModelProtocol, ButtonModelProtocol
+      //LabelViewModelProtocol
       text = "text",
       _textColor = "text_color",
       _textAlignment = "text_alignment",
       _fontInfo = "font",
       _numberOfLines = "number_of_lines",
       //ImageViewModelProtocol
-      _imageInfo = "image"
+      _imageInfo = "image",
+      //ButtonViewModelProtocol
+      _contentEgeInsets = "content_ege_insets",
+      _imageEgeInsets = "image_ege_insets",
+      _titleEgeInsets = "title_ege_insets",
+      _backgroundImageInfo = "background_image",
+      _imageContentMode = "image_content_mode"
   }
 
   //ViewModelProtocol
@@ -74,6 +83,10 @@ public struct RootViewModel: Decodable,
   public var _cornerRadius: CGFloat?
   public var _masksToBounds: Bool?
   public var _maskedCorners: [String]?
+  public var _borderWidth: CGFloat?
+  public var _borderColor: [CGFloat]?
+  public var _tintColor: [CGFloat]?
+  public var _shadow: ShadowInfoModel?
 
   //StackViewModelProtocol
   public var _alignment: String?
@@ -96,6 +109,13 @@ public struct RootViewModel: Decodable,
 
   //ImageViewModelProtocol
   public var _imageInfo: [String : String]?
+
+  //ButtonModelProtocol
+  public var _contentEgeInsets: EdgeInsetsModel?
+  public var _imageEgeInsets: EdgeInsetsModel?
+  public var _titleEgeInsets: EdgeInsetsModel?
+  public var _backgroundImageInfo: [String: String]?
+  public var _imageContentMode: String?
 
   public var view: UIView? {
     if let label = viewModelType?.view as? UILabel {
