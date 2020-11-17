@@ -13,6 +13,10 @@ final class ButtonsViewController: UIViewController {
 
   private var button1: UIButton? { self.view.hotReloadView(id: "button1") as? UIButton }
   private var button2: UIButton? { self.view.hotReloadView(id: "button2") as? UIButton }
+  private var button3: UIButton? { self.view.hotReloadView(id: "button3") as? UIButton }
+  private var button4: UIButton? { self.view.hotReloadView(id: "button4") as? UIButton }
+  private var button5: UIButton? { self.view.hotReloadView(id: "button5") as? UIButton }
+  private var buttons: [UIButton?] { [button1, button2, button3, button4, button5] }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,28 +29,13 @@ final class ButtonsViewController: UIViewController {
     }
   }
 
-  private func setupAction() {
-    self.button1?.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
-    self.button2?.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
-  }
-
   @objc func tapButton(_ sender: UIButton) {
-    switch sender {
-    case button1:
-      showAlert(message: "button1をタップしました")
-    case button2:
-      showAlert(message: "button2をタップしました")
-    default:
-      break
-    }
+    Router.showAlert(message: "\(sender.titleLabel!.text!)をタップしました", vc: self)
   }
+}
 
-  private func showAlert(message: String) {
-    let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-    let action = UIAlertAction(title: "OK",
-                               style: .default,
-                               handler:nil)
-    alert.addAction(action)
-    present(alert, animated: true, completion: nil)
+private extension ButtonsViewController {
+  func setupAction() {
+    buttons.forEach { $0?.addTarget(self, action: #selector(tapButton), for: .touchUpInside) }
   }
 }

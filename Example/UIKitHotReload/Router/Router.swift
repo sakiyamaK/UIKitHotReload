@@ -34,3 +34,15 @@ final class Router {
     }
   }
 }
+
+extension Router {
+  static func showAlert(message: String, vc: UIViewController) {
+    let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+    let action = UIAlertAction(title: "OK",
+                               style: .default,
+                               handler:nil)
+    alert.addAction(action)
+    vc.present(alert, animated: true, completion: nil)
+  }
+
+}

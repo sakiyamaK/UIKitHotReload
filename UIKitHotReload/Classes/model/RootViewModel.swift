@@ -58,9 +58,9 @@ public struct RootViewModel: Decodable,
       //ImageViewModelProtocol
       _imageInfo = "image",
       //ButtonViewModelProtocol
-      _contentEgeInsets = "content_ege_insets",
-      _imageEgeInsets = "image_ege_insets",
-      _titleEgeInsets = "title_ege_insets",
+      _contentEdgeInsets = "content_edge_insets",
+      _imageEdgeInsets = "image_edge_insets",
+      _titleEdgeInsets = "title_edge_insets",
       _backgroundImageInfo = "background_image",
       _imageContentMode = "image_content_mode"
   }
@@ -111,9 +111,9 @@ public struct RootViewModel: Decodable,
   public var _imageInfo: [String : String]?
 
   //ButtonModelProtocol
-  public var _contentEgeInsets: EdgeInsetsModel?
-  public var _imageEgeInsets: EdgeInsetsModel?
-  public var _titleEgeInsets: EdgeInsetsModel?
+  public var _contentEdgeInsets: EdgeInsetsModel?
+  public var _imageEdgeInsets: EdgeInsetsModel?
+  public var _titleEdgeInsets: EdgeInsetsModel?
   public var _backgroundImageInfo: [String: String]?
   public var _imageContentMode: String?
 

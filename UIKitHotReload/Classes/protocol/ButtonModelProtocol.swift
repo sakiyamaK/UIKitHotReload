@@ -9,9 +9,9 @@ import UIKit
 import Kingfisher
 
 public protocol ButtonModelProtocol: LabelModelProtocol, ImageViewModelProtocol {
-  var _contentEgeInsets: EdgeInsetsModel? { get }
-  var _imageEgeInsets: EdgeInsetsModel? { get }
-  var _titleEgeInsets: EdgeInsetsModel? { get }
+  var _contentEdgeInsets: EdgeInsetsModel? { get }
+  var _imageEdgeInsets: EdgeInsetsModel? { get }
+  var _titleEdgeInsets: EdgeInsetsModel? { get }
   var _backgroundImageInfo: [String: String]? { get }
   var _imageContentMode: String? { get }
 
@@ -23,9 +23,9 @@ public extension ButtonModelProtocol {
   var textAlignment: NSTextAlignment {  _textAlignment?.textAlignment ?? .center }
   var font: UIFont? {  _fontInfo?.font }
   var numberOfLines: Int { _numberOfLines ?? 1 }
-  var contentEgeInsets: UIEdgeInsets { _contentEgeInsets?.edgeInsets ?? .zero }
-  var imageEgeInsets: UIEdgeInsets { _imageEgeInsets?.edgeInsets ?? .zero }
-  var titleEgeInsets: UIEdgeInsets { _titleEgeInsets?.edgeInsets ?? .zero }
+  var contentEdgeInsets: UIEdgeInsets { _contentEdgeInsets?.edgeInsets ?? .zero }
+  var imageEdgeInsets: UIEdgeInsets { _imageEdgeInsets?.edgeInsets ?? .zero }
+  var titleEdgeInsets: UIEdgeInsets { _titleEdgeInsets?.edgeInsets ?? .zero }
   var imageContentMode: UIView.ContentMode? { _imageContentMode?.contentMode }
 
   func setupButton(_ button: UIButton) {
@@ -38,13 +38,10 @@ public extension ButtonModelProtocol {
     button.titleLabel?.numberOfLines = numberOfLines
     if let imageContentMode = imageContentMode {
       button.imageView?.contentMode = imageContentMode
-//      button.contentVerticalAlignment = .fill
-//      button.contentHorizontalAlignment = .fill
     }
-    button.tintColor = tintColor
-    button.contentEdgeInsets = contentEgeInsets
-    button.titleEdgeInsets = titleEgeInsets
-    button.imageEdgeInsets = imageEgeInsets
+    button.contentEdgeInsets = contentEdgeInsets
+    button.titleEdgeInsets = titleEdgeInsets
+    button.imageEdgeInsets = imageEdgeInsets
     if let _name = _imageInfo?[ImageInfoKey.name.rawValue] {
       button.setImage(UIImage.init(named: _name), for: .normal)
     } else if let _urlStr = _imageInfo?[ImageInfoKey.url.rawValue], let url = URL(string: _urlStr) {
