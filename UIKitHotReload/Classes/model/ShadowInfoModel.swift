@@ -24,5 +24,5 @@ public struct ShadowInfoModel: Decodable {
   var color: UIColor { _color?.uiColor ?? .clear }
   var opacity: Float { _opacity ?? 0.0 }
   var radius: CGFloat { _radius ?? 0.0 }
-  var offset: CGSize { _offset?.size ?? .zero }
+  var offset: CGSize { _offset?.cgSize ?? .zero }
 }

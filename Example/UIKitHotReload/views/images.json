@@ -24,8 +24,9 @@
       "subviews": [
         {
           "class": "imageview",
+          "clip": true,
           "image": {
-            "url": "https://stat.ameba.jp/user_images/20200711/03/crossfieldbio/3a/90/j/o0540054014787134008.jpg?caw=800"
+            "url": "https://eiga.k-img.com/images/buzz/86934/75ac09efb90a70c0/640.jpg"
           },
           "content_mode": "fill",
           "layout": {
@@ -41,13 +42,14 @@
         },
         {
           "class": "view",
+          "id": "circle_border",
           "background_color": [
             1,
             0,
             0,
-            0
+            1
           ],
-          "clip": false,
+          "clip": true,
           "corner": {
             "radius": 100,
             "masks": [
@@ -67,13 +69,14 @@
           "subviews": [
             {
               "class": "imageview",
+              "id": "circle_image",
               "image": {
                 "url": "https://stat.ameba.jp/user_images/20200711/03/crossfieldbio/3a/90/j/o0540054014787134008.jpg?caw=800"
               },
               "content_mode": "fill",
-              "clip": false,
+              "clip": true,
               "corner": {
-                "rad": 85,
+                "rad": 95,
                 "masks": [
                   "all"
                 ]
@@ -118,7 +121,7 @@
           "subviews": [
             {
               "class": "imageview",
-              "hidden": true,
+              "hidden": false,
               "image": {
                 "url": "https://eiga.k-img.com/images/buzz/86934/75ac09efb90a70c0/640.jpg"
               },

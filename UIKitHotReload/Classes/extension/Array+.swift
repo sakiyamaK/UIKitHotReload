@@ -29,7 +29,7 @@ public extension Array where Element: Numeric {
     return CGPoint(x: x, y: y)
   }
 
-  var size: CGSize? {
+  var cgSize: CGSize? {
     guard
       let w = (self[0] as? CGFloat),
       let h = (self[1] as? CGFloat) else {
