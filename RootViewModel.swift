@@ -28,13 +28,13 @@ public struct RootViewModel: Decodable,
       _compressionResistances = "compression_resistances",
       _contentMode = "content_mode",
       _subviewProtocols = "subviews",
-//      _edgePriority = "edge_priority",
-//      _edgeInsets = "edge_insets",
       _isSafeArea = "is_safe_area", _safeArea = "safe_area",
       _corner = "corner",
       _border = "border",
       _shadow = "shadow",
       _layout = "layout",
+      _clipToBounds = "clip_to_bounds",
+      _clip = "clip",
       //StackViewModelProtocol
       _alignment = "alignment",
       _distribution = "distribution",
@@ -74,14 +74,14 @@ public struct RootViewModel: Decodable,
   public var _compressionResistances: [CompressionResistanceModel]?
   public var _contentMode: String?
   public var _subviewProtocols: [Self]?
-//  public var _edgePriority: EdgePriorityModel?
-//  public var _edgeInsets: EdgeInsetsModel?
   public var _isSafeArea, _safeArea: Bool?
   public var _tintColor: [CGFloat]?
   public var _corner: CornerModel?
   public var _border: BorderModel?
   public var _shadow: ShadowInfoModel?
   public var _layout: LayoutModel?
+  public var _clipToBounds: Bool?
+  public var _clip: Bool?
 
   //StackViewModelProtocol
   public var _alignment: String?

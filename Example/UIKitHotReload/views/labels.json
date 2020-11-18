@@ -1,6 +1,10 @@
 {
   "class": "view",
-  "background_color": [1, 1, 1],
+  "background_color": [
+    1,
+    1,
+    1
+  ],
   "safe_area": false,
   "subviews": [
     {
@@ -9,23 +13,22 @@
       "safe_area": true,
       "distribution": "fill",
       "alignment": "fill",
-      "scroll_enabled":  true,
+      "scroll_enabled": true,
       "spacing": 50,
-      "edge_insets": {
-        "top": 32,
-        "left": 16,
-        "right": 16
-      },
       "subviews": [
         {
           "class": "label",
           "id": "label1",
           "text": "デフォルトです",
-          "text_color": [1, 0, 0],
+          "text_color": [
+            1,
+            0,
+            0
+          ],
           "font": {
             "name": "Bradley Hand",
-            "size":30
-          }          
+            "size": 30
+          }
         },
         {
           "class": "label",
@@ -33,17 +36,21 @@
           "text": "フォントを変えました",
           "font": {
             "name": "Bradley Hand",
-            "size":30
-          }          
+            "size": 30
+          }
         },
         {
           "class": "label",
           "id": "label3",
           "text": "テキストカラーを変えました",
-          "text_color": [1, 0, 0],
+          "text_color": [
+            1,
+            0,
+            0
+          ],
           "font": {
-            "size":30
-          }          
+            "size": 30
+          }
         },
         {
           "class": "label",
@@ -73,4 +80,3 @@
     }
   ]
 }
-

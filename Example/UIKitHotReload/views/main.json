@@ -1,6 +1,10 @@
 {
   "class": "view",
-  "background_color": [1, 1, 1],
+  "background_color": [
+    1,
+    1,
+    1
+  ],
   "is_safe_area": false,
   "subviews": [
     {
@@ -8,7 +12,7 @@
       "is_safe_area": true,
       "distribution": "fill_e",
       "alignment": "fill",
-      "is_scroll_enabled":  false,
+      "is_scroll_enabled": false,
       "spacing": 10,
       "subviews": [
         {
@@ -25,9 +29,13 @@
           "class": "button",
           "id": "to_buttons",
           "text": "UIButton Sample"
+        },
+        {
+          "class": "button",
+          "id": "to_images",
+          "text": "UIImageView Sample"
         }
       ]
     }
   ]
 }
-

@@ -1,18 +1,18 @@
 {
-"class":  "stack",
-"is_scroll_enabled":  true,
-"priorities":{
-  "bottom": 750
-},
-"subviews" : [
-  {
-  "class":  "stack",
-  "axis": "v",
-  "spacing": 0,
-  "distribution": "fill",
-  "alignment": "fill",
-  "is_scroll_enabled":  false,
-  "subviews" : [
+  "class": "stack",
+  "is_scroll_enabled": true,
+  "priorities": {
+    "bottom": 750
+  },
+  "subviews": [
+    {
+      "class": "stack",
+      "axis": "v",
+      "spacing": 0,
+      "distribution": "fill",
+      "alignment": "fill",
+      "is_scroll_enabled": false,
+      "subviews": [
         {
           "class": "imageview",
           "height": 400,
@@ -31,37 +31,58 @@
             "url": "https://kimetsu.com/assets/img/kv/kv_movie_sp.jpg"
           }
         }
+      ]
+    },
+    {
+      "class": "label",
+      "text": "その刃で、悪夢を断ち斬れ",
+      "text_color": [
+        0,
+        0,
+        0
+      ],
+      "text_alignment": "center",
+      "background_color": [
+        1,
+        1,
+        1
+      ],
+      "huggings": [
+        {
+          "axis": "vertical",
+          "priority": 1000
+        },
+        {
+          "axis": "horizontal",
+          "priority": 1000
+        }
+      ]
+    },
+    {
+      "class": "label",
+      "hidden": true,
+      "text": "その刃で、悪夢を断ち斬れ",
+      "text_color": [
+        0,
+        0,
+        0
+      ],
+      "text_alignment": "left",
+      "background_color": [
+        1,
+        1,
+        1
+      ],
+      "huggings": [
+        {
+          "axis": "vertical",
+          "priority": 1000
+        },
+        {
+          "axis": "horizontal",
+          "priority": 1000
+        }
+      ]
+    }
   ]
-  },
-  {
-     "class": "label",
-     "text": "その刃で、悪夢を断ち斬れ",
-     "text_color": [0, 0, 0] ,
-     "text_alignment": "center",
-     "background_color": [1,1,1],
-     "huggings": [{
-       "axis": "vertical",
-       "priority": 1000
-     },
-     {
-       "axis": "horizontal",
-       "priority": 1000
-     }]  
-  },
-  {
-     "class": "label",
-     "hidden": true,
-     "text": "その刃で、悪夢を断ち斬れ",
-     "text_color": [0, 0, 0] ,
-     "text_alignment": "left",
-     "background_color": [1,1,1],
-     "huggings": [{
-       "axis": "vertical",
-       "priority": 1000
-     },
-     {
-       "axis": "horizontal",
-       "priority": 1000
-     }]
-  }]
 }

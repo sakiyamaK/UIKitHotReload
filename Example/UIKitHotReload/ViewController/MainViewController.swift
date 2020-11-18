@@ -14,6 +14,8 @@ final class MainViewController: UIViewController {
   private var views: UIButton? { self.view.hotReloadView(id: "to_views") as? UIButton }
   private var buttons: UIButton? { self.view.hotReloadView(id: "to_buttons") as? UIButton }
   private var labels: UIButton? { self.view.hotReloadView(id: "to_labels") as? UIButton }
+  private var images: UIButton? { self.view.hotReloadView(id: "to_images") as? UIButton }
+  private var toButtons: [UIButton?] { [views, buttons, labels, images] }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,12 +28,6 @@ final class MainViewController: UIViewController {
     }
   }
 
-  private func setupAction() {
-    self.views?.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
-    self.buttons?.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
-    self.labels?.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
-  }
-
   @objc func tapButton(_ sender: UIButton) {
     switch sender {
     case views:
@@ -40,8 +36,17 @@ final class MainViewController: UIViewController {
       Router.showLabels(from: self)
     case buttons:
       Router.showButtons(from: self)
+    case images:
+      Router.showImages(from: self)
     default:
       break
     }
   }
 }
+
+private extension MainViewController {
+  func setupAction() {
+    toButtons.forEach { $0?.addTarget(self, action: #selector(tapButton), for: .touchUpInside) }
+  }
+}
+

@@ -18,21 +18,29 @@ extension UIView {
 
     var constraints: [NSLayoutConstraint] = []
 
-    let top = self.topAnchor.constraint(equalTo: to.topAnchor, constant: margin.top?.value ?? 0.0)
-    top.priority = margin.top?.priority ?? .required
-    constraints.append(top)
+    if !(margin.top?.remove ?? false) {
+      let top = self.topAnchor.constraint(equalTo: to.topAnchor, constant: margin.top?.value ?? 0.0)
+      top.priority = margin.top?.priority ?? .required
+      constraints.append(top)
+    }
 
-    let leading = self.leadingAnchor.constraint(equalTo: to.leadingAnchor, constant: margin.leading?.value ?? 0.0)
-    leading.priority = margin.leading?.priority ?? .required
-    constraints.append(leading)
+    if !(margin.leading?.remove ?? false) {
+      let leading = self.leadingAnchor.constraint(equalTo: to.leadingAnchor, constant: margin.leading?.value ?? 0.0)
+      leading.priority = margin.leading?.priority ?? .required
+      constraints.append(leading)
+    }
 
-    let trailing = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: margin.trailing?.value ?? 0.0)
-    trailing.priority = margin.trailing?.priority ?? .required
-    constraints.append(trailing)
+    if !(margin.trailing?.remove ?? false) {
+      let trailing = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: margin.trailing?.value ?? 0.0)
+      trailing.priority = margin.trailing?.priority ?? .required
+      constraints.append(trailing)
+    }
 
-    let bottom = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: margin.bottom?.value ?? 0.0)
-    bottom.priority = margin.bottom?.priority ?? .required
-    constraints.append(bottom)
+    if !(margin.bottom?.remove ?? false) {
+      let bottom = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: margin.bottom?.value ?? 0.0)
+      bottom.priority = margin.bottom?.priority ?? .required
+      constraints.append(bottom)
+    }
 
     NSLayoutConstraint.activate(constraints)
   }

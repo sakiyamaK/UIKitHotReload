@@ -22,8 +22,6 @@ public protocol ViewModelProtocol {
   var _isHidden: Bool? { get }
   var _hidden: Bool? { get }
   var _layout: LayoutModel? { get }
-//  var _edgePriority: EdgePriorityModel? { get }
-//  var _edgeInsets: EdgeInsetsModel? { get }
   var _huggings: [HuggingModel]?  { get }
   var _compressionResistances: [CompressionResistanceModel]?  { get }
   var _isSafeArea: Bool? { get }
@@ -32,7 +30,8 @@ public protocol ViewModelProtocol {
   var _border: BorderModel? { get }
   var _shadow: ShadowInfoModel? { get }
   var _tintColor: [CGFloat]?  { get }
-
+  var _clipToBounds: Bool? { get }
+  var _clip: Bool? { get }
   var _subviewProtocols: [Self]? { get }
 
   func setupView(_ view: UIView)
@@ -43,14 +42,13 @@ public extension ViewModelProtocol {
   var contentMode: UIView.ContentMode { (_contentMode ?? "").contentMode }
   var viewModelType: ViewModelType? { ViewModelType(rawValue: className?.lowercased() ?? "") }
   var layout: LayoutModel { _layout ?? LayoutModel() }
-//  var edgePriority: EdgePriorityModel { _edgePriority ?? EdgePriorityModel() }
-//  var edgeInsets: EdgeInsetsModel { _edgeInsets ?? EdgeInsetsModel() }
   var huggings: [HuggingModel] { _huggings ?? [] }
   var compressionResistances: [CompressionResistanceModel]  { _compressionResistances ?? [] }
   var isSafeArea: Bool { [_isSafeArea, _safeArea].first{$0 == true} as? Bool ?? false }
   var alpha: CGFloat { _alpha ?? 1.0 }
   var isHidden: Bool { [_isHidden, _hidden].first{$0 == true} as? Bool ?? false }
-  var tintColor: UIColor  { _tintColor?.uiColor ?? UIColor.clear }
+  var tintColor: UIColor { _tintColor?.uiColor ?? UIColor.clear }
+  var clipToBounds: Bool { [_clipToBounds, _clip].first{$0 != nil} as? Bool ?? false }
   var corner: CornerModel { _corner ?? CornerModel() }
   var border: BorderModel { _border ?? BorderModel() }
   var shadow: ShadowInfoModel { _shadow ?? ShadowInfoModel() }
@@ -63,6 +61,7 @@ public extension ViewModelProtocol {
     view.alpha = alpha
     view.isHidden = isHidden
     view.tintColor = tintColor
+    view.clipsToBounds = clipToBounds
     view.layer.cornerRadius = corner.radius
     view.layer.maskedCorners = corner.maskedCorners
     view.layer.borderWidth = border.width

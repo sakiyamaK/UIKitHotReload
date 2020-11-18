@@ -1,17 +1,23 @@
 {
   "class": "view",
-  "background_color": [1, 1, 1],
+  "background_color": [
+    1,
+    1,
+    1
+  ],
   "subviews": [
     {
       "class": "stack",
       "safe_area": true,
       "distribution": "fill",
       "alignment": "fill",
-      "scroll_enabled":  true,
+      "scroll_enabled": true,
       "spacing": 50,
       "layout": {
-        "margin": { 
-          "top": {"v": 20}
+        "margin": {
+          "top": {
+            "v": 20
+          }
         }
       },
       "subviews": [
@@ -24,52 +30,92 @@
           "subviews": [
             {
               "class": "view",
-              "background_color": [1, 0, 0],
+              "background_color": [
+                1,
+                0,
+                0
+              ],
               "layout": {
                 "size": {
-                  "width": {"v": 50},
-                  "height": {"v": 50}
+                  "width": {
+                    "v": 50
+                  },
+                  "height": {
+                    "v": 50
+                  }
                 }
               }
             },
             {
               "class": "view",
               "id": "superview",
-              "background_color": [0, 1, 0],
+              "background_color": [
+                0,
+                1,
+                0
+              ],
               "layout": {
                 "size": {
-                  "width": {"v": 100},
-                  "height": {"v": 100}
+                  "width": {
+                    "v": 100
+                  },
+                  "height": {
+                    "v": 100
+                  }
                 }
               },
               "subviews": [
                 {
                   "class": "view",
                   "id": "subview1",
-                  "background_color": [1, 1, 0],
+                  "background_color": [
+                    1,
+                    1,
+                    0
+                  ],
                   "layout": {
                     "size": {
-                      "width": {"v": 30},
-                      "height": {"v": 30}
+                      "width": {
+                        "v": 30
+                      },
+                      "height": {
+                        "v": 30
+                      }
                     },
                     "position": {
-                      "top": {"v": 10},
-                      "left": {"v": 10}
+                      "top": {
+                        "v": 10
+                      },
+                      "left": {
+                        "v": 10
+                      }
                     }
                   }
                 },
                 {
                   "class": "view",
                   "id": "subview2",
-                  "background_color": [1, 1, 0],
+                  "background_color": [
+                    1,
+                    1,
+                    0
+                  ],
                   "layout": {
                     "size": {
-                      "width": {"v": 30},
-                      "height": {"v": 30}
+                      "width": {
+                        "v": 30
+                      },
+                      "height": {
+                        "v": 30
+                      }
                     },
                     "position": {
-                      "right": {"v": 10},
-                      "bottom": {"v": 10}
+                      "right": {
+                        "v": 10
+                      },
+                      "bottom": {
+                        "v": 10
+                      }
                     }
                   }
                 }
@@ -79,43 +125,81 @@
               "class": "view",
               "corner": {
                 "radius": 40,
-                "masks": ["min_max", "max_min"]
+                "masks": [
+                  "min_max",
+                  "max_min"
+                ]
               },
-              "background_color": [0, 0, 0],
+              "background_color": [
+                0,
+                0,
+                0
+              ],
               "layout": {
                 "size": {
-                  "width": {"v": 100},
-                  "height": {"v": 100}
+                  "width": {
+                    "v": 100
+                  },
+                  "height": {
+                    "v": 100
+                  }
                 }
               }
             },
             {
               "class": "view",
-              "background_color": [0, 0, 0],
-              "border":{
-                "color":[0, 1, 0],
+              "background_color": [
+                0,
+                0,
+                0
+              ],
+              "border": {
+                "color": [
+                  0,
+                  1,
+                  0
+                ],
                 "width": 6
               },
               "layout": {
                 "size": {
-                  "width": {"v": 100},
-                  "height": {"v": 100}
+                  "width": {
+                    "v": 100
+                  },
+                  "height": {
+                    "v": 100
+                  }
                 }
               }
             },
             {
               "class": "view",
-              "background_color": [0.8, 0, 0.8],
+              "background_color": [
+                0.8,
+                0,
+                0.8
+              ],
               "shadow": {
-                "color": [1, 0, 0],
+                "color": [
+                  1,
+                  0,
+                  0
+                ],
                 "opacity": 0.4,
                 "radius": 5,
-                "offset": [0, 20]
+                "offset": [
+                  0,
+                  20
+                ]
               },
               "layout": {
                 "size": {
-                  "width": {"v": 100},
-                  "height": {"v": 100}
+                  "width": {
+                    "v": 100
+                  },
+                  "height": {
+                    "v": 100
+                  }
                 }
               }
             },
@@ -124,7 +208,7 @@
               "axis": "horizontal",
               "distribution": "fill",
               "alignment": "fill",
-              "scroll_enabled":  true,
+              "scroll_enabled": true,
               "h_indicator": true,
               "content_insets": {
                 "left": 50,
@@ -132,69 +216,111 @@
               },
               "layout": {
                 "size": {
-                  "height": {"v": 100}
+                  "height": {
+                    "v": 100
+                  }
                 }
               },
               "spacing": 0,
               "subviews": [
                 {
                   "class": "label",
-                  "background_color": [1, 0, 0],
+                  "background_color": [
+                    1,
+                    0,
+                    0
+                  ],
                   "hidden": false,
                   "text": "1",
                   "text_alignment": "center",
-                  "text_color": [1, 1, 1],
+                  "text_color": [
+                    1,
+                    1,
+                    1
+                  ],
                   "font": {
                     "size": 30
                   },
                   "layout": {
                     "size": {
-                      "width": {"v": 100}
+                      "width": {
+                        "v": 100
+                      }
                     }
                   }
                 },
                 {
                   "class": "label",
-                  "background_color": [0, 1, 0],
+                  "background_color": [
+                    0,
+                    1,
+                    0
+                  ],
                   "text": "2",
                   "text_alignment": "center",
-                  "text_color": [1, 1, 1],
+                  "text_color": [
+                    1,
+                    1,
+                    1
+                  ],
                   "font": {
                     "size": 30
                   },
                   "layout": {
                     "size": {
-                      "width": {"v": 100}
+                      "width": {
+                        "v": 100
+                      }
                     }
                   }
                 },
                 {
                   "class": "label",
-                  "background_color": [0, 0, 1],
+                  "background_color": [
+                    0,
+                    0,
+                    1
+                  ],
                   "text": "3",
                   "text_alignment": "center",
-                  "text_color": [1, 1, 1],
+                  "text_color": [
+                    1,
+                    1,
+                    1
+                  ],
                   "font": {
                     "size": 30
                   },
                   "layout": {
                     "size": {
-                      "width": {"v": 100}
+                      "width": {
+                        "v": 100
+                      }
                     }
                   }
                 },
                 {
                   "class": "label",
-                  "background_color": [1, 0, 0],
+                  "background_color": [
+                    1,
+                    0,
+                    0
+                  ],
                   "text": "4",
                   "text_alignment": "center",
-                  "text_color": [1, 1, 1],
+                  "text_color": [
+                    1,
+                    1,
+                    1
+                  ],
                   "font": {
                     "size": 30
                   },
                   "layout": {
                     "size": {
-                      "width": {"v": 100}
+                      "width": {
+                        "v": 100
+                      }
                     }
                   }
                 }

@@ -1,6 +1,10 @@
 {
   "class": "view",
-  "background_color": [1, 1, 1],
+  "background_color": [
+    1,
+    1,
+    1
+  ],
   "safe_area": false,
   "subviews": [
     {
@@ -8,7 +12,7 @@
       "safe_area": true,
       "distribution": "fill",
       "alignment": "fill",
-      "scroll_enabled":  false,
+      "scroll_enabled": false,
       "spacing": 30,
       "edge_insets": {
         "top": 12,
@@ -35,11 +39,21 @@
           "class": "button",
           "id": "button3",
           "text": "角丸ボタン",
-          "text_color": [1, 1, 1],
-          "background_color": [0, 0, 0],
+          "text_color": [
+            1,
+            1,
+            1
+          ],
+          "background_color": [
+            0,
+            0,
+            0
+          ],
           "corner": {
             "radius": 30,
-            "masks": ["all"]
+            "masks": [
+              "all"
+            ]
           },
           "content_edge_insets": {
             "top": 20,
@@ -50,15 +64,29 @@
           "class": "button",
           "id": "button4",
           "text": "フチありボタン",
-          "text_color": [0, 0, 0],
-          "background_color": [1, 1, 1],
+          "text_color": [
+            0,
+            0,
+            0
+          ],
+          "background_color": [
+            1,
+            1,
+            1
+          ],
           "border": {
             "width": 3,
-            "color": [1, 0, 0]
+            "color": [
+              1,
+              0,
+              0
+            ]
           },
           "corner": {
             "radius": 30,
-            "masks": ["all"]
+            "masks": [
+              "all"
+            ]
           },
           "content_edge_insets": {
             "top": 20,
@@ -73,14 +101,22 @@
             "size": 30
           },
           "height": 200,
-          "text_color": [0, 0, 0],
+          "text_color": [
+            0,
+            0,
+            0
+          ],
           "image": {
             "name": "peach"
-          }, 
+          },
           "title_edge_insets": {
             "left": 0
           },
-          "background_color": [1, 0, 0]
+          "background_color": [
+            1,
+            0,
+            0
+          ]
         },
         {
           "class": "view"

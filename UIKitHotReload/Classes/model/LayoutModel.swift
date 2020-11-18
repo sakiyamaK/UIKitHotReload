@@ -7,32 +7,27 @@
 
 import Foundation
 
-//public struct UIEdgePriorities {
-//  public var top: UILayoutPriority?
-//  public var leading: UILayoutPriority?
-//  public var trailing: UILayoutPriority?
-//  public var bottom: UILayoutPriority?
-//
-//  public init() { }
-//}
-
 public struct ValueAndPriority: Decodable {
   private enum CodingKeys: String, CodingKey {
     case
       _value = "value", _v = "v",
-      _priority = "priority", _p = "p"
+      _priority = "priority", _p = "p",
+      _remove = "remove", _r = "r"
   }
   private var _value: CGFloat?
   private var _v: CGFloat?
   private var _priority: Float?
   private var _p: Float?
+  private var _remove: Bool?
+  private var _r: Bool?
 
   public var value: CGFloat { [_value, _v].first{$0 != nil} as? CGFloat ?? 0.0 }
   public var priority: UILayoutPriority {
     UILayoutPriority(
-      [_priority, _p].first{$0 != nil} as? Float ?? UILayoutPriority.required.rawValue
+      [_priority, _p].first{$0 != nil}?.map{max($0, 1.0)} ?? UILayoutPriority.required.rawValue
     )
   }
+  public var remove: Bool { [_remove, _r].first{$0 != nil} as? Bool ?? false }
 }
 
 public struct LayoutModel: Decodable {
@@ -76,5 +71,5 @@ public struct LayoutModel: Decodable {
   public var position: EdgeModel?
   public var margin: EdgeModel?
 
-  public var isSetEdge: Bool { position != nil || margin != nil }
+  public var isSetEdge: Bool { position != nil || margin != nil || center != nil }
 }
