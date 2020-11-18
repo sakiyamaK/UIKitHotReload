@@ -15,6 +15,7 @@ public protocol ViewModelProtocol {
   var width: CGFloat? { get }
   var height: CGFloat? { get }
   var view: UIView? { get }
+  var jsonFilePath: String? { get }
 
   var _backgroundColor: [CGFloat]?  { get }
   var _contentMode: String? { get }
@@ -71,6 +72,13 @@ public extension ViewModelProtocol {
     view.layer.shadowOffset = shadow.offset
     view.layer.shadowColor = shadow.color.cgColor
 
+    if let (dirName, jsonFileName) = jsonFilePath?.viewPath {
+      view.loadHotReload(dirName: dirName, jsonFileName: jsonFileName) { error in
+
+      }
+      return
+    }
+
     for hugging in huggings {
       view.setContentHuggingPriority(hugging.priority, for: hugging.axis)
     }
@@ -85,6 +93,7 @@ public extension ViewModelProtocol {
     if let _height = layout.size?.height {
       view.heightEqual(constant: _height.value, priority: _height.priority)
     }
+
 
     _subviewProtocols?.filter({ $0.view != nil }).forEach({ (viewModel) in
       let subview = viewModel.view!

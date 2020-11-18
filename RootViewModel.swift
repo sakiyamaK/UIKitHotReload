@@ -13,7 +13,6 @@ import FirebaseFirestoreSwift
 public struct RootViewModel: Decodable,
                              ViewModelProtocol, StackViewModelProtocol,
                              LabelModelProtocol, ImageViewModelProtocol, ButtonModelProtocol {
-
   private enum CodingKeys: String, CodingKey {
     case
       //ViewModelProtocol
@@ -21,6 +20,7 @@ public struct RootViewModel: Decodable,
       id = "id",
       width = "width",
       height = "height",
+      jsonFilePath = "json_file_path",
       _backgroundColor = "background_color",
       _alpha = "alpha",
       _isHidden = "is_hidden", _hidden = "hidden",
@@ -67,6 +67,7 @@ public struct RootViewModel: Decodable,
   public var id: String?
   public var width: CGFloat?
   public var height: CGFloat?
+  public var jsonFilePath: String?
   public var _backgroundColor: [CGFloat]?
   public var _alpha: CGFloat?
   public var _isHidden, _hidden: Bool?

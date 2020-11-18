@@ -20,12 +20,13 @@ final class ButtonsViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.loadHotReload(dirName: "views", jsonFileName: "buttons") { error in
-      if let _error = error {
-        print(_error.localizedDescription)
-        return
+    self.view.loadHotReload(dirName: "views", jsonFileName: "buttons") { result in
+      switch result {
+      case .failure(let error):
+        print(error.localizedDescription)
+      default:
+        self.setupAction()
       }
-      self.setupAction()
     }
   }
 

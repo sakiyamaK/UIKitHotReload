@@ -13,10 +13,12 @@ final class LabelsViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.loadHotReload(dirName: "views", jsonFileName: "labels") { error in
-      if let _error = error {
-        print(_error.localizedDescription)
-        return
+    self.view.loadHotReload(dirName: "views", jsonFileName: "labels") { result in
+      switch result {
+      case .failure(let error):
+        print(error.localizedDescription)
+      default:
+        break
       }
     }
   }

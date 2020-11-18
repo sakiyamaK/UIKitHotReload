@@ -19,12 +19,13 @@ final class MainViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.loadHotReload(dirName: "views", jsonFileName: "main") { error in
-      if let _error = error {
-        print(_error.localizedDescription)
-        return
+    self.view.loadHotReload(dirName: "views", jsonFileName: "main") { result in
+      switch result {
+      case .failure(let error):
+        print(error.localizedDescription)
+      default:
+        self.setupAction()
       }
-      self.setupAction()
     }
   }
 

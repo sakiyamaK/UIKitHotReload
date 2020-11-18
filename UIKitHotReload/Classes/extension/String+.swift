@@ -78,7 +78,7 @@ public extension String {
     }
   }
 
-  var viewPath: (collectionName: String, documentName: String)? {
+  var viewPath: (dirName: String, jsonFileName: String)? {
     let strs = self.components(separatedBy: "/")
     guard strs.count == 2 else { return nil }
     return (strs[0], strs[1])

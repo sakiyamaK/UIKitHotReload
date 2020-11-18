@@ -13,18 +13,18 @@ import FirebaseFirestoreSwift
 private let db = Firestore.firestore()
 
 public extension UIView {
-  func loadHotReload(documentRef: DocumentReference, snapshot: Bool = true, completion: ((Error?) -> Void)? = nil) {
-    documentRef.addSnapshotListener { (docSnapshot, err) in
-      if let _err = err {
-        print("Error getting documents: \(_err)")
-        completion?(_err)
+  func loadHotReload(documentRef: DocumentReference, snapshot: Bool = true, completion: (((Result<Void, Error>)) -> Void)? = nil) {
+    documentRef.addSnapshotListener { (docSnapshot, error) in
+      if let _error = error {
+        print("Error getting documents: \(_error)")
+        completion?(.failure(_error))
         return
       }
 
       guard
         let data = docSnapshot?.data() else {
         let error = NSError.init(domain: "no data", code: 100, userInfo: nil)
-        completion?(error)
+        completion?(.failure(error))
         return
       }
 
@@ -32,26 +32,26 @@ public extension UIView {
         let viewModel = try Firestore.Decoder().decode(RootViewModel.self, from: data)
         guard let view = viewModel.view else {
           let error = NSError.init(domain: "no view", code: 110, userInfo: nil)
-          completion?(error)
+          completion?(.failure(error))
           return
         }
 
         self.subviews.filter { $0.accessibilityIdentifier == view.accessibilityIdentifier }.first?.removeFromSuperview()
         self.addSubview(view)
         view.edgesEqualToSuperView(isSafeArea: viewModel.isSafeArea)
-        completion?(nil)
+        completion?(.success(()))
       } catch(let error) {
-        completion?(error)
+        completion?(.failure(error))
       }
     }
   }
 
-  func loadHotReload(collectionName: String, documentName: String, snapshot: Bool = true, completion: ((Error?) -> Void)? = nil) {
+  func loadHotReload(collectionName: String, documentName: String, snapshot: Bool = true, completion: (((Result<Void, Error>)) -> Void)? = nil) {
     let docRef: DocumentReference = db.collection(collectionName).document(documentName)
     loadHotReload(documentRef: docRef, snapshot: snapshot, completion: completion)
   }
 
-  func loadHotReload(dirName: String, jsonFileName: String, snapshot: Bool = true, completion: ((Error?) -> Void)? = nil) {
+  func loadHotReload(dirName: String, jsonFileName: String, snapshot: Bool = true, completion: ((Result<Void, Error>) -> Void)? = nil) {
     loadHotReload(collectionName: dirName, documentName: jsonFileName, snapshot: snapshot, completion: completion)
   }
 
