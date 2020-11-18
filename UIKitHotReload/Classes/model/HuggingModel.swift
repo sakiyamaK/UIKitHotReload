@@ -11,29 +11,17 @@ import UIKit
 public struct HuggingModel: Decodable {
   private enum CodingKeys: String, CodingKey {
     case
-      _priority = "priority",
-      _p = "p",
+      _priority = "priority", _p = "p",
       _axis = "axis"
   }
   public var _priority: Float?
   public var _p: Float?
   public var _axis: String?
 
-  public var axis: NSLayoutConstraint.Axis {
-    guard
-      let axisStr = _axis else {
-      return "".axis
-    }
-    return axisStr.axis
-  }
+  public var axis: NSLayoutConstraint.Axis { (_axis ?? "").axis }
 
   public var priority: UILayoutPriority {
-    if let priority = _priority {
-      return UILayoutPriority(priority)
-    }
-    if let priority = _p {
-      return UILayoutPriority(priority)
-    }
-    return .defaultHigh
+    let p = [_priority, _p].first{$0 != nil} as? Float ?? UILayoutPriority.defaultHigh.rawValue
+    return UILayoutPriority(p)
   }
 }

@@ -1,0 +1,80 @@
+//
+//  LayoutModel.swift
+//  UIKitHotReload
+//
+//  Created by sakiyamaK on 2020/11/18.
+//
+
+import Foundation
+
+//public struct UIEdgePriorities {
+//  public var top: UILayoutPriority?
+//  public var leading: UILayoutPriority?
+//  public var trailing: UILayoutPriority?
+//  public var bottom: UILayoutPriority?
+//
+//  public init() { }
+//}
+
+public struct ValueAndPriority: Decodable {
+  private enum CodingKeys: String, CodingKey {
+    case
+      _value = "value", _v = "v",
+      _priority = "priority", _p = "p"
+  }
+  private var _value: CGFloat?
+  private var _v: CGFloat?
+  private var _priority: Float?
+  private var _p: Float?
+
+  public var value: CGFloat { [_value, _v].first{$0 != nil} as? CGFloat ?? 0.0 }
+  public var priority: UILayoutPriority {
+    UILayoutPriority(
+      [_priority, _p].first{$0 != nil} as? Float ?? UILayoutPriority.required.rawValue
+    )
+  }
+}
+
+public struct LayoutModel: Decodable {
+  public struct SizeModel: Decodable {
+    public var width: ValueAndPriority?
+    public var height: ValueAndPriority?
+  }
+
+  public struct CenterModel: Decodable {
+    public var x: ValueAndPriority?
+    public var y: ValueAndPriority?
+  }
+
+  public struct EdgeModel: Decodable {
+    private enum CodingKeys: String, CodingKey {
+      case
+        top = "top",
+        bottom = "bottom",
+        _leading = "leading", _left = "left",
+        _trailing = "trailing", _right = "right"
+    }
+
+    public var top: ValueAndPriority?
+    public var bottom: ValueAndPriority?
+
+    private var _leading: ValueAndPriority?
+    private var _left: ValueAndPriority?
+    private var _trailing: ValueAndPriority?
+    private var _right: ValueAndPriority?
+
+    public var leading: ValueAndPriority? { [_leading, _left].first{$0 != nil} as? ValueAndPriority }
+    public var trailing: ValueAndPriority? { [_trailing, _right].first{$0 != nil} as? ValueAndPriority }
+
+    static var allDefault: EdgeModel {
+      EdgeModel(top: .init(), bottom: .init(), _leading: .init(), _left: .init(), _trailing: .init(), _right: .init())
+    }
+  }
+
+  public var size: SizeModel?
+  public var center: CenterModel?
+  public var position: EdgeModel?
+  public var margin: EdgeModel?
+
+  public var isSetEdge: Bool { position != nil || margin != nil }
+}

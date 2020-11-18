@@ -41,6 +41,14 @@ public extension Array where Element: Numeric {
 
 public extension Array where Element: StringProtocol {
   var maskedCorners: CACornerMask {
+    if self.contains("all") {
+      return CACornerMask(rawValue:
+        CACornerMask.layerMinXMinYCorner.rawValue +
+        CACornerMask.layerMinXMaxYCorner.rawValue +
+        CACornerMask.layerMaxXMinYCorner.rawValue +
+        CACornerMask.layerMaxXMaxYCorner.rawValue
+      )
+    }
     var maskedCorners: CACornerMask = CACornerMask.init()
     if self.contains("min_x_min_y") || self.contains("min_min") { maskedCorners = CACornerMask(rawValue: maskedCorners.rawValue + CACornerMask.layerMinXMinYCorner.rawValue) }
     if self.contains("min_x_max_y") || self.contains("min_max") { maskedCorners = CACornerMask(rawValue: maskedCorners.rawValue + CACornerMask.layerMinXMaxYCorner.rawValue) }

@@ -21,20 +21,19 @@ public protocol ViewModelProtocol {
   var _alpha: CGFloat? { get }
   var _isHidden: Bool? { get }
   var _hidden: Bool? { get }
-  var _edgePriority: EdgePriorityModel? { get }
-  var _edgeInsets: EdgeInsetsModel? { get }
+  var _layout: LayoutModel? { get }
+//  var _edgePriority: EdgePriorityModel? { get }
+//  var _edgeInsets: EdgeInsetsModel? { get }
   var _huggings: [HuggingModel]?  { get }
   var _compressionResistances: [CompressionResistanceModel]?  { get }
   var _isSafeArea: Bool? { get }
   var _safeArea: Bool? { get }
-  var _subviewProtocols: [Self]? { get }
-  var _cornerRadius: CGFloat? { get }
-  var _masksToBounds: Bool? { get }
-  var _maskedCorners: [String]? { get }
-  var _borderWidth: CGFloat? { get }
-  var _borderColor: [CGFloat]? { get }
-  var _tintColor: [CGFloat]?  { get }
+  var _corner: CornerModel? { get }
+  var _border: BorderModel? { get }
   var _shadow: ShadowInfoModel? { get }
+  var _tintColor: [CGFloat]?  { get }
+
+  var _subviewProtocols: [Self]? { get }
 
   func setupView(_ view: UIView)
 }
@@ -43,19 +42,17 @@ public extension ViewModelProtocol {
   var backgroundColor: UIColor { _backgroundColor?.uiColor ?? .clear }
   var contentMode: UIView.ContentMode { (_contentMode ?? "").contentMode }
   var viewModelType: ViewModelType? { ViewModelType(rawValue: className?.lowercased() ?? "") }
-  var edgePriority: EdgePriorityModel { _edgePriority ?? EdgePriorityModel() }
-  var edgeInsets: EdgeInsetsModel { _edgeInsets ?? EdgeInsetsModel() }
+  var layout: LayoutModel { _layout ?? LayoutModel() }
+//  var edgePriority: EdgePriorityModel { _edgePriority ?? EdgePriorityModel() }
+//  var edgeInsets: EdgeInsetsModel { _edgeInsets ?? EdgeInsetsModel() }
   var huggings: [HuggingModel] { _huggings ?? [] }
   var compressionResistances: [CompressionResistanceModel]  { _compressionResistances ?? [] }
-  var isSafeArea: Bool { (_isSafeArea ?? false) || (_safeArea ?? false) }
+  var isSafeArea: Bool { [_isSafeArea, _safeArea].first{$0 == true} as? Bool ?? false }
   var alpha: CGFloat { _alpha ?? 1.0 }
-  var isHidden: Bool { (_isHidden ?? false) || (_hidden ?? false) }
-  var cornerRadius: CGFloat { _cornerRadius ?? 0.0 }
-  var masksToBounds: Bool { _masksToBounds ?? false }
-  var maskedCorners: CACornerMask? { _maskedCorners?.maskedCorners }
-  var borderWidth: CGFloat { _borderWidth ?? 0.0 }
-  var borderColor: UIColor { _borderColor?.uiColor ?? .clear }
+  var isHidden: Bool { [_isHidden, _hidden].first{$0 == true} as? Bool ?? false }
   var tintColor: UIColor  { _tintColor?.uiColor ?? UIColor.clear }
+  var corner: CornerModel { _corner ?? CornerModel() }
+  var border: BorderModel { _border ?? BorderModel() }
   var shadow: ShadowInfoModel { _shadow ?? ShadowInfoModel() }
 
   func setupView(_ view: UIView) {
@@ -65,19 +62,15 @@ public extension ViewModelProtocol {
     view.contentMode = contentMode
     view.alpha = alpha
     view.isHidden = isHidden
-    view.layer.cornerRadius = cornerRadius
-    view.layer.masksToBounds = masksToBounds
-    if let maskedCorners = maskedCorners {
-      view.layer.maskedCorners = maskedCorners
-    }
-    view.layer.borderWidth = borderWidth
-    view.layer.borderColor = borderColor.cgColor
     view.tintColor = tintColor
-
-    view.layer.shadowColor = shadow.color.cgColor
+    view.layer.cornerRadius = corner.radius
+    view.layer.maskedCorners = corner.maskedCorners
+    view.layer.borderWidth = border.width
+    view.layer.borderColor = border.color.cgColor
     view.layer.shadowOpacity = shadow.opacity
     view.layer.shadowRadius = shadow.radius
     view.layer.shadowOffset = shadow.offset
+    view.layer.shadowColor = shadow.color.cgColor
 
     for hugging in huggings {
       view.setContentHuggingPriority(hugging.priority, for: hugging.axis)
@@ -87,12 +80,11 @@ public extension ViewModelProtocol {
       view.setContentCompressionResistancePriority(compressionResistance.priority, for: compressionResistance.axis)
     }
 
-    view.translatesAutoresizingMaskIntoConstraints = false
-    if let _width = width {
-      view.widthAnchor.constraint(equalToConstant: _width).isActive = true
+    if let _width = layout.size?.width {
+      view.widthEqual(constant: _width.value, priority: _width.priority)
     }
-    if let _height = height {
-      view.heightAnchor.constraint(equalToConstant: _height).isActive = true
+    if let _height = layout.size?.height {
+      view.heightEqual(constant: _height.value, priority: _height.priority)
     }
 
     _subviewProtocols?.filter({ $0.view != nil }).forEach({ (viewModel) in
@@ -101,14 +93,20 @@ public extension ViewModelProtocol {
         (view.subviews.first as! UIStackView).addArrangedSubview(subview)
       } else {
         view.addSubview(subview)
-        if viewModel.isSafeArea {
-          subview.edgesEqualToSafeArea(view,
-                                       margin: viewModel.edgeInsets.edgeInsets,
-                                       priorities: viewModel.edgePriority.priorities)
-        } else {
-          subview.edgesEqual(to: view,
-                             margin: viewModel.edgeInsets.edgeInsets,
-                             priorities: viewModel.edgePriority.priorities)
+        if let _centerX = viewModel.layout.center?.x {
+          subview.centerXEqualToSuperView(isSafeArea: viewModel.isSafeArea, constant: _centerX.value, priority: _centerX.priority)
+        }
+        if let _centerY = viewModel.layout.center?.y {
+          subview.centerYEqualToSuperView(isSafeArea: viewModel.isSafeArea, constant: _centerY.value, priority: _centerY.priority)
+        }
+        if let _position = viewModel.layout.position {
+          subview.positionSetToSuperView(isSafeArea: viewModel.isSafeArea, position: _position)
+        }
+        if let _margin = viewModel.layout.margin {
+          subview.edgesEqualToSuperView(isSafeArea: viewModel.isSafeArea, margin: _margin)
+        }
+        if !viewModel.layout.isSetEdge {
+          subview.edgesEqualToSuperView(isSafeArea: viewModel.isSafeArea)
         }
       }
     })

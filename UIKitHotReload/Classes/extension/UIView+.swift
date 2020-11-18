@@ -38,11 +38,7 @@ public extension UIView {
 
         self.subviews.filter { $0.accessibilityIdentifier == view.accessibilityIdentifier }.first?.removeFromSuperview()
         self.addSubview(view)
-        if viewModel.isSafeArea {
-          view.edgesEqualToSuperViewSafeArea()
-        } else {
-          view.edgesEqualToSuperView()
-        }
+        view.edgesEqualToSuperView(isSafeArea: viewModel.isSafeArea)
         completion?(nil)
       } catch(let error) {
         completion?(error)

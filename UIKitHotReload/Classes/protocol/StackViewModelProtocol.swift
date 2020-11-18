@@ -32,13 +32,13 @@ public extension StackViewModelProtocol {
   var distribution: UIStackView.Distribution { (_distribution ?? "").distribution }
   var axis: NSLayoutConstraint.Axis { (_axis ?? "").axis }
   var spacing: CGFloat { _spacing ?? 0.0 }
-  var isScrollEnabled: Bool { (_isScrollEnabled ?? true) && (_scrollEnabled ?? true) }
-  var isPagingEnabled: Bool { (_isPagingEnabled ?? false) || (_pagingEnabled ?? false) }
+  var isScrollEnabled: Bool { [_isScrollEnabled, _scrollEnabled].first{$0 != nil} as? Bool ?? true }
+  var isPagingEnabled: Bool { [_isPagingEnabled, _pagingEnabled].first{$0 != nil} as? Bool ?? false }
   var showsVerticalScrollIndicator: Bool {
-    (_showsVerticalScrollIndicator ?? true) && (_vIndicator ?? true)
+    [_showsVerticalScrollIndicator, _vIndicator].first{$0 != nil} as? Bool ?? true
   }
   var showsHorizontalScrollIndicator: Bool {
-    (_showsHorizontalScrollIndicator ?? true) && (_hIndicator ?? true)
+    [_showsHorizontalScrollIndicator, _hIndicator].first{$0 != nil} as? Bool ?? true
   }
   var contentInsets: UIEdgeInsets { (_contentInsets ?? EdgeInsetsModel()).edgeInsets }
   var contentOffset: CGPoint { _contentOffset ?? .zero }
@@ -53,7 +53,7 @@ public extension StackViewModelProtocol {
     scrollView.contentOffset = contentOffset
 
     setupStackView(stackView)
-    stackView.edgesEqual(to: scrollView.contentLayoutGuide, priorities: edgePriority.priorities)
+    stackView.edgesEqual(to: scrollView.contentLayoutGuide, margin: layout.margin)
     if !scrollView.isScrollEnabled {
       stackView.widthEqual(to: scrollView.frameLayoutGuide)
       stackView.heightEqual(to: scrollView.frameLayoutGuide)

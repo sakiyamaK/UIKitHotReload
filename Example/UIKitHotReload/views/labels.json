@@ -10,9 +10,9 @@
       "distribution": "fill",
       "alignment": "fill",
       "scroll_enabled":  true,
-      "spacing": 30,
+      "spacing": 50,
       "edge_insets": {
-        "top": 24,
+        "top": 32,
         "left": 16,
         "right": 16
       },
@@ -20,7 +20,12 @@
         {
           "class": "label",
           "id": "label1",
-          "text": "デフォルトです"
+          "text": "デフォルトです",
+          "text_color": [1, 0, 0],
+          "font": {
+            "name": "Bradley Hand",
+            "size":30
+          }          
         },
         {
           "class": "label",
@@ -35,7 +40,10 @@
           "class": "label",
           "id": "label3",
           "text": "テキストカラーを変えました",
-          "text_color": [1, 0, 0]
+          "text_color": [1, 0, 0],
+          "font": {
+            "size":30
+          }          
         },
         {
           "class": "label",
@@ -58,7 +66,7 @@
         {
           "class": "label",
           "id": "label7",
-          "text": "number_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました",
+          "text": "number_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました\nnumber_of_linesを0にしました",
           "number_of_lines": 0
         }
       ]

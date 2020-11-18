@@ -8,142 +8,286 @@
 
 import UIKit
 
-public extension UIView {
+extension UIView {
 
-  func edgesEqual(to: UILayoutGuide, margin: UIEdgeInsets = .zero, priorities: UIEdgePriorities = .init()) {
+  func edgesEqual(to: UILayoutGuide, margin: LayoutModel.EdgeModel? = nil) {
 
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    var constraints: [NSLayoutConstraint] = []
-
-    if priorities.top.rawValue > 0 {
-      let constraint = self.topAnchor.constraint(equalTo: to.topAnchor, constant: margin.top)
-      constraint.priority = priorities.top
-      constraints.append(constraint)
-    }
-    if priorities.leading.rawValue > 0 {
-      let constraint = self.leadingAnchor.constraint(equalTo: to.leadingAnchor, constant: margin.left)
-      constraint.priority = priorities.leading
-      constraints.append(constraint)
-    }
-    if priorities.trailing.rawValue > 0 {
-      let constraint = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: margin.right)
-      constraint.priority = priorities.trailing
-      constraints.append(constraint)
-    }
-    if priorities.bottom.rawValue > 0 {
-      let constraint = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: margin.bottom)
-      constraint.priority = priorities.bottom
-      constraints.append(constraint)
-    }
-
-    NSLayoutConstraint.activate(constraints)
-  }
-
-  func edgesEqual(to: UIView, margin: UIEdgeInsets = .zero, priorities: UIEdgePriorities = .init()) {
+    let margin = margin ?? .allDefault
 
     self.translatesAutoresizingMaskIntoConstraints = false
 
     var constraints: [NSLayoutConstraint] = []
 
-    if priorities.top.rawValue > 0 {
-      let constraint = self.topAnchor.constraint(equalTo: to.topAnchor, constant: margin.top)
-      constraint.priority = priorities.top
-      constraints.append(constraint)
-    }
-    if priorities.leading.rawValue > 0 {
-      let constraint = self.leadingAnchor.constraint(equalTo: to.leadingAnchor, constant: margin.left)
-      constraint.priority = priorities.leading
-      constraints.append(constraint)
-    }
+    let top = self.topAnchor.constraint(equalTo: to.topAnchor, constant: margin.top?.value ?? 0.0)
+    top.priority = margin.top?.priority ?? .required
+    constraints.append(top)
 
-    if priorities.trailing.rawValue > 0 {
-      let constraint = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: margin.right)
-      constraint.priority = priorities.trailing
-      constraints.append(constraint)
-    }
-    if priorities.bottom.rawValue > 0 {
-      let constraint = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: margin.bottom)
-      constraint.priority = priorities.bottom
-      constraints.append(constraint)
-    }
+    let leading = self.leadingAnchor.constraint(equalTo: to.leadingAnchor, constant: margin.leading?.value ?? 0.0)
+    leading.priority = margin.leading?.priority ?? .required
+    constraints.append(leading)
+
+    let trailing = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: margin.trailing?.value ?? 0.0)
+    trailing.priority = margin.trailing?.priority ?? .required
+    constraints.append(trailing)
+
+    let bottom = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: margin.bottom?.value ?? 0.0)
+    bottom.priority = margin.bottom?.priority ?? .required
+    constraints.append(bottom)
 
     NSLayoutConstraint.activate(constraints)
   }
 
-  func edgesEqualToSafeArea(_ view: UIView, margin: UIEdgeInsets = .zero, priorities: UIEdgePriorities = .init()) {
-    edgesEqual(to: view.safeAreaLayoutGuide, margin: margin, priorities: priorities)
+  func edgesEqual(to: UIView, margin: LayoutModel.EdgeModel? = nil) {
+
+    let margin = margin ?? .allDefault
+
+    self.translatesAutoresizingMaskIntoConstraints = false
+
+    var constraints: [NSLayoutConstraint] = []
+
+    let top = self.topAnchor.constraint(equalTo: to.topAnchor, constant: margin.top?.value ?? 0.0)
+    top.priority = margin.top?.priority ?? .required
+    constraints.append(top)
+
+    let leading = self.leadingAnchor.constraint(equalTo: to.leadingAnchor, constant: margin.leading?.value ?? 0.0)
+    leading.priority = margin.leading?.priority ?? .required
+    constraints.append(leading)
+
+    let trailing = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: margin.trailing?.value ?? 0.0)
+    trailing.priority = margin.trailing?.priority ?? .required
+    constraints.append(trailing)
+
+    let bottom = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: margin.bottom?.value ?? 0.0)
+    bottom.priority = margin.bottom?.priority ?? .required
+    constraints.append(bottom)
+
+    NSLayoutConstraint.activate(constraints)
   }
 
-  func edgesEqualToSuperViewSafeArea(margin: UIEdgeInsets = .zero, priorities: UIEdgePriorities = .init()) {
-    guard let _superview = superview else { return }
-    edgesEqual(to: _superview.safeAreaLayoutGuide, margin: margin, priorities: priorities)
+  func edgesEqual(to view: UIView, isSafeArea: Bool = true, margin: LayoutModel.EdgeModel? = nil) {
+    if isSafeArea {
+      edgesEqual(to: view.safeAreaLayoutGuide, margin: margin)
+    } else {
+      edgesEqual(to: view, margin: margin)
+    }
   }
 
-  func edgesEqualToSuperView(margin: UIEdgeInsets = .zero, priorities: UIEdgePriorities = .init()) {
+  func edgesEqualToSuperView(isSafeArea: Bool = true, margin: LayoutModel.EdgeModel? = nil) {
     guard let _superview = superview else { return }
-    self.edgesEqual(to: _superview, margin: margin, priorities: priorities)
+    self.edgesEqual(to: _superview, isSafeArea: isSafeArea, margin: margin)
   }
 }
 
-public extension UIView {
-  func centerXEqual(to: UILayoutGuide, constant: CGFloat = 0) {
+extension UIView {
+
+  func positionSet(to: UILayoutGuide, position: LayoutModel.EdgeModel) {
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.centerXAnchor.constraint(equalTo: to.centerXAnchor, constant: constant).isActive = true
+
+    var constraints: [NSLayoutConstraint] = []
+
+    if let vp = position.top {
+      let constraint = self.topAnchor.constraint(equalTo: to.topAnchor, constant: vp.value)
+      constraint.priority = vp.priority
+      constraints.append(constraint)
+    }
+
+    if let vp = position.leading {
+      let constraint = self.leadingAnchor.constraint(equalTo: to.leadingAnchor, constant: vp.value)
+      constraint.priority = vp.priority
+      constraints.append(constraint)
+    }
+
+    if let vp = position.leading {
+      let constraint = self.trailingAnchor.constraint(equalTo: to.trailingAnchor, constant: vp.value)
+      constraint.priority = vp.priority
+      constraints.append(constraint)
+    }
+
+    if let vp = position.bottom {
+      let constraint = self.bottomAnchor.constraint(equalTo: to.bottomAnchor, constant: vp.value)
+      constraint.priority = vp.priority
+      constraints.append(constraint)
+    }
+
+    NSLayoutConstraint.activate(constraints)
   }
 
-  func centerYEqual(to: UILayoutGuide, constant: CGFloat = 0) {
+  func positionSet(to: UIView, position: LayoutModel.EdgeModel) {
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.centerYAnchor.constraint(equalTo: to.centerYAnchor, constant: constant).isActive = true
+
+    var constraints: [NSLayoutConstraint] = []
+
+    if let vp = position.top {
+      let constraint = self.topAnchor.constraint(equalTo: to.topAnchor, constant: vp.value)
+      constraint.priority = vp.priority
+      constraints.append(constraint)
+    }
+
+    if let vp = position.leading {
+      let constraint = self.leadingAnchor.constraint(equalTo: to.leadingAnchor, constant: vp.value)
+      constraint.priority = vp.priority
+      constraints.append(constraint)
+    }
+
+    if let vp = position.trailing {
+      let constraint = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: vp.value)
+      constraint.priority = vp.priority
+      constraints.append(constraint)
+    }
+
+    if let vp = position.bottom {
+      let constraint = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: vp.value)
+      constraint.priority = vp.priority
+      constraints.append(constraint)
+    }
+
+    NSLayoutConstraint.activate(constraints)
   }
 
-  func widthEqual(to: UILayoutGuide, constant: CGFloat = 0) {
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.widthAnchor.constraint(equalTo: to.widthAnchor, constant: constant).isActive = true
+  func positionSet(to view: UIView, isSafeArea: Bool = true, position: LayoutModel.EdgeModel) {
+    if isSafeArea {
+      positionSet(to: view.safeAreaLayoutGuide, position: position)
+    } else {
+      positionSet(to: view, position: position)
+    }
   }
 
-  func heightEqual(to: UILayoutGuide, constant: CGFloat = 0) {
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.heightAnchor.constraint(equalTo: to.heightAnchor, constant: constant).isActive = true
-  }
-
-  func centerXEqual(to: UIView, constant: CGFloat = 0) {
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.centerXAnchor.constraint(equalTo: to.centerXAnchor, constant: constant).isActive = true
-  }
-
-  func centerYEqual(to: UIView, constant: CGFloat = 0) {
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.centerYAnchor.constraint(equalTo: to.centerYAnchor, constant: constant).isActive = true
-  }
-
-  func widthEqual(to: UIView, constant: CGFloat = 0) {
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.widthAnchor.constraint(equalTo: to.widthAnchor, constant: constant).isActive = true
-  }
-
-  func heightEqual(to: UIView, constant: CGFloat = 0) {
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.heightAnchor.constraint(equalTo: to.heightAnchor, constant: constant).isActive = true
-  }
-
-  func centerXEqualToSuperView(constant: CGFloat = 0) {
+  func positionSetToSuperView(isSafeArea: Bool = true, position: LayoutModel.EdgeModel) {
     guard let _superview = superview else { return }
-    centerXEqual(to: _superview, constant: constant)
+    positionSet(to: _superview, isSafeArea: isSafeArea, position: position)
+  }
+}
+
+extension UIView {
+
+  func centerXEqual(to: UILayoutGuide, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    let c = self.centerXAnchor.constraint(equalTo: to.centerXAnchor, constant: constant)
+    c.priority = priority
+    c.isActive = true
   }
 
-  func centerYEqualToSuperView(constant: CGFloat = 0) {
-    guard let _superview = superview else { return }
-    centerYEqual(to: _superview, constant: constant)
+  func centerXEqual(to: UIView, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    let c = self.centerXAnchor.constraint(equalTo: to.centerXAnchor, constant: constant)
+    c.priority = priority
+    c.isActive = true
   }
 
-  func widthEqualToSuperView(constant: CGFloat = 0) {
-    guard let _superview = superview else { return }
-    widthEqual(to: _superview, constant: constant)
+  func centerXEqual(to view: UIView, isSafeArea: Bool = true, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    if isSafeArea {
+      centerXEqual(to: view.safeAreaLayoutGuide, constant: constant, priority: priority)
+    } else {
+      centerXEqual(to: view, constant: constant, priority: priority)
+    }
   }
 
-  func heightEqualToSuperView(constant: CGFloat = 0) {
+  func centerXEqualToSuperView(isSafeArea: Bool = true, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
     guard let _superview = superview else { return }
-    heightEqual(to: _superview, constant: constant)
+    centerXEqual(to: _superview, isSafeArea: isSafeArea, constant: constant, priority: priority)
+  }
+}
+
+extension UIView {
+
+  func centerYEqual(to: UILayoutGuide, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    let c = self.centerYAnchor.constraint(equalTo: to.centerYAnchor, constant: constant)
+    c.priority = priority
+    c.isActive = true
+  }
+
+  func centerYEqual(to: UIView, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    let c = self.centerYAnchor.constraint(equalTo: to.centerYAnchor, constant: constant)
+    c.priority = priority
+    c.isActive = true
+  }
+
+  func centerYEqual(to view: UIView, isSafeArea: Bool = true, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    if isSafeArea {
+      centerYEqual(to: view.safeAreaLayoutGuide, constant: constant, priority: priority)
+    } else {
+      centerYEqual(to: view, constant: constant, priority: priority)
+    }
+  }
+
+  func centerYEqualToSuperView(isSafeArea: Bool = true, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    guard let _superview = superview else { return }
+    centerYEqual(to: _superview, isSafeArea: isSafeArea, constant: constant, priority: priority)
+  }
+}
+
+extension UIView {
+
+  func widthEqual(to: UILayoutGuide, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    let c = self.widthAnchor.constraint(equalTo: to.widthAnchor, constant: constant)
+    c.priority = priority
+    c.isActive = true
+  }
+
+  func widthEqual(to: UIView, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    let c = self.widthAnchor.constraint(equalTo: to.widthAnchor, constant: constant)
+    c.priority = priority
+    c.isActive = true
+  }
+
+  func widthEqual(to view: UIView, isSafeArea: Bool = true, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    if isSafeArea {
+      widthEqual(to: view.safeAreaLayoutGuide, constant: constant, priority: priority)
+    } else {
+      widthEqual(to: view, constant: constant, priority: priority)
+    }
+  }
+
+  func widthEqualToSuperView(isSafeArea: Bool = true, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    guard let _superview = superview else { return }
+    widthEqual(to: _superview, isSafeArea: isSafeArea, constant: constant, priority: priority)
+  }
+
+  func widthEqual(constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    let c = self.widthAnchor.constraint(equalToConstant: constant)
+    c.priority = priority
+    c.isActive = true
+  }
+}
+
+extension UIView {
+
+  func heightEqual(to: UILayoutGuide, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    let c = self.heightAnchor.constraint(equalTo: to.heightAnchor, constant: constant)
+    c.priority = priority
+    c.isActive = true
+  }
+
+  func heightEqual(to: UIView, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    let c = self.heightAnchor.constraint(equalTo: to.heightAnchor, constant: constant)
+    c.priority = priority
+    c.isActive = true
+  }
+
+  func heightEqual(to view: UIView, isSafeArea: Bool = true, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    if isSafeArea {
+      heightEqual(to: view.safeAreaLayoutGuide, constant: constant, priority: priority)
+    } else {
+      heightEqual(to: view, constant: constant, priority: priority)
+    }
+  }
+
+  func heightEqualToSuperView(isSafeArea: Bool = true, constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    guard let _superview = superview else { return }
+    heightEqual(to: _superview, isSafeArea: isSafeArea, constant: constant, priority: priority)
+  }
+
+  func heightEqual(constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    let c = self.heightAnchor.constraint(equalToConstant: constant)
+    c.priority = priority
+    c.isActive = true
   }
 }
