@@ -1,0 +1,62 @@
+{
+  "class": "view",
+  "id": "circle_border",
+  "background_color": [
+    0,
+    1,
+    0,
+    1
+  ],
+  "clip": true,
+  "corner": {
+    "radius": 100,
+    "masks": [
+      "all"
+    ]
+  },
+  "layout": {
+    "size": {
+      "width": {
+        "v": 200
+      },
+      "height": {
+        "v": 200
+      }
+    }
+  },
+  "subviews": [
+    {
+      "class": "imageview",
+      "id": "circle_image",
+      "image": {
+        "url": "https://stat.ameba.jp/user_images/20200711/03/crossfieldbio/3a/90/j/o0540054014787134008.jpg?caw=800"
+      },
+      "content_mode": "fill",
+      "clip": true,
+      "corner": {
+        "rad": 95,
+        "masks": [
+          "all"
+        ]
+      },
+      "layout": {
+        "size": {
+          "width": {
+            "v": 190
+          },
+          "height": {
+            "v": 190
+          }
+        },
+        "center": {
+          "x": {
+            "v": 0
+          },
+          "y": {
+            "v": 0
+          }
+        }
+      }
+    }
+  ]
+}
