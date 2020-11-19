@@ -1,0 +1,31 @@
+{
+  "class": "view",
+  "background_color": [
+    0.8,
+    0,
+    0.8
+  ],
+  "shadow": {
+    "color": [
+      1,
+      0,
+      0
+    ],
+    "opacity": 0.4,
+    "radius": 5,
+    "offset": [
+      0,
+      20
+    ]
+  },
+  "layout": {
+    "size": {
+      "width": {
+        "v": 100
+      },
+      "height": {
+        "v": 100
+      }
+    }
+  }
+}

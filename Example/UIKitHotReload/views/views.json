@@ -23,10 +23,11 @@
       "subviews": [
         {
           "class": "stack",
-          "scroll_enabled": false,
+          "safe_area": false,
           "distribution": "fill",
           "alignment": "center",
           "spacing": 50,
+          "scroll_enabled": false,
           "subviews": [
             {
               "class": "view",
@@ -48,78 +49,7 @@
             },
             {
               "class": "view",
-              "id": "superview",
-              "background_color": [
-                0,
-                1,
-                0
-              ],
-              "layout": {
-                "size": {
-                  "width": {
-                    "v": 100
-                  },
-                  "height": {
-                    "v": 100
-                  }
-                }
-              },
-              "subviews": [
-                {
-                  "class": "view",
-                  "id": "subview1",
-                  "background_color": [
-                    1,
-                    1,
-                    0
-                  ],
-                  "layout": {
-                    "size": {
-                      "width": {
-                        "v": 30
-                      },
-                      "height": {
-                        "v": 30
-                      }
-                    },
-                    "position": {
-                      "top": {
-                        "v": 10
-                      },
-                      "left": {
-                        "v": 10
-                      }
-                    }
-                  }
-                },
-                {
-                  "class": "view",
-                  "id": "subview2",
-                  "background_color": [
-                    1,
-                    1,
-                    0
-                  ],
-                  "layout": {
-                    "size": {
-                      "width": {
-                        "v": 30
-                      },
-                      "height": {
-                        "v": 30
-                      }
-                    },
-                    "position": {
-                      "right": {
-                        "v": 10
-                      },
-                      "bottom": {
-                        "v": 10
-                      }
-                    }
-                  }
-                }
-              ]
+              "json_file_path": "views/view_in_view"
             },
             {
               "class": "view",
@@ -174,159 +104,13 @@
             },
             {
               "class": "view",
-              "background_color": [
-                0.8,
-                0,
-                0.8
-              ],
-              "shadow": {
-                "color": [
-                  1,
-                  0,
-                  0
-                ],
-                "opacity": 0.4,
-                "radius": 5,
-                "offset": [
-                  0,
-                  20
-                ]
-              },
-              "layout": {
-                "size": {
-                  "width": {
-                    "v": 100
-                  },
-                  "height": {
-                    "v": 100
-                  }
-                }
-              }
-            },
-            {
-              "class": "stack",
-              "axis": "horizontal",
-              "distribution": "fill",
-              "alignment": "fill",
-              "scroll_enabled": true,
-              "h_indicator": true,
-              "content_insets": {
-                "left": 50,
-                "right": 12
-              },
-              "layout": {
-                "size": {
-                  "height": {
-                    "v": 100
-                  }
-                }
-              },
-              "spacing": 0,
-              "subviews": [
-                {
-                  "class": "label",
-                  "background_color": [
-                    1,
-                    0,
-                    0
-                  ],
-                  "hidden": false,
-                  "text": "1",
-                  "text_alignment": "center",
-                  "text_color": [
-                    1,
-                    1,
-                    1
-                  ],
-                  "font": {
-                    "size": 30
-                  },
-                  "layout": {
-                    "size": {
-                      "width": {
-                        "v": 100
-                      }
-                    }
-                  }
-                },
-                {
-                  "class": "label",
-                  "background_color": [
-                    0,
-                    1,
-                    0
-                  ],
-                  "text": "2",
-                  "text_alignment": "center",
-                  "text_color": [
-                    1,
-                    1,
-                    1
-                  ],
-                  "font": {
-                    "size": 30
-                  },
-                  "layout": {
-                    "size": {
-                      "width": {
-                        "v": 100
-                      }
-                    }
-                  }
-                },
-                {
-                  "class": "label",
-                  "background_color": [
-                    0,
-                    0,
-                    1
-                  ],
-                  "text": "3",
-                  "text_alignment": "center",
-                  "text_color": [
-                    1,
-                    1,
-                    1
-                  ],
-                  "font": {
-                    "size": 30
-                  },
-                  "layout": {
-                    "size": {
-                      "width": {
-                        "v": 100
-                      }
-                    }
-                  }
-                },
-                {
-                  "class": "label",
-                  "background_color": [
-                    1,
-                    0,
-                    0
-                  ],
-                  "text": "4",
-                  "text_alignment": "center",
-                  "text_color": [
-                    1,
-                    1,
-                    1
-                  ],
-                  "font": {
-                    "size": 30
-                  },
-                  "layout": {
-                    "size": {
-                      "width": {
-                        "v": 100
-                      }
-                    }
-                  }
-                }
-              ]
+              "json_file_path": "views/shadow_view"
             }
           ]
+        },
+        {
+          "class": "view",
+          "json_file_path": "views/sub_labels"
         }
       ]
     }

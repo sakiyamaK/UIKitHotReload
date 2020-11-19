@@ -13,7 +13,7 @@ import FirebaseFirestoreSwift
 private let db = Firestore.firestore()
 
 public extension UIView {
-  func loadHotReload(documentRef: DocumentReference, snapshot: Bool = true, completion: (((Result<Void, Error>)) -> Void)? = nil) {
+  private func loadHotReload(documentRef: DocumentReference, snapshot: Bool = true, completion: (((Result<Void, Error>)) -> Void)? = nil) {
     documentRef.addSnapshotListener { (docSnapshot, error) in
       if let _error = error {
         print("Error getting documents: \(_error)")

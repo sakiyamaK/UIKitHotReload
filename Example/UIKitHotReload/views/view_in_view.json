@@ -1,0 +1,75 @@
+  {
+    "class": "view",
+    "id": "superview",
+    "background_color": [
+      0,
+      1,
+      0
+    ],
+    "layout": {
+      "size": {
+        "width": {
+          "v": 100
+        },
+        "height": {
+          "v": 100
+        }
+      }
+    },
+    "subviews": [
+      {
+        "class": "view",
+        "id": "subview1",
+        "background_color": [
+          1,
+          1,
+          0
+        ],
+        "layout": {
+          "size": {
+            "width": {
+              "v": 30
+            },
+            "height": {
+              "v": 30
+            }
+          },
+          "position": {
+            "top": {
+              "v": 10
+            },
+            "left": {
+              "v": 10
+            }
+          }
+        }
+      },
+      {
+        "class": "view",
+        "id": "subview2",
+        "background_color": [
+          1,
+          1,
+          0
+        ],
+        "layout": {
+          "size": {
+            "width": {
+              "v": 30
+            },
+            "height": {
+              "v": 30
+            }
+          },
+          "position": {
+            "right": {
+              "v": 10
+            },
+            "bottom": {
+              "v": 10
+            }
+          }
+        }
+      }
+    ]
+  }
