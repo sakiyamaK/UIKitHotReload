@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UIKitHotReload'
-  s.version          = '0.1.5'
+  s.version          = '0.1.6'
   s.summary          = <<-DESC
   This is summary
   DESC
