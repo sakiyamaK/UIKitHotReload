@@ -13,7 +13,7 @@ import FirebaseFirestoreSwift
 private let db = Firestore.firestore()
 
 public extension UIView {
-  private func loadHotReload(documentRef: DocumentReference, snapshot: Bool = true, completion: (((Result<Void, Error>)) -> Void)? = nil) {
+  private func loadHotReload(documentRef: DocumentReference, completion: (((Result<Void, Error>)) -> Void)? = nil) {
     documentRef.addSnapshotListener { (docSnapshot, error) in
       if let _error = error {
         print("Error getting documents: \(_error)")
@@ -46,12 +46,45 @@ public extension UIView {
     }
   }
 
-  func loadHotReload(collectionName: String, documentName: String, snapshot: Bool = true, completion: (((Result<Void, Error>)) -> Void)? = nil) {
-    let docRef: DocumentReference = db.collection(collectionName).document(documentName)
-    loadHotReload(documentRef: docRef, snapshot: snapshot, completion: completion)
+  private func load(dirName: String, jsonFileName: String, completion: (((Result<Void, Error>)) -> Void)? = nil) {
+    guard let path = Bundle.main.path(forResource: jsonFileName, ofType: "json") else {
+      let error = NSError.init(domain: "no file", code: 120, userInfo: nil)
+      completion?(.failure(error))
+      return
+    }
+    do {
+      let fileUrl = URL(fileURLWithPath: path)
+      let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
+      let viewModel = try JSONDecoder().decode(RootViewModel.self, from: data)
+      guard let view = viewModel.view else {
+        let error = NSError.init(domain: "no view", code: 110, userInfo: nil)
+        completion?(.failure(error))
+        return
+      }
+      self.subviews.filter { $0.accessibilityIdentifier == view.accessibilityIdentifier }.first?.removeFromSuperview()
+      self.addSubview(view)
+      view.edgesEqualToSuperView(isSafeArea: viewModel.isSafeArea)
+      completion?(.success(()))
+    } catch(let error) {
+      completion?(.failure(error))
+    }
   }
 
-  func loadHotReload(dirName: String, jsonFileName: String, snapshot: Bool = true, completion: ((Result<Void, Error>) -> Void)? = nil) {
+  func loadHotReload(collectionName: String, documentName: String, snapshot: Bool? = nil, completion: (((Result<Void, Error>)) -> Void)? = nil) {
+    #if DEBUG
+    let snapshot = snapshot ?? true
+    #else
+    let snapshot = snapshot ?? false
+    #endif
+    if snapshot {
+      let docRef: DocumentReference = db.collection(collectionName).document(documentName)
+      loadHotReload(documentRef: docRef, completion: completion)
+    } else {
+      load(dirName: collectionName, jsonFileName: documentName, completion: completion)
+    }
+  }
+
+  func loadHotReload(dirName: String, jsonFileName: String, snapshot: Bool? = nil, completion: ((Result<Void, Error>) -> Void)? = nil) {
     loadHotReload(collectionName: dirName, documentName: jsonFileName, snapshot: snapshot, completion: completion)
   }
 
