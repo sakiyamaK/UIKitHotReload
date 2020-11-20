@@ -49,7 +49,7 @@
             },
             {
               "class": "view",
-              "json_file_path": "views/view_in_view"
+              "json_file_path": "components/view_in_view"
             },
             {
               "class": "view",
@@ -104,13 +104,13 @@
             },
             {
               "class": "view",
-              "json_file_path": "views/shadow_view"
+              "json_file_path": "components/shadow_view"
             }
           ]
         },
         {
           "class": "view",
-          "json_file_path": "views/sub_labels"
+          "json_file_path": "components/sub_labels"
         }
       ]
     }

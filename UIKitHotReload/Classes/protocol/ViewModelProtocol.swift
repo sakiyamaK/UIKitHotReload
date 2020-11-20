@@ -16,6 +16,10 @@ public protocol ViewModelProtocol {
   var height: CGFloat? { get }
   var view: UIView? { get }
   var jsonFilePath: String? { get }
+  var corner: CornerModel? { get }
+  var border: BorderModel? { get }
+  var shadow: ShadowInfoModel? { get }
+  var circle: CircleModel? { get }
 
   var _backgroundColor: [CGFloat]?  { get }
   var _contentMode: String? { get }
@@ -27,15 +31,12 @@ public protocol ViewModelProtocol {
   var _compressionResistances: [CompressionResistanceModel]?  { get }
   var _isSafeArea: Bool? { get }
   var _safeArea: Bool? { get }
-  var _corner: CornerModel? { get }
-  var _border: BorderModel? { get }
-  var _shadow: ShadowInfoModel? { get }
   var _tintColor: [CGFloat]?  { get }
   var _clipToBounds: Bool? { get }
   var _clip: Bool? { get }
   var _subviewProtocols: [Self]? { get }
 
-  func setupView(_ view: UIView)
+  func setupView(_ view: UIView, snapshot: Bool?)
 }
 
 public extension ViewModelProtocol {
@@ -50,11 +51,8 @@ public extension ViewModelProtocol {
   var isHidden: Bool { [_isHidden, _hidden].first{$0 == true} as? Bool ?? false }
   var tintColor: UIColor { _tintColor?.uiColor ?? UIColor.clear }
   var clipToBounds: Bool { [_clipToBounds, _clip].first{$0 != nil} as? Bool ?? false }
-  var corner: CornerModel { _corner ?? CornerModel() }
-  var border: BorderModel { _border ?? BorderModel() }
-  var shadow: ShadowInfoModel { _shadow ?? ShadowInfoModel() }
 
-  func setupView(_ view: UIView) {
+  func setupView(_ view: UIView, snapshot: Bool? = nil) {
 
     view.accessibilityIdentifier = id
     view.backgroundColor = backgroundColor
@@ -63,17 +61,29 @@ public extension ViewModelProtocol {
     view.isHidden = isHidden
     view.tintColor = tintColor
     view.clipsToBounds = clipToBounds
-    view.layer.cornerRadius = corner.radius
-    view.layer.maskedCorners = corner.maskedCorners
-    view.layer.borderWidth = border.width
-    view.layer.borderColor = border.color.cgColor
-    view.layer.shadowOpacity = shadow.opacity
-    view.layer.shadowRadius = shadow.radius
-    view.layer.shadowOffset = shadow.offset
-    view.layer.shadowColor = shadow.color.cgColor
+    if let corner = corner {
+      view.layer.cornerRadius = corner.radius
+      view.layer.maskedCorners = corner.maskedCorners
+    }
+    if let border = border {
+      view.layer.borderWidth = border.width
+      view.layer.borderColor = border.color.cgColor
+    }
+    if let shadow = shadow {
+      view.layer.shadowOpacity = shadow.opacity
+      view.layer.shadowRadius = shadow.radius
+      view.layer.shadowOffset = shadow.offset
+      view.layer.shadowColor = shadow.color.cgColor
+    }
+    if let circle = circle {
+      view.clipsToBounds = true
+      view.layer.cornerRadius = circle.radius
+      view.layer.borderWidth = circle.borderWidth
+      view.layer.borderColor = circle.borderColor.cgColor
+    }
 
     if let (dirName, jsonFileName) = jsonFilePath?.viewPath {
-      view.loadHotReload(dirName: dirName, jsonFileName: jsonFileName) { result in
+      view.loadHotReload(dirName: dirName, jsonFileName: jsonFileName, snapshot: snapshot) { result in
         switch result {
         case .failure(let error):
           print("\(dirName)/\(jsonFileName): \(error.localizedDescription)")

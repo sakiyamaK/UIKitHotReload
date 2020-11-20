@@ -22,12 +22,8 @@
           "url": "https://eiga.k-img.com/images/buzz/86934/75ac09efb90a70c0/640.jpg"
         },
         "content_mode": "fill",
-        "clip": true,
-        "corner": {
-          "rad": 50,
-          "masks": [
-            "all"
-          ]
+        "circle": {
+          "rad": 50
         },
         "layout": {
           "size": {

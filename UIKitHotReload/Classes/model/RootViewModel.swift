@@ -21,6 +21,10 @@ public struct RootViewModel: Decodable,
       width = "width",
       height = "height",
       jsonFilePath = "json_file_path",
+      corner = "corner",
+      border = "border",
+      shadow = "shadow",
+      circle = "circle",
       _backgroundColor = "background_color",
       _alpha = "alpha",
       _isHidden = "is_hidden", _hidden = "hidden",
@@ -29,9 +33,6 @@ public struct RootViewModel: Decodable,
       _contentMode = "content_mode",
       _subviewProtocols = "subviews",
       _isSafeArea = "is_safe_area", _safeArea = "safe_area",
-      _corner = "corner",
-      _border = "border",
-      _shadow = "shadow",
       _layout = "layout",
       _clipToBounds = "clip_to_bounds",
       _clip = "clip",
@@ -62,12 +63,18 @@ public struct RootViewModel: Decodable,
       _imageContentMode = "image_content_mode"
   }
 
+  public var snapshot: Bool?
+
   //ViewModelProtocol
   public var className: String?
   public var id: String?
   public var width: CGFloat?
   public var height: CGFloat?
   public var jsonFilePath: String?
+  public var corner: CornerModel?
+  public var border: BorderModel?
+  public var shadow: ShadowInfoModel?
+  public var circle: CircleModel?
   public var _backgroundColor: [CGFloat]?
   public var _alpha: CGFloat?
   public var _isHidden, _hidden: Bool?
@@ -77,9 +84,6 @@ public struct RootViewModel: Decodable,
   public var _subviewProtocols: [Self]?
   public var _isSafeArea, _safeArea: Bool?
   public var _tintColor: [CGFloat]?
-  public var _corner: CornerModel?
-  public var _border: BorderModel?
-  public var _shadow: ShadowInfoModel?
   public var _layout: LayoutModel?
   public var _clipToBounds: Bool?
   public var _clip: Bool?
@@ -115,23 +119,23 @@ public struct RootViewModel: Decodable,
 
   public var view: UIView? {
     if let label = viewModelType?.view as? UILabel {
-      setupView(label)
+      setupView(label, snapshot: snapshot)
       setupLabel(label)
       return label
     } else if let button = viewModelType?.view as? UIButton {
-      setupView(button)
+      setupView(button, snapshot: snapshot)
       setupButton(button)
       return button
     } else if let imageView = viewModelType?.view as? UIImageView {
-      setupView(imageView)
+      setupView(imageView, snapshot: snapshot)
       setupImageView(imageView)
       return imageView
     } else if let scrollView = viewModelType?.view as? UIScrollView {
-      setupView(scrollView)
+      setupView(scrollView, snapshot: snapshot)
       setupScrollView(scrollView)
       return scrollView
     } else if let view = viewModelType?.view {
-      setupView(view)
+      setupView(view, snapshot: snapshot)
       return view
     } else {
       return nil

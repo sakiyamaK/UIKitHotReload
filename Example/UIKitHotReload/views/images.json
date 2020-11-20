@@ -23,8 +23,31 @@
       },
       "subviews": [
         {
-          "class": "view",
-          "json_file_path": "views/circle_image"
+          "class": "imageview",
+          "id": "circle_image",
+          "image": {
+            "url": "https://stat.ameba.jp/user_images/20200711/03/crossfieldbio/3a/90/j/o0540054014787134008.jpg?caw=800"
+          },
+          "content_mode": "fill",
+          "circle": {
+            "rad": 100,
+            "width": 5,
+            "color": [
+              0,
+              0,
+              0
+            ]
+          },
+          "layout": {
+            "size": {
+              "width": {
+                "v": 200
+              },
+              "height": {
+                "v": 200
+              }
+            }
+          }
         },
         {
           "class": "imageview",
@@ -46,7 +69,7 @@
         },
         {
           "class": "view",
-          "json_file_path": "views/sub_icon"
+          "json_file_path": "components/sub_icon"
         },
         {
           "class": "view"
