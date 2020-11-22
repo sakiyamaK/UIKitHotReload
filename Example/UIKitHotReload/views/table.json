@@ -1,6 +1,8 @@
 {
   "class": "tableview",
   "id": "table_view",
+  "separator_style": "none",
+  "indicator_style": "white",
   "background_color": [
     1,
     1,
@@ -8,10 +10,20 @@
   ],
   "cells": [
     {
-      "reuse_id": "test_cell",
-      "class": "label",
-      "id": "test_cell_label",
-      "text_alignment": "left",
+      "class": "view",
+      "reuse_id": "test_cell1",
+      "id": "test_cell1",
+      "selected_background_color": [
+        1,
+        0,
+        0
+      ],
+      "subviews": [
+        {
+          "class": "view",
+          "json_file_path": "components/table_cell1"
+        }
+      ],
       "layout": {
         "size": {
           "height": {
@@ -21,6 +33,35 @@
         "margin": {
           "left": {
             "v": 32
+          },
+          "bottom": {
+            "p": 750
+          }
+        }
+      }
+    },
+    {
+      "class": "label",
+      "reuse_id": "test_cell2",
+      "id": "test_cell_label",
+      "text_alignment": "left",
+      "selected_background_color": [
+        0,
+        1,
+        0
+      ],
+      "layout": {
+        "size": {
+          "height": {
+            "v": 100
+          }
+        },
+        "margin": {
+          "left": {
+            "v": 32
+          },
+          "bottom": {
+            "p": 750
           }
         }
       }

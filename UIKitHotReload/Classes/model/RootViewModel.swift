@@ -64,9 +64,14 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       _imageContentMode = "image_content_mode",
       //TableViewModelProtocol
       cells = "cells",
+      _separatorStyle = "separator_style",
+      _sStyle = "s_style",
+      _indicatorStyle = "indicator_style",
+      _iStyle = "i_style",
       //TableViewCellModelProtocol
       _reuseIdentifier = "reuse_identifier",
-      _reuseId = "reuse_id"
+      _reuseId = "reuse_id",
+      _selectedBackgroundColor = "selected_background_color"
   }
 
   public var snapshot: Bool?
@@ -125,10 +130,15 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
 
   //TableViewModelProtocol
   public var cells: [Self]?
+  public var _separatorStyle: String?
+  public var _sStyle: String?
+  public var _indicatorStyle: String?
+  public var _iStyle: String?
 
   //TableViewCellModelProtocol
   public var _reuseIdentifier: String?
   public var _reuseId: String?
+  public var _selectedBackgroundColor: [CGFloat]?
 
   public var view: UIView? {
     if let label = viewModelType?.view as? UILabel {
@@ -143,14 +153,14 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       setupView(imageView, snapshot: snapshot)
       setupImageView(imageView)
       return imageView
-    } else if let scrollView = viewModelType?.view as? UIScrollView {
-      setupView(scrollView, snapshot: snapshot)
-      setupScrollView(scrollView)
-      return scrollView
     } else if let tableView = viewModelType?.view as? UITableView {
       setupView(tableView, snapshot: snapshot)
       setupTableView(tableView)
       return tableView
+    } else if let scrollView = viewModelType?.view as? UIScrollView {
+      setupView(scrollView, snapshot: snapshot)
+      setupScrollView(scrollView)
+      return scrollView
     } else if let view = viewModelType?.view {
       if reuseIdentifier == nil {
         setupView(view, snapshot: snapshot)

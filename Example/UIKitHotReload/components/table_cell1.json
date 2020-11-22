@@ -1,0 +1,10 @@
+{
+  "class": "label",
+  "text": "table_cell1だよ",
+  "text_alignment": "left",
+  "selected_background_color": [
+    0,
+    1,
+    0
+  ]
+}

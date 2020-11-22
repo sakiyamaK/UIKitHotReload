@@ -8,7 +8,15 @@
 
 import UIKit
 
-public extension String {
+extension String {
+  var viewPath: (dirName: String, jsonFileName: String)? {
+    let strs = self.components(separatedBy: "/")
+    guard strs.count == 2 else { return nil }
+    return (strs[0], strs[1])
+  }
+}
+
+extension String {
   var contentMode: UIView.ContentMode {
     switch self.lowercased() {
     case "scaleaspectfill", "aspectfill", "scale_aspect_fill", "aspect_fill", "fill":
@@ -66,7 +74,9 @@ public extension String {
       return UIStackView.Distribution.fill
     }
   }
+}
 
+extension String {
   var textAlignment: NSTextAlignment {
     switch self.lowercased() {
     case "center":
@@ -77,10 +87,27 @@ public extension String {
       return .left
     }
   }
+}
 
-  var viewPath: (dirName: String, jsonFileName: String)? {
-    let strs = self.components(separatedBy: "/")
-    guard strs.count == 2 else { return nil }
-    return (strs[0], strs[1])
+extension String {
+  var separatorStyle: UITableViewCell.SeparatorStyle {
+    switch self.lowercased() {
+    case "none":
+      return .none
+    default:
+      return .singleLine
+    }
+  }
+
+  var indicatorStyle: UITableView.IndicatorStyle {
+    switch self.lowercased() {
+    case "black":
+      return .black
+    case "white":
+      return .white
+    default:
+      return .default
+    }
+
   }
 }

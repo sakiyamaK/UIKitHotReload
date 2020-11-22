@@ -12,7 +12,17 @@ import FirebaseFirestoreSwift
 private let db = Firestore.firestore()
 
 public extension UITableViewCell {
+  convenience init(style: UITableViewCell.CellStyle,
+                   dirName: String, jsonFileName: String, reuseIdentifier: String,
+                   completion: ((Result<Void, Error>) -> Void)? = nil) {
+    self.init(style: style, reuseIdentifier: reuseIdentifier)
+    self.loadTableViewCellHotReload(dirName: "views", jsonFileName: "table", reuseIdentifier: reuseIdentifier, completion: completion)
+  }
+}
+
+public extension UITableViewCell {
   private func loadTableViewCellHotReload(documentRef: DocumentReference, reuseIdentifier: String, completion: (((Result<Void, Error>)) -> Void)? = nil) {
+
     documentRef.addSnapshotListener { (docSnapshot, error) in
       if let _error = error {
         print("Error getting documents: \(_error)")
@@ -40,7 +50,7 @@ public extension UITableViewCell {
           return
         }
         self.subviews.filter { $0.accessibilityIdentifier == view.accessibilityIdentifier }.first?.removeFromSuperview()
-        self.addSubview(view)
+        self.contentView.addSubview(view)
         if let _centerX = viewModel.layout.center?.x {
           view.centerXEqualToSuperView(isSafeArea: viewModel.isSafeArea, constant: _centerX.value, priority: _centerX.priority)
         }
@@ -56,7 +66,13 @@ public extension UITableViewCell {
         if !viewModel.layout.isSetEdge {
           view.edgesEqualToSuperView(isSafeArea: viewModel.isSafeArea)
         }
-        viewModel.setupView(view)
+        if let color = viewModel.selectedBackgroundColor {
+          let bgView = UIView()
+          bgView.backgroundColor = color
+          self.selectedBackgroundView = bgView
+        }
+        self.contentView.backgroundColor = viewModel.backgroundColor
+        viewModel.setupView(view, backgroundColorClear: true)
         completion?(.success(()))
       } catch(let error) {
         completion?(.failure(error))
