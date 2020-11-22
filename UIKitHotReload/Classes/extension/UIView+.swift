@@ -13,6 +13,34 @@ import FirebaseFirestoreSwift
 private let db = Firestore.firestore()
 
 public extension UIView {
+  func hotReloadView(id: String) -> UIView? {
+    if let stackView = self as? UIStackView {
+      if stackView.arrangedSubviews.isEmpty { return nil }
+      if let view = stackView.arrangedSubviews.first(where: { $0.accessibilityIdentifier == id } ) {
+        return view
+      }
+      for subview in stackView.arrangedSubviews {
+        if let view = subview.hotReloadView(id: id) {
+          return view
+        }
+      }
+    } else {
+      if self.subviews.isEmpty { return nil }
+      if let view = self.subviews.first(where: { $0.accessibilityIdentifier == id } ) {
+        return view
+      }
+      for subview in self.subviews {
+        if let view = subview.hotReloadView(id: id) {
+          return view
+        }
+      }
+    }
+    return nil
+  }
+}
+
+public extension UIView {
+
   private func loadHotReload(documentRef: DocumentReference, completion: (((Result<Void, Error>)) -> Void)? = nil) {
     documentRef.addSnapshotListener { (docSnapshot, error) in
       if let _error = error {
@@ -86,30 +114,5 @@ public extension UIView {
 
   func loadHotReload(dirName: String, jsonFileName: String, snapshot: Bool? = nil, completion: ((Result<Void, Error>) -> Void)? = nil) {
     loadHotReload(collectionName: dirName, documentName: jsonFileName, snapshot: snapshot, completion: completion)
-  }
-
-  func hotReloadView(id: String) -> UIView? {
-    if let stackView = self as? UIStackView {
-      if stackView.arrangedSubviews.isEmpty { return nil }
-      if let view = stackView.arrangedSubviews.first(where: { $0.accessibilityIdentifier == id } ) {
-        return view
-      }
-      for subview in stackView.arrangedSubviews {
-        if let view = subview.hotReloadView(id: id) {
-          return view
-        }
-      }
-    } else {
-      if self.subviews.isEmpty { return nil }
-      if let view = self.subviews.first(where: { $0.accessibilityIdentifier == id } ) {
-        return view
-      }
-      for subview in self.subviews {
-        if let view = subview.hotReloadView(id: id) {
-          return view
-        }
-      }
-    }
-    return nil
   }
 }

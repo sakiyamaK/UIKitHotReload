@@ -34,6 +34,11 @@
           "class": "button",
           "id": "to_images",
           "text": "UIImageView Sample"
+        },
+        {
+          "class": "button",
+          "id": "to_table",
+          "text": "UITableView Sample"
         }
       ]
     }

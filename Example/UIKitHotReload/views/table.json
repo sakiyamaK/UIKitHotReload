@@ -1,0 +1,29 @@
+{
+  "class": "tableview",
+  "id": "table_view",
+  "background_color": [
+    1,
+    1,
+    1
+  ],
+  "cells": [
+    {
+      "reuse_id": "test_cell",
+      "class": "label",
+      "id": "test_cell_label",
+      "text_alignment": "left",
+      "layout": {
+        "size": {
+          "height": {
+            "v": 100
+          }
+        },
+        "margin": {
+          "left": {
+            "v": 32
+          }
+        }
+      }
+    }
+  ]
+}

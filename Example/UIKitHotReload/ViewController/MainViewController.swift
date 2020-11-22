@@ -15,7 +15,8 @@ final class MainViewController: UIViewController {
   private var buttons: UIButton? { self.view.hotReloadView(id: "to_buttons") as? UIButton }
   private var labels: UIButton? { self.view.hotReloadView(id: "to_labels") as? UIButton }
   private var images: UIButton? { self.view.hotReloadView(id: "to_images") as? UIButton }
-  private var toButtons: [UIButton?] { [views, buttons, labels, images] }
+  private var table: UIButton? { self.view.hotReloadView(id: "to_table") as? UIButton }
+  private var toButtons: [UIButton?] { [views, buttons, labels, images, table] }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -39,6 +40,8 @@ final class MainViewController: UIViewController {
       Router.showButtons(from: self)
     case images:
       Router.showImages(from: self)
+    case table:
+      Router.showTable(from: self)
     default:
       break
     }

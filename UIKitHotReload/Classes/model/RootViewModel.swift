@@ -10,9 +10,10 @@ import UIKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-public struct RootViewModel: Decodable,
-                             ViewModelProtocol, StackViewModelProtocol,
-                             LabelModelProtocol, ImageViewModelProtocol, ButtonModelProtocol {
+public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtocol,
+                             LabelModelProtocol, ImageViewModelProtocol, ButtonModelProtocol,
+                             TableViewModelProtocol, TableViewCellModelProtocol {
+
   private enum CodingKeys: String, CodingKey {
     case
       //ViewModelProtocol
@@ -60,7 +61,12 @@ public struct RootViewModel: Decodable,
       _imageEdgeInsets = "image_edge_insets",
       _titleEdgeInsets = "title_edge_insets",
       _backgroundImageInfo = "background_image",
-      _imageContentMode = "image_content_mode"
+      _imageContentMode = "image_content_mode",
+      //TableViewModelProtocol
+      cells = "cells",
+      //TableViewCellModelProtocol
+      _reuseIdentifier = "reuse_identifier",
+      _reuseId = "reuse_id"
   }
 
   public var snapshot: Bool?
@@ -100,7 +106,7 @@ public struct RootViewModel: Decodable,
   public var _contentInsets: EdgeInsetsModel?
   public var _contentOffset: CGPoint?
 
-  //LabelViewModelProtocol, ButtonModelProtocol
+  //LabelViewModelProtocol
   public var text: String?
   public var _textColor: [CGFloat]?
   public var _textAlignment: String?
@@ -116,6 +122,13 @@ public struct RootViewModel: Decodable,
   public var _titleEdgeInsets: EdgeInsetsModel?
   public var _backgroundImageInfo: [String: String]?
   public var _imageContentMode: String?
+
+  //TableViewModelProtocol
+  public var cells: [Self]?
+
+  //TableViewCellModelProtocol
+  public var _reuseIdentifier: String?
+  public var _reuseId: String?
 
   public var view: UIView? {
     if let label = viewModelType?.view as? UILabel {
@@ -134,8 +147,14 @@ public struct RootViewModel: Decodable,
       setupView(scrollView, snapshot: snapshot)
       setupScrollView(scrollView)
       return scrollView
+    } else if let tableView = viewModelType?.view as? UITableView {
+      setupView(tableView, snapshot: snapshot)
+      setupTableView(tableView)
+      return tableView
     } else if let view = viewModelType?.view {
-      setupView(view, snapshot: snapshot)
+      if reuseIdentifier == nil {
+        setupView(view, snapshot: snapshot)
+      }
       return view
     } else {
       return nil

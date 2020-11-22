@@ -27,9 +27,10 @@
 		B679B3042563B39D003A16EC /* views.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B3032563B39D003A16EC /* views.json */; };
 		B68B98602568122D005CE8FE /* sub_icon.json in Resources */ = {isa = PBXBuildFile; fileRef = B68B985B2568122D005CE8FE /* sub_icon.json */; };
 		B68B98612568122D005CE8FE /* shadow_view.json in Resources */ = {isa = PBXBuildFile; fileRef = B68B985C2568122D005CE8FE /* shadow_view.json */; };
-		B68B98622568122D005CE8FE /* circle_image.json in Resources */ = {isa = PBXBuildFile; fileRef = B68B985D2568122D005CE8FE /* circle_image.json */; };
 		B68B98632568122D005CE8FE /* sub_labels.json in Resources */ = {isa = PBXBuildFile; fileRef = B68B985E2568122D005CE8FE /* sub_labels.json */; };
 		B68B98642568122D005CE8FE /* view_in_view.json in Resources */ = {isa = PBXBuildFile; fileRef = B68B985F2568122D005CE8FE /* view_in_view.json */; };
+		B68B98812568A1EE005CE8FE /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68B98802568A1EE005CE8FE /* TableViewController.swift */; };
+		B68B98CE2568A7A1005CE8FE /* table.json in Resources */ = {isa = PBXBuildFile; fileRef = B68B98CD2568A7A1005CE8FE /* table.json */; };
 		B6EDB44B2565307C008F0ADB /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EDB44A2565307C008F0ADB /* ImagesViewController.swift */; };
 		B6EDB45125653201008F0ADB /* images.json in Resources */ = {isa = PBXBuildFile; fileRef = B6EDB45025653201008F0ADB /* images.json */; };
 /* End PBXBuildFile section */
@@ -75,9 +76,10 @@
 		B679B3032563B39D003A16EC /* views.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = views.json; sourceTree = "<group>"; };
 		B68B985B2568122D005CE8FE /* sub_icon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sub_icon.json; sourceTree = "<group>"; };
 		B68B985C2568122D005CE8FE /* shadow_view.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shadow_view.json; sourceTree = "<group>"; };
-		B68B985D2568122D005CE8FE /* circle_image.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = circle_image.json; sourceTree = "<group>"; };
 		B68B985E2568122D005CE8FE /* sub_labels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sub_labels.json; sourceTree = "<group>"; };
 		B68B985F2568122D005CE8FE /* view_in_view.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = view_in_view.json; sourceTree = "<group>"; };
+		B68B98802568A1EE005CE8FE /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		B68B98CD2568A7A1005CE8FE /* table.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = table.json; sourceTree = "<group>"; };
 		B6EDB44A2565307C008F0ADB /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		B6EDB45025653201008F0ADB /* images.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = images.json; sourceTree = "<group>"; };
 		F8C136D317DCB6B7941BF560 /* UIKitHotReload.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = UIKitHotReload.podspec; path = ../UIKitHotReload.podspec; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				B679B2922562BC1A003A16EC /* labels.json */,
 				B679B3032563B39D003A16EC /* views.json */,
 				B6EDB45025653201008F0ADB /* images.json */,
+				B68B98CD2568A7A1005CE8FE /* table.json */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				B679B28E2562BBBE003A16EC /* LabelsViewController.swift */,
 				B679B2FF2563B236003A16EC /* ViewsViewController.swift */,
 				B6EDB44A2565307C008F0ADB /* ImagesViewController.swift */,
+				B68B98802568A1EE005CE8FE /* TableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -233,7 +237,6 @@
 		B68B985425681194005CE8FE /* components */ = {
 			isa = PBXGroup;
 			children = (
-				B68B985D2568122D005CE8FE /* circle_image.json */,
 				B68B985C2568122D005CE8FE /* shadow_view.json */,
 				B68B985B2568122D005CE8FE /* sub_icon.json */,
 				B68B985E2568122D005CE8FE /* sub_labels.json */,
@@ -341,8 +344,8 @@
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				B68B98612568122D005CE8FE /* shadow_view.json in Resources */,
 				B68B98602568122D005CE8FE /* sub_icon.json in Resources */,
-				B68B98622568122D005CE8FE /* circle_image.json in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				B68B98CE2568A7A1005CE8FE /* table.json in Resources */,
 				B679B16425613CDF003A16EC /* buttons.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +476,7 @@
 				B679B28F2562BBBE003A16EC /* LabelsViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				B6EDB44B2565307C008F0ADB /* ImagesViewController.swift in Sources */,
+				B68B98812568A1EE005CE8FE /* TableViewController.swift in Sources */,
 				B679B2802562B6BC003A16EC /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
