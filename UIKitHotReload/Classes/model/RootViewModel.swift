@@ -32,7 +32,7 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       _huggings = "huggings",
       _compressionResistances = "compression_resistances",
       _contentMode = "content_mode",
-      _subviewProtocols = "subviews",
+      _subViewModelProtocols = "subviews",
       _isSafeArea = "is_safe_area", _safeArea = "safe_area",
       _layout = "layout",
       _clipToBounds = "clip_to_bounds",
@@ -74,8 +74,6 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       _selectedBackgroundColor = "selected_background_color"
   }
 
-  public var snapshot: Bool?
-
   //ViewModelProtocol
   public var className: String?
   public var id: String?
@@ -92,7 +90,7 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var _huggings: [HuggingModel]?
   public var _compressionResistances: [CompressionResistanceModel]?
   public var _contentMode: String?
-  public var _subviewProtocols: [Self]?
+  public var _subViewModelProtocols: [Self]?
   public var _isSafeArea, _safeArea: Bool?
   public var _tintColor: [CGFloat]?
   public var _layout: LayoutModel?
@@ -140,34 +138,43 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var _reuseId: String?
   public var _selectedBackgroundColor: [CGFloat]?
 
-  public var view: UIView? {
-    if let label = viewModelType?.view as? UILabel {
-      setupView(label, snapshot: snapshot)
-      setupLabel(label)
-      return label
-    } else if let button = viewModelType?.view as? UIButton {
-      setupView(button, snapshot: snapshot)
-      setupButton(button)
-      return button
-    } else if let imageView = viewModelType?.view as? UIImageView {
-      setupView(imageView, snapshot: snapshot)
-      setupImageView(imageView)
-      return imageView
-    } else if let tableView = viewModelType?.view as? UITableView {
-      setupView(tableView, snapshot: snapshot)
-      setupTableView(tableView)
-      return tableView
-    } else if let scrollView = viewModelType?.view as? UIScrollView {
-      setupView(scrollView, snapshot: snapshot)
-      setupScrollView(scrollView)
-      return scrollView
-    } else if let view = viewModelType?.view {
-      if reuseIdentifier == nil {
-        setupView(view, snapshot: snapshot)
+  public var view: UIView? { viewModelType?.view }
+
+  public func setupRootView(superview: UIView, snapshot: Bool? = nil) {
+    guard let view = view else { return }
+    if superview is UIScrollView {
+      if let stackView = superview.subviews.first(where: {$0 is UIStackView}) as? UIStackView {
+        if id != nil, let subview = stackView.arrangedSubviews.first(where: { $0.accessibilityIdentifier == id }) {
+          stackView.removeArrangedSubview(subview)
+        }
+        stackView.addArrangedSubview(view)
+      } else {
+        print("setupRootView: subview of scrollview have to equal stackview")
+        return
       }
-      return view
+      setupView(view, isSuperViewStack: true, snapshot: snapshot)
     } else {
-      return nil
+      if id != nil {
+        superview.subviews.first{ $0.accessibilityIdentifier == id }?.removeFromSuperview()
+      }
+      superview.addSubview(view)
+      setupView(view, isSuperViewStack: false, snapshot: snapshot)
     }
+
+    if let label = view as? UILabel {
+      setupLabel(label)
+    } else if let button = view as? UIButton {
+      setupButton(button)
+    } else if let imageView = view as? UIImageView {
+      setupImageView(imageView)
+    } else if let tableView = view as? UITableView {
+      setupTableView(tableView)
+    } else if let scrollView = view as? UIScrollView {
+      setupScrollView(scrollView)
+    }
+
+    _subViewModelProtocols?.forEach({ subViewModel in
+      subViewModel.setupRootView(superview: view, snapshot: snapshot)
+    })
   }
 }

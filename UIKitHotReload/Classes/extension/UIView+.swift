@@ -39,15 +39,12 @@ public extension UIView {
 
       do {
         let viewModel = try Firestore.Decoder().decode(RootViewModel.self, from: data)
-        guard let view = viewModel.view else {
-          let error = NSError.init(domain: "no view", code: 110, userInfo: nil)
+        guard viewModel.view != nil else {
+          let error = NSError.init(domain: "no rootView", code: 110, userInfo: nil)
           completion?(.failure(error))
           return
         }
-
-        self.subviews.filter { $0.accessibilityIdentifier == view.accessibilityIdentifier }.first?.removeFromSuperview()
-        self.addSubview(view)
-        view.edgesEqualToSuperView(isSafeArea: viewModel.isSafeArea)
+        viewModel.setupRootView(superview: self, snapshot: true)
         completion?(.success(()))
       } catch(let error) {
         completion?(.failure(error))

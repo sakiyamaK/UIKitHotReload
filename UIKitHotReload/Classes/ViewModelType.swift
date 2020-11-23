@@ -20,8 +20,6 @@ public enum ViewModelType: String {
     switch self {
     case .uistackview, .stackview, .stack:
       let scrollView = UIScrollView()
-      let stackView = UIStackView()
-      scrollView.addSubview(stackView)
       return scrollView
     case .uilabel, .label:
       return UILabel()

@@ -44,7 +44,6 @@ public extension StackViewModelProtocol {
   var contentOffset: CGPoint { _contentOffset ?? .zero }
 
   func setupScrollView(_ scrollView: UIScrollView) {
-    guard let stackView = scrollView.subviews.first as? UIStackView else { return }
     scrollView.isScrollEnabled = isScrollEnabled
     scrollView.isPagingEnabled = isPagingEnabled
     scrollView.showsVerticalScrollIndicator = showsVerticalScrollIndicator
@@ -52,7 +51,18 @@ public extension StackViewModelProtocol {
     scrollView.contentInset = contentInsets
     scrollView.contentOffset = contentOffset
 
-    setupStackView(stackView)
+    setupStackView(scrollView: scrollView)
+  }
+
+  private func setupStackView(scrollView: UIScrollView) {
+    let stackView = UIStackView()
+    scrollView.addSubview(stackView)
+
+    stackView.alignment = alignment
+    stackView.distribution = distribution
+    stackView.axis = axis
+    stackView.spacing = spacing
+
     stackView.edgesEqual(to: scrollView.contentLayoutGuide, margin: layout.margin)
     if !scrollView.isScrollEnabled {
       stackView.widthEqual(to: scrollView.frameLayoutGuide)
@@ -65,12 +75,5 @@ public extension StackViewModelProtocol {
     } else {
       stackView.heightEqual(to: scrollView.frameLayoutGuide)
     }
-  }
-
-  private func setupStackView(_ stackView: UIStackView) {
-    stackView.alignment = alignment
-    stackView.distribution = distribution
-    stackView.axis = axis
-    stackView.spacing = spacing
   }
 }

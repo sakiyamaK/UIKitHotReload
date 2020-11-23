@@ -34,9 +34,9 @@ public protocol ViewModelProtocol {
   var _tintColor: [CGFloat]?  { get }
   var _clipToBounds: Bool? { get }
   var _clip: Bool? { get }
-  var _subviewProtocols: [Self]? { get }
+  var _subViewModelProtocols: [Self]? { get }
 
-  func setupView(_ view: UIView, snapshot: Bool?)
+  func setupView(_ view: UIView, isSuperViewStack: Bool, snapshot: Bool?)
 }
 
 public extension ViewModelProtocol {
@@ -52,7 +52,7 @@ public extension ViewModelProtocol {
   var tintColor: UIColor { _tintColor?.uiColor ?? UIColor.clear }
   var clipToBounds: Bool { [_clipToBounds, _clip].first{$0 != nil} as? Bool ?? false }
 
-  func setupView(_ view: UIView, snapshot: Bool? = nil) {
+  func setupView(_ view: UIView, isSuperViewStack: Bool = false, snapshot: Bool? = nil) {
 
     view.accessibilityIdentifier = id
     view.backgroundColor = backgroundColor
@@ -109,28 +109,20 @@ public extension ViewModelProtocol {
       view.heightEqual(constant: _height.value, priority: _height.priority)
     }
 
-    _subviewProtocols?.filter({ $0.view != nil }).forEach({ (viewModel) in
-      let subview = viewModel.view!
-      if view is UIScrollView {
-        (view.subviews.first as! UIStackView).addArrangedSubview(subview)
-      } else {
-        view.addSubview(subview)
-        if let _centerX = viewModel.layout.center?.x {
-          subview.centerXEqualToSuperView(isSafeArea: viewModel.isSafeArea, constant: _centerX.value, priority: _centerX.priority)
-        }
-        if let _centerY = viewModel.layout.center?.y {
-          subview.centerYEqualToSuperView(isSafeArea: viewModel.isSafeArea, constant: _centerY.value, priority: _centerY.priority)
-        }
-        if let _position = viewModel.layout.position {
-          subview.positionSetToSuperView(isSafeArea: viewModel.isSafeArea, position: _position)
-        }
-        if let _margin = viewModel.layout.margin {
-          subview.edgesEqualToSuperView(isSafeArea: viewModel.isSafeArea, margin: _margin)
-        }
-        if !viewModel.layout.isSetEdge {
-          subview.edgesEqualToSuperView(isSafeArea: viewModel.isSafeArea)
-        }
-      }
-    })
+    if let _centerX = layout.center?.x {
+      view.centerXEqualToSuperView(isSafeArea: isSafeArea, constant: _centerX.value, priority: _centerX.priority)
+    }
+    if let _centerY = layout.center?.y {
+      view.centerYEqualToSuperView(isSafeArea: isSafeArea, constant: _centerY.value, priority: _centerY.priority)
+    }
+    if let _position = layout.position {
+      view.positionSetToSuperView(isSafeArea: isSafeArea, position: _position)
+    }
+    if let _margin = layout.margin {
+      view.edgesEqualToSuperView(isSafeArea: isSafeArea, margin: _margin)
+    }
+    if !isSuperViewStack && !layout.isSetEdge {
+      view.edgesEqualToSuperView(isSafeArea: isSafeArea)
+    }
   }
 }
