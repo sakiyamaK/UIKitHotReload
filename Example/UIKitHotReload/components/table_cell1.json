@@ -1,18 +1,49 @@
 {
-  "class": "stack",
-  "axis": "v",
-  "is_scroll_enabled": false,
+  "class": "view",
   "subviews": [
     {
-      "class": "label",
-      "id": "test_cell_label",
-      "text_alignment": "left"
-    },
-    {
-      "class": "label",
-      "text": "右です",
-      "id": "test_cell_label2",
-      "text_alignment": "center"
+      "class": "stack",
+      "axis": "v",
+      "is_scroll_enabled": false,
+      "subviews": [
+        {
+          "class": "label",
+          "id": "test_cell_label1",
+          "text_alignment": "left",
+          "huggings": [
+            {
+              "axis": "v",
+              "p": 1000
+            }
+          ]
+        },
+        {
+          "class": "label",
+          "text": "右です",
+          "id": "test_cell_label2",
+          "text_alignment": "center",
+          "huggings": [
+            {
+              "axis": "v",
+              "p": 1000
+            }
+          ]
+        }
+      ],
+      "layout": {
+        "margin": {
+          "top": {
+            "v": 8
+          },
+          "left": {
+            "v": 16
+          },
+          "bottom": {
+            "v": 16,
+            "p": 750
+          }
+        }
+      }
     }
   ]
 }

@@ -36,7 +36,7 @@ public protocol ViewModelProtocol {
   var _clip: Bool? { get }
   var _subviewProtocols: [Self]? { get }
 
-  func setupView(_ view: UIView, backgroundColorClear: Bool, snapshot: Bool?)
+  func setupView(_ view: UIView, snapshot: Bool?)
 }
 
 public extension ViewModelProtocol {
@@ -52,11 +52,10 @@ public extension ViewModelProtocol {
   var tintColor: UIColor { _tintColor?.uiColor ?? UIColor.clear }
   var clipToBounds: Bool { [_clipToBounds, _clip].first{$0 != nil} as? Bool ?? false }
 
-//  isSetBackgroundColorはreuse系のViewの仕様上、必要
-  func setupView(_ view: UIView, backgroundColorClear: Bool = false, snapshot: Bool? = nil) {
+  func setupView(_ view: UIView, snapshot: Bool? = nil) {
 
     view.accessibilityIdentifier = id
-    view.backgroundColor = backgroundColorClear ? .clear : backgroundColor
+    view.backgroundColor = backgroundColor
     view.contentMode = contentMode
     view.alpha = alpha
     view.isHidden = isHidden
