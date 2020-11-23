@@ -11,12 +11,20 @@ import FirebaseFirestoreSwift
 
 private let db = Firestore.firestore()
 
-public extension UITableViewCell {
-  convenience init(style: UITableViewCell.CellStyle,
-                   dirName: String, jsonFileName: String, reuseIdentifier: String,
-                   completion: ((Result<Void, Error>) -> Void)? = nil) {
-    self.init(style: style, reuseIdentifier: reuseIdentifier)
-    self.loadTableViewCellHotReload(dirName: "views", jsonFileName: "table", reuseIdentifier: reuseIdentifier, completion: completion)
+extension UITableViewCell {
+  static func initTableViewCellHotReload<T: UITableViewCell>(type: T.Type, style: UITableViewCell.CellStyle,
+                            dirName: String, jsonFileName: String, reuseIdentifier: String,
+                            completion: ((Result<T, Error>) -> Void)? = nil) -> T {
+    let cell = type.init(style: style, reuseIdentifier: reuseIdentifier)
+    cell.loadTableViewCellHotReload(dirName: "views", jsonFileName: "table", reuseIdentifier: reuseIdentifier, completion: {result in
+      switch result{
+      case .failure(let error):
+        completion?(.failure(error))
+      case .success():
+        completion?(.success(cell))
+      }
+    })
+    return cell
   }
 }
 

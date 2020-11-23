@@ -19,7 +19,9 @@ final class TableViewCellHotReload1: UITableViewCell {
   }
 
   func configure(name: String) {
-    label?.text = name
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {[weak self] in
+      self?.label?.text = name
+    }
   }
 }
 
@@ -34,6 +36,12 @@ final class TableViewCellHotReload2: UITableViewCell {
 
   func configure(name: String) {
     label?.text = name
+  }
+}
+
+final class TableViewHeader: UITableViewHeaderFooterView {
+  override func prepareForReuse() {
+    super.prepareForReuse()
   }
 }
 
@@ -53,6 +61,7 @@ final class TableViewController: UIViewController {
       default:
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
+        self.tableView?.register(TableViewHeader.self, forHeaderFooterViewReuseIdentifier: "header")
       }
     }
   }
@@ -70,39 +79,32 @@ extension TableViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let name = dataSources[indexPath.row]
     if indexPath.row%2 == 0 {
-      if let cell = tableView.dequeueReusableCell(withIdentifier: "test_cell1") as? TableViewCellHotReload1 {
-        cell.configure(name: name)
-        return cell
-      } else {
-        let cell = TableViewCellHotReload1(style: .default, dirName: "views", jsonFileName: "table", reuseIdentifier: "test_cell1") { result in
+      let cell = tableView.dequeueOrRegisterCellHotReload(type: TableViewCellHotReload1.self, style: .default, dirName: "views", jsonFileName: "table", reuseIdentifier: "test_cell1") { result in
           switch result {
           case .failure(let error):
             print(error.localizedDescription)
-          case .success():
-            tableView.reloadData()
-            break
+          case .success(let (cell, isReload)):
+            print("\(indexPath.row): \(name), \(isReload)")
+            cell.configure(name: name)
+            if isReload {
+              tableView.reloadData()
+            }
           }
         }
-        cell.configure(name: name)
         return cell
-      }
     } else {
-      if let cell = tableView.dequeueReusableCell(withIdentifier: "test_cell2") as? TableViewCellHotReload2 {
-        cell.configure(name: name)
-        return cell
-      } else {
-        let cell = TableViewCellHotReload2(style: .default, dirName: "views", jsonFileName: "table", reuseIdentifier: "test_cell2") { result in
-          switch result {
-          case .failure(let error):
-            print(error.localizedDescription)
-          case .success():
+      let cell = tableView.dequeueOrRegisterCellHotReload(type: TableViewCellHotReload2.self, style: .default, dirName: "views", jsonFileName: "table", reuseIdentifier: "test_cell2") { result in
+        switch result {
+        case .failure(let error):
+          print(error.localizedDescription)
+        case .success(let (cell, isReload)):
+          cell.configure(name: name)
+          if isReload {
             tableView.reloadData()
-            break
           }
         }
-        cell.configure(name: name)
-        return cell
       }
+      return cell
     }
   }
 }

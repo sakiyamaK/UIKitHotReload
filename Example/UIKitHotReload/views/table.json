@@ -2,7 +2,7 @@
   "class": "tableview",
   "id": "table_view",
   "separator_style": "none",
-  "indicator_style": "white",
+  "indicator_style": "black",
   "background_color": [
     1,
     1,
@@ -10,19 +10,13 @@
   ],
   "cells": [
     {
-      "class": "view",
+      "class": "label",
+      "id": "test_cell_label",
       "reuse_id": "test_cell1",
-      "id": "test_cell1",
       "selected_background_color": [
         1,
         0,
         0
-      ],
-      "subviews": [
-        {
-          "class": "view",
-          "json_file_path": "components/table_cell1"
-        }
       ],
       "layout": {
         "size": {
@@ -42,9 +36,9 @@
     },
     {
       "class": "label",
-      "reuse_id": "test_cell2",
       "id": "test_cell_label",
-      "text_alignment": "left",
+      "reuse_id": "test_cell2",
+      "text_alignment": "center",
       "selected_background_color": [
         0,
         1,
