@@ -39,6 +39,11 @@
           "class": "button",
           "id": "to_table",
           "text": "UITableView Sample"
+        },
+        {
+          "class": "button",
+          "id": "to_twitter",
+          "text": "Twitter Clone"
         }
       ]
     }

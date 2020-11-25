@@ -1,0 +1,9 @@
+{
+  "class": "tableview",
+  "id": "table_view",
+  "background_color": [
+    1,
+    1,
+    1
+  ]
+}

@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		469CD180970DFC44A0D83A13 /* Pods_UIKitHotReload_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223049BD18DB41E1740F69D8 /* Pods_UIKitHotReload_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* HomeViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		ACBCE87FED0A6A8C1E74AE81 /* Pods_UIKitHotReload_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066FABA8FE28A4440EF7C605 /* Pods_UIKitHotReload_Tests.framework */; };
+		B628D729256EA781008E2353 /* TwitterTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B628D728256EA781008E2353 /* TwitterTimelineViewController.swift */; };
+		B628D730256EA90D008E2353 /* twitter_timeline_cell.json in Resources */ = {isa = PBXBuildFile; fileRef = B628D72F256EA90D008E2353 /* twitter_timeline_cell.json */; };
+		B628D738256EADBB008E2353 /* twitter_timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = B628D737256EADBB008E2353 /* twitter_timeline.json */; };
+		B628D73D256EAE91008E2353 /* twitter_timelines.json in Resources */ = {isa = PBXBuildFile; fileRef = B628D73C256EAE91008E2353 /* twitter_timelines.json */; };
 		B63A8F4F256ACF000049234E /* table_cell1.json in Resources */ = {isa = PBXBuildFile; fileRef = B63A8F4E256ACF000049234E /* table_cell1.json */; };
-		B679B106255ED7A4003A16EC /* home.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B105255ED7A4003A16EC /* home.json */; };
 		B679B10C255ED7BD003A16EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B679B10B255ED7BD003A16EC /* GoogleService-Info.plist */; };
 		B679B1412560E7A6003A16EC /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B1402560E7A6003A16EC /* ButtonsViewController.swift */; };
 		B679B16425613CDF003A16EC /* buttons.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B16325613CDF003A16EC /* buttons.json */; };
@@ -55,7 +57,6 @@
 		607FACD01AFB9204008FA782 /* UIKitHotReload_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitHotReload_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* UIKitHotReload_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIKitHotReload_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,8 +65,11 @@
 		7B8C6562F27840E6A58BB1E9 /* Pods-UIKitHotReload_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitHotReload_Example.release.xcconfig"; path = "Target Support Files/Pods-UIKitHotReload_Example/Pods-UIKitHotReload_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8714AB63EBFE3E28AEDEDFF1 /* Pods-UIKitHotReload_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitHotReload_Tests.debug.xcconfig"; path = "Target Support Files/Pods-UIKitHotReload_Tests/Pods-UIKitHotReload_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B1367409C27C475F951267C /* Pods-UIKitHotReload_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitHotReload_Tests.release.xcconfig"; path = "Target Support Files/Pods-UIKitHotReload_Tests/Pods-UIKitHotReload_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B628D728256EA781008E2353 /* TwitterTimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterTimelineViewController.swift; sourceTree = "<group>"; };
+		B628D72F256EA90D008E2353 /* twitter_timeline_cell.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = twitter_timeline_cell.json; sourceTree = "<group>"; };
+		B628D737256EADBB008E2353 /* twitter_timeline.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = twitter_timeline.json; sourceTree = "<group>"; };
+		B628D73C256EAE91008E2353 /* twitter_timelines.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = twitter_timelines.json; sourceTree = "<group>"; };
 		B63A8F4E256ACF000049234E /* table_cell1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = table_cell1.json; sourceTree = "<group>"; };
-		B679B105255ED7A4003A16EC /* home.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home.json; sourceTree = "<group>"; };
 		B679B10B255ED7BD003A16EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B679B1402560E7A6003A16EC /* ButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
 		B679B16325613CDF003A16EC /* buttons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = buttons.json; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 		607FACD21AFB9204008FA782 /* Example for UIKitHotReload */ = {
 			isa = PBXGroup;
 			children = (
+				B628D73B256EAE73008E2353 /* DemoData */,
 				B68B985425681194005CE8FE /* components */,
 				B679B2872562B9BE003A16EC /* Router */,
 				B679B13E2560E78D003A16EC /* ViewController */,
@@ -200,16 +205,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B628D72C256EA7A7008E2353 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				B628D728256EA781008E2353 /* TwitterTimelineViewController.swift */,
+			);
+			path = Twitter;
+			sourceTree = "<group>";
+		};
+		B628D73B256EAE73008E2353 /* DemoData */ = {
+			isa = PBXGroup;
+			children = (
+				B628D73C256EAE91008E2353 /* twitter_timelines.json */,
+			);
+			path = DemoData;
+			sourceTree = "<group>";
+		};
 		B679B104255ED7A4003A16EC /* views */ = {
 			isa = PBXGroup;
 			children = (
-				B679B105255ED7A4003A16EC /* home.json */,
 				B679B16325613CDF003A16EC /* buttons.json */,
 				B679B2832562B6EB003A16EC /* main.json */,
 				B679B2922562BC1A003A16EC /* labels.json */,
 				B679B3032563B39D003A16EC /* views.json */,
 				B6EDB45025653201008F0ADB /* images.json */,
 				B68B98CD2568A7A1005CE8FE /* table.json */,
+				B628D737256EADBB008E2353 /* twitter_timeline.json */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -217,7 +238,7 @@
 		B679B13E2560E78D003A16EC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				607FACD71AFB9204008FA782 /* HomeViewController.swift */,
+				B628D72C256EA7A7008E2353 /* Twitter */,
 				B679B1402560E7A6003A16EC /* ButtonsViewController.swift */,
 				B679B27F2562B6BC003A16EC /* MainViewController.swift */,
 				B679B28E2562BBBE003A16EC /* LabelsViewController.swift */,
@@ -244,6 +265,7 @@
 				B68B985E2568122D005CE8FE /* sub_labels.json */,
 				B68B985F2568122D005CE8FE /* view_in_view.json */,
 				B63A8F4E256ACF000049234E /* table_cell1.json */,
+				B628D72F256EA90D008E2353 /* twitter_timeline_cell.json */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -341,11 +363,13 @@
 				B68B98632568122D005CE8FE /* sub_labels.json in Resources */,
 				B679B2842562B6EB003A16EC /* main.json in Resources */,
 				B63A8F4F256ACF000049234E /* table_cell1.json in Resources */,
+				B628D73D256EAE91008E2353 /* twitter_timelines.json in Resources */,
 				B6EDB45125653201008F0ADB /* images.json in Resources */,
-				B679B106255ED7A4003A16EC /* home.json in Resources */,
+				B628D738256EADBB008E2353 /* twitter_timeline.json in Resources */,
 				B679B10C255ED7BD003A16EC /* GoogleService-Info.plist in Resources */,
 				B679B2932562BC1A003A16EC /* labels.json in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				B628D730256EA90D008E2353 /* twitter_timeline_cell.json in Resources */,
 				B68B98612568122D005CE8FE /* shadow_view.json in Resources */,
 				B68B98602568122D005CE8FE /* sub_icon.json in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -475,7 +499,7 @@
 			files = (
 				B679B1412560E7A6003A16EC /* ButtonsViewController.swift in Sources */,
 				B679B3002563B236003A16EC /* ViewsViewController.swift in Sources */,
-				607FACD81AFB9204008FA782 /* HomeViewController.swift in Sources */,
+				B628D729256EA781008E2353 /* TwitterTimelineViewController.swift in Sources */,
 				B679B28B2562BA12003A16EC /* Router.swift in Sources */,
 				B679B28F2562BBBE003A16EC /* LabelsViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

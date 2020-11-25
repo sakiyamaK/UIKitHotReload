@@ -1,0 +1,29 @@
+{
+  "class": "view",
+  "subviews": [
+    {
+      "class": "label",
+      "id": "test_cell_label1",
+      "text": "なんでええええ",
+      "background_color": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "layout": {
+        "size": {
+          "height": {
+            "v": 100,
+            "p": 750
+          }
+        },
+        "margin": {
+          "left": {
+            "v": 32
+          }
+        }
+      }
+    }
+  ]
+}
