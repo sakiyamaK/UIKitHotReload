@@ -8,19 +8,12 @@
 
 import UIKit
 
-public protocol LabelModelProtocol: ViewModelProtocol {
-  var text: String? { get }
-  var _textColor: [CGFloat]?  { get }
-  var _textAlignment: String? { get }
-  var _fontInfo: FontInfoModel? { get }
+public protocol LabelModelProtocol: ViewModelProtocol, TextModelProtocol {
   var _numberOfLines: Int? { get }
   func setupLabel(_ label: UILabel)
 }
 
 public extension LabelModelProtocol {
-  var textColor: UIColor { _textColor?.uiColor ?? UIColor.darkText }
-  var textAlignment: NSTextAlignment { _textAlignment?.textAlignment ?? .left }
-  var font: UIFont? {  _fontInfo?.font }
   var numberOfLines: Int { _numberOfLines ?? 1 }
 
   func setupLabel(_ label: UILabel) {

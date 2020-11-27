@@ -42,6 +42,11 @@
         },
         {
           "class": "button",
+          "id": "to_text_field",
+          "text": "TextField Sample"
+        },
+        {
+          "class": "button",
           "id": "to_twitter",
           "text": "Twitter Clone"
         }

@@ -15,6 +15,8 @@ public enum ViewModelType: String {
   case uibutton, button
   case uiview, view
   case uitableview, tableview
+  case uitextview, textview
+  case uitextfield, textfield
 
   public var view: UIView? {
     switch self {
@@ -27,6 +29,10 @@ public enum ViewModelType: String {
       return UIImageView()
     case .uibutton, .button:
       return UIButton()
+    case .uitextfield, .textfield:
+      return UITextField()
+    case .uitextview, .textview:
+      return UITextView()
     case .uitableview, .tableview:
       return UITableView()
     default:

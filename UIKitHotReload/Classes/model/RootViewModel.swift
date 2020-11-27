@@ -12,7 +12,8 @@ import FirebaseFirestoreSwift
 
 public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtocol,
                              LabelModelProtocol, ImageViewModelProtocol, ButtonModelProtocol,
-                             TableViewModelProtocol, TableViewCellModelProtocol {
+                             TableViewModelProtocol, TableViewCellModelProtocol,
+                             TextFieldModelProtocol {
 
   private enum CodingKeys: String, CodingKey {
     case
@@ -71,7 +72,9 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       //TableViewCellModelProtocol
       _reuseIdentifier = "reuse_identifier",
       _reuseId = "reuse_id",
-      _selectedBackgroundColor = "selected_background_color"
+      _selectedBackgroundColor = "selected_background_color",
+      //TextFieldModelProtocol
+      _borderStyle = "border_style"
   }
 
   //ViewModelProtocol
@@ -138,6 +141,9 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var _reuseId: String?
   public var _selectedBackgroundColor: [CGFloat]?
 
+  //TextFieldModelProtocol
+  public var _borderStyle: String?
+
   public var view: UIView? { viewModelType?.view }
 
   public func setupRootView(superview: UIView, snapshot: Bool? = nil) {
@@ -167,6 +173,8 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       setupButton(button)
     } else if let imageView = view as? UIImageView {
       setupImageView(imageView)
+    } else if let textField = view as? UITextField {
+      setupTextField(textField)
     } else if let tableView = view as? UITableView {
       setupTableView(tableView)
     } else if let scrollView = view as? UIScrollView {

@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 public protocol TableViewModelProtocol: ViewModelProtocol {
   associatedtype TableViewCellModel: TableViewCellModelProtocol
   var cells: [TableViewCellModel]? { get }

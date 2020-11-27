@@ -35,6 +35,11 @@ final class Router {
     show(from: from, to: to, animated: animated)
   }
 
+  static func showTextField(from: UIViewController, animated: Bool = true) {
+    let to = TextFieldViewController()
+    show(from: from, to: to, animated: animated)
+  }
+
   static func showTwitter(from: UIViewController, animated: Bool = true) {
     let to = TwitterTimelineViewController()
     show(from: from, to: to, animated: animated)

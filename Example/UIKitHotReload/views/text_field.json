@@ -1,0 +1,33 @@
+{
+  "class": "view",
+  "background_color": [
+    1,
+    1,
+    1
+  ],
+  "subviews": [
+    {
+      "class": "textfield",
+      "safe_area": true,
+      "id": "text_field",
+      "layout": {
+        "size": {
+          "height": {
+            "v": 30
+          }
+        },
+        "position": {
+          "top": {
+            "v": 16
+          },
+          "left": {
+            "v": 8
+          },
+          "right": {
+            "v": 8
+          }
+        }
+      }
+    }
+  ]
+}

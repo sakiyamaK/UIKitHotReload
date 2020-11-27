@@ -108,6 +108,22 @@ extension String {
     default:
       return .default
     }
+  }
+}
 
+extension String {
+  var borderStyle: UITextField.BorderStyle {
+    switch self.lowercased() {
+    case "none":
+      return .none
+    case "bezel":
+      return .bezel
+    case "line":
+      return .line
+    case "roundedrect", "rounded_rect", "rect":
+      return .roundedRect
+    default:
+      return .roundedRect
+    }
   }
 }
