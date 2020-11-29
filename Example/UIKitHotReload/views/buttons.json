@@ -1,5 +1,6 @@
 {
   "class": "view",
+  "id": "buttons",
   "background_color": [
     1,
     1,
@@ -14,11 +15,21 @@
       "alignment": "fill",
       "scroll_enabled": false,
       "spacing": 30,
-      "edge_insets": {
-        "top": 12,
-        "left": 12,
-        "right": 12,
-        "bottom": 12
+      "layout": {
+        "margin": {
+          "top": {
+            "v": 12
+          },
+          "left": {
+            "v": 12
+          },
+          "right": {
+            "v": 12
+          },
+          "bottom": {
+            "v": 12
+          }
+        }
       },
       "subviews": [
         {
@@ -32,7 +43,7 @@
           "text": "フォント変更ボタン",
           "font": {
             "name": "American Typewriter",
-            "size": 40
+            "size": 36
           }
         },
         {

@@ -1,5 +1,6 @@
 {
   "class": "view",
+  "id": "views",
   "background_color": [
     1,
     1,
@@ -23,7 +24,6 @@
       "subviews": [
         {
           "class": "stack",
-          "safe_area": false,
           "distribution": "fill",
           "alignment": "center",
           "spacing": 50,

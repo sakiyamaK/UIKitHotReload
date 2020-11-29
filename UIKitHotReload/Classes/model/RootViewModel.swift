@@ -168,12 +168,16 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
 
   public var view: UIView? { viewModelType?.view }
 
-  public func setupRootView(superview: UIView, snapshot: Bool? = nil) {
+  public func setupRootView(superview: UIView, isTop: Bool = true, snapshot: Bool? = nil) {
     guard let view = view else { return }
     if superview is UIScrollView {
       if let stackView = superview.subviews.first(where: {$0 is UIStackView}) as? UIStackView {
-        if id != nil, let subview = stackView.arrangedSubviews.first(where: { $0.accessibilityIdentifier == id }) {
-          stackView.removeArrangedSubview(subview)
+        if isTop {
+          stackView.arrangedSubviews.forEach{ stackView.removeArrangedSubview($0) }
+        } else {
+          if id != nil, let subview = stackView.arrangedSubviews.first(where: { $0.accessibilityIdentifier == id }) {
+            stackView.removeArrangedSubview(subview)
+          }
         }
         stackView.addArrangedSubview(view)
       } else {
@@ -181,7 +185,9 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
         return
       }
     } else {
-      if id != nil {
+      if isTop {
+        superview.subviews.forEach { $0.removeFromSuperview() }
+      } else if id != nil {
         superview.subviews.first{ $0.accessibilityIdentifier == id }?.removeFromSuperview()
       }
       superview.addSubview(view)
@@ -204,7 +210,7 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
     }
 
     _subViewModelProtocols?.forEach({ subViewModel in
-      subViewModel.setupRootView(superview: view, snapshot: snapshot)
+      subViewModel.setupRootView(superview: view, isTop: false, snapshot: snapshot)
     })
   }
 }
