@@ -41,7 +41,8 @@ UIKitHotReloadは[firestore/cloud firestore](https://firebase.google.com/docs/fi
 #### Installation vscode-runonsave
 
 jsonを保存すると同時にスクリプトを実行するためのアドオンをインストールします。
-[vscode-runonsave](https://github.com/emeraldwalk/vscode-runonsave)
+
+推奨アドオンは[vscode-runonsave](https://github.com/emeraldwalk/vscode-runonsave)です
 
 
 #### Setting 
@@ -88,14 +89,9 @@ import UIKitHotReload
 
 final class MainViewController: UIViewController {
 
-  private var views: UIButton? { self.view.hotReloadView(id: "to_views") as? UIButton }
-  private var buttons: UIButton? { self.view.hotReloadView(id: "to_buttons") as? UIButton }
-  private var labels: UIButton? { self.view.hotReloadView(id: "to_labels") as? UIButton }
-  private var images: UIButton? { self.view.hotReloadView(id: "to_images") as? UIButton }
-  private var table: UIButton? { self.view.hotReloadView(id: "to_table") as? UIButton }
-  private var textField: UIButton? { self.view.hotReloadView(id: "to_text_fields") as? UIButton }
-  private var twitter: UIButton? { self.view.hotReloadView(id: "to_twitter") as? UIButton }
-  private var toButtons: [UIButton?] { [views, buttons, labels, images, table, textField, twitter] }
+  private var label: UILabel? { self.view.hotReloadView(id: "id_label") as? UILabel }
+  private var button: UIButton? { self.view.hotReloadView(id: "id_button") as? UIButton }
+  private var image: UIImageView? { self.view.hotReloadView(id: "id_image") as? UIImageView }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -104,7 +100,7 @@ final class MainViewController: UIViewController {
       case .failure(let error):
         print(error.localizedDescription)
       default:
-        self.setupAction()
+        break
       }
     }
   }
@@ -133,7 +129,7 @@ final class MainViewController: UIViewController {
       "subviews": [
         {
           "class": "label",
-          "id": "label1",
+          "id": "id_label",
           "text": "Label Text",
           "font": {
             "name": "Bradley Hand",
@@ -142,12 +138,12 @@ final class MainViewController: UIViewController {
         },
         {
           "class": "button",
-          "id": "to_views",
+          "id": "id_button",
           "text": "Button Title"
         },
         {
           "class": "imageview",
-          "id": "image",
+          "id": "id_image",
           "image": {
             "name": "image_file_name"
           },
@@ -161,13 +157,12 @@ final class MainViewController: UIViewController {
               }
             }
           }
-        },
+        }
       ]
     }
   ]
 }
 ```
-
 
 ## Author
 
