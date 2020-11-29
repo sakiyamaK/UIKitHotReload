@@ -5,32 +5,47 @@
 [![License](https://img.shields.io/cocoapods/l/UIKitHotReload.svg?style=flat)](https://cocoapods.org/pods/UIKitHotReload)
 [![Platform](https://img.shields.io/cocoapods/p/UIKitHotReload.svg?style=flat)](https://cocoapods.org/pods/UIKitHotReload)
 
-## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+## Contents
 
-## Requirements
+- [Installation](#Installation)
+- [HotReload](#HotReload)
+- [Usage](#Usage)
+
+UIKitHotReloadはjsonファイルでiOSアプリのレイアウトを組むライブラリです。
+
+ホットリロード機能を備えており、ビルド後や実機転送後でもXcodeを使うことなくリアルタイムにレイアウトが反映されます。
+
+Releaseビルドの場合は内部にBundleされたjsonファイルを読み込むため、ホットリロードは機能しません。
 
 ## Installation
 
-UIKitHotReload is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### CocoaPods
+
+UIKitHotReload is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'UIKitHotReload'
 ```
 
-## setting realtime update
+## HotReload
 
-### vscode
+UIKitHotReloadは[firestore/cloud firestore](https://firebase.google.com/docs/firestore?hl=ja)のリアルタイムアップデートの機能を利用することでホットリロードを実現しています。
 
-#### run on save
-```
-https://github.com/emeraldwalk/vscode-runonsave
-```
+[Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code/)などのアドオン機能を使ってjsonが更新される度にfirestoreにuploadするスクリプトを実行させます。
 
-#### setting 
-`path/to/project/.vscode/settings.json`に記載
+推奨する設定方法を記載します。
+
+### Visual Studio Code
+
+#### Installation vscode-runonsave
+
+jsonを保存すると同時にスクリプトを実行するためのアドオンをインストールします。
+[vscode-runonsave](https://github.com/emeraldwalk/vscode-runonsave)
+
+
+#### Setting 
+`path/to/project/.vscode/settings.json`に以下の設定を追記します。
 
 ```sh
 {
@@ -44,19 +59,115 @@ https://github.com/emeraldwalk/vscode-runonsave
 }
 }
 ```
-`<path/to/serviceAccountKey.json>`とfirebaseのサービスアカウントページの`秘密鍵の生成`から生成したもの
-`<admin_database_url>`はfirebaseのサービスアカウントページに記載されたもの
+`<path/to/serviceAccountKey.json>`はfirebaseのサービスアカウントページの`秘密鍵の生成`から生成したものです。
+
+`<admin_database_url>`はfirebaseのサービスアカウントページに記載されたものです。
 
 
-### firebase-admin
+### Installation firebase-admin
+
+firestoreにuploadするためにfirebase-adminをインストールします。
 
 ```sh
 npm install firebase-admin --save
 ```
 
-### javascript
+### Setting Javascript
 
-set project root [this script](https://gist.githubusercontent.com/sakiyamaK/972bac65e7f4b82364c97d418b563c06/raw/c1ccc4e0a96dd91691df0d193aff8bcf8ac5f24e/upload_json_to_firestore.js)
+プロジェクトのルートに`upload_json.js`というファイル名で[このスクリプト](https://gist.githubusercontent.com/sakiyamaK/972bac65e7f4b82364c97d418b563c06/raw/c1ccc4e0a96dd91691df0d193aff8bcf8ac5f24e/upload_json_to_firestore.js)を保存します。
+
+## Usage
+
+### Quick Start
+
+#### ViewController
+
+```swift 
+import UIKit
+import UIKitHotReload
+
+final class MainViewController: UIViewController {
+
+  private var views: UIButton? { self.view.hotReloadView(id: "to_views") as? UIButton }
+  private var buttons: UIButton? { self.view.hotReloadView(id: "to_buttons") as? UIButton }
+  private var labels: UIButton? { self.view.hotReloadView(id: "to_labels") as? UIButton }
+  private var images: UIButton? { self.view.hotReloadView(id: "to_images") as? UIButton }
+  private var table: UIButton? { self.view.hotReloadView(id: "to_table") as? UIButton }
+  private var textField: UIButton? { self.view.hotReloadView(id: "to_text_fields") as? UIButton }
+  private var twitter: UIButton? { self.view.hotReloadView(id: "to_twitter") as? UIButton }
+  private var toButtons: [UIButton?] { [views, buttons, labels, images, table, textField, twitter] }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.view.loadHotReload(dirName: "views", jsonFileName: "main") { result in
+      switch result {
+      case .failure(let error):
+        print(error.localizedDescription)
+      default:
+        self.setupAction()
+      }
+    }
+  }
+```
+
+#### Layout
+
+```json
+{
+  "class": "view",
+  "id": "main",
+  "background_color": [
+    1,
+    1,
+    1
+  ],
+  "is_safe_area": false,
+  "subviews": [
+    {
+      "class": "stack",
+      "is_safe_area": true,
+      "distribution": "fill_e",
+      "alignment": "fill",
+      "is_scroll_enabled": false,
+      "spacing": 10,
+      "subviews": [
+        {
+          "class": "label",
+          "id": "label1",
+          "text": "Label Text",
+          "font": {
+            "name": "Bradley Hand",
+            "size": 30
+          }
+        },
+        {
+          "class": "button",
+          "id": "to_views",
+          "text": "Button Title"
+        },
+        {
+          "class": "imageview",
+          "id": "image",
+          "image": {
+            "name": "image_file_name"
+          },
+          "layout": {
+            "size": {
+              "width": {
+                "v": 200
+              },
+              "height": {
+                "v": 200
+              }
+            }
+          }
+        },
+      ]
+    }
+  ]
+}
+```
+
 
 ## Author
 
