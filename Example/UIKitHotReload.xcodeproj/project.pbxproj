@@ -17,8 +17,8 @@
 		B628D730256EA90D008E2353 /* twitter_timeline_cell.json in Resources */ = {isa = PBXBuildFile; fileRef = B628D72F256EA90D008E2353 /* twitter_timeline_cell.json */; };
 		B628D738256EADBB008E2353 /* twitter_timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = B628D737256EADBB008E2353 /* twitter_timeline.json */; };
 		B628D73D256EAE91008E2353 /* twitter_timelines.json in Resources */ = {isa = PBXBuildFile; fileRef = B628D73C256EAE91008E2353 /* twitter_timelines.json */; };
-		B628D7D42571549B008E2353 /* TextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B628D7D32571549B008E2353 /* TextFieldViewController.swift */; };
-		B628D7D8257154CC008E2353 /* text_field.json in Resources */ = {isa = PBXBuildFile; fileRef = B628D7D7257154CC008E2353 /* text_field.json */; };
+		B628D7D42571549B008E2353 /* TextFieldsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B628D7D32571549B008E2353 /* TextFieldsViewController.swift */; };
+		B628D7D8257154CC008E2353 /* text_fields.json in Resources */ = {isa = PBXBuildFile; fileRef = B628D7D7257154CC008E2353 /* text_fields.json */; };
 		B63A8F4F256ACF000049234E /* table_cell1.json in Resources */ = {isa = PBXBuildFile; fileRef = B63A8F4E256ACF000049234E /* table_cell1.json */; };
 		B679B10C255ED7BD003A16EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B679B10B255ED7BD003A16EC /* GoogleService-Info.plist */; };
 		B679B1412560E7A6003A16EC /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B1402560E7A6003A16EC /* ButtonsViewController.swift */; };
@@ -71,8 +71,8 @@
 		B628D72F256EA90D008E2353 /* twitter_timeline_cell.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = twitter_timeline_cell.json; sourceTree = "<group>"; };
 		B628D737256EADBB008E2353 /* twitter_timeline.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = twitter_timeline.json; sourceTree = "<group>"; };
 		B628D73C256EAE91008E2353 /* twitter_timelines.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = twitter_timelines.json; sourceTree = "<group>"; };
-		B628D7D32571549B008E2353 /* TextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewController.swift; sourceTree = "<group>"; };
-		B628D7D7257154CC008E2353 /* text_field.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = text_field.json; sourceTree = "<group>"; };
+		B628D7D32571549B008E2353 /* TextFieldsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsViewController.swift; sourceTree = "<group>"; };
+		B628D7D7257154CC008E2353 /* text_fields.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = text_fields.json; sourceTree = "<group>"; };
 		B63A8F4E256ACF000049234E /* table_cell1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = table_cell1.json; sourceTree = "<group>"; };
 		B679B10B255ED7BD003A16EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B679B1402560E7A6003A16EC /* ButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 				B6EDB45025653201008F0ADB /* images.json */,
 				B68B98CD2568A7A1005CE8FE /* table.json */,
 				B628D737256EADBB008E2353 /* twitter_timeline.json */,
-				B628D7D7257154CC008E2353 /* text_field.json */,
+				B628D7D7257154CC008E2353 /* text_fields.json */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -250,7 +250,7 @@
 				B679B2FF2563B236003A16EC /* ViewsViewController.swift */,
 				B6EDB44A2565307C008F0ADB /* ImagesViewController.swift */,
 				B68B98802568A1EE005CE8FE /* TableViewController.swift */,
-				B628D7D32571549B008E2353 /* TextFieldViewController.swift */,
+				B628D7D32571549B008E2353 /* TextFieldsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -373,7 +373,7 @@
 				B6EDB45125653201008F0ADB /* images.json in Resources */,
 				B628D738256EADBB008E2353 /* twitter_timeline.json in Resources */,
 				B679B10C255ED7BD003A16EC /* GoogleService-Info.plist in Resources */,
-				B628D7D8257154CC008E2353 /* text_field.json in Resources */,
+				B628D7D8257154CC008E2353 /* text_fields.json in Resources */,
 				B679B2932562BC1A003A16EC /* labels.json in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				B628D730256EA90D008E2353 /* twitter_timeline_cell.json in Resources */,
@@ -504,7 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B628D7D42571549B008E2353 /* TextFieldViewController.swift in Sources */,
+				B628D7D42571549B008E2353 /* TextFieldsViewController.swift in Sources */,
 				B679B1412560E7A6003A16EC /* ButtonsViewController.swift in Sources */,
 				B679B3002563B236003A16EC /* ViewsViewController.swift in Sources */,
 				B628D729256EA781008E2353 /* TwitterTimelineViewController.swift in Sources */,

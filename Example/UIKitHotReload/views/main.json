@@ -37,13 +37,13 @@
         },
         {
           "class": "button",
-          "id": "to_table",
-          "text": "UITableView Sample"
+          "id": "to_text_fields",
+          "text": "UITextFields Sample"
         },
         {
           "class": "button",
-          "id": "to_text_field",
-          "text": "TextField Sample"
+          "id": "to_table",
+          "text": "UITableView Sample"
         },
         {
           "class": "button",

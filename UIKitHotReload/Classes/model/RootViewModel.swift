@@ -74,7 +74,17 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       _reuseId = "reuse_id",
       _selectedBackgroundColor = "selected_background_color",
       //TextFieldModelProtocol
-      _borderStyle = "border_style"
+      placeholder = "placeholder",
+      _borderStyle = "border_style",
+      _textContentType = "text_content_type",
+      _capitalizationType = "capitalization_type",
+      _capType = "cap_type",
+      _keyboardType = "keyboard_type",
+      _returnKeyType = "return_key_type",
+      _isSecureTextEntry = "is_secure_text_entry",
+      _secureTextEntry = "secure_text_entry",
+      _secure = "secure",
+      _enablesReturnKeyAutomatically = "enables_return_key_automatically"
   }
 
   //ViewModelProtocol
@@ -112,11 +122,13 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var _contentInsets: EdgeInsetsModel?
   public var _contentOffset: CGPoint?
 
-  //LabelViewModelProtocol
+  //TextModelProtocol
   public var text: String?
   public var _textColor: [CGFloat]?
   public var _textAlignment: String?
   public var _fontInfo: FontInfoModel?
+
+  //LabelViewModelProtocol
   public var _numberOfLines: Int?
 
   //ImageViewModelProtocol
@@ -142,7 +154,17 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var _selectedBackgroundColor: [CGFloat]?
 
   //TextFieldModelProtocol
+  public var placeholder: String?
   public var _borderStyle: String?
+  public var _textContentType: String?
+  public var _capitalizationType: String?
+  public var _keyboardType: String?
+  public var _capType: String?
+  public var _returnKeyType: String?
+  public var _isSecureTextEntry: Bool?
+  public var _secureTextEntry: Bool?
+  public var _secure: Bool?
+  public var _enablesReturnKeyAutomatically: Bool?
 
   public var view: UIView? { viewModelType?.view }
 
@@ -158,14 +180,14 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
         print("setupRootView: subview of scrollview have to equal stackview")
         return
       }
-      setupView(view, isSuperViewStack: true, snapshot: snapshot)
     } else {
       if id != nil {
         superview.subviews.first{ $0.accessibilityIdentifier == id }?.removeFromSuperview()
       }
       superview.addSubview(view)
-      setupView(view, isSuperViewStack: false, snapshot: snapshot)
     }
+
+    setupView(view, snapshot: snapshot)
 
     if let label = view as? UILabel {
       setupLabel(label)

@@ -36,7 +36,7 @@ public protocol ViewModelProtocol {
   var _clip: Bool? { get }
   var _subViewModelProtocols: [Self]? { get }
 
-  func setupView(_ view: UIView, isSuperViewStack: Bool, snapshot: Bool?)
+  func setupView(_ view: UIView, snapshot: Bool?)
 }
 
 public extension ViewModelProtocol {
@@ -52,7 +52,7 @@ public extension ViewModelProtocol {
   var tintColor: UIColor { _tintColor?.uiColor ?? UIColor.clear }
   var clipToBounds: Bool { [_clipToBounds, _clip].first{$0 != nil} as? Bool ?? false }
 
-  func setupView(_ view: UIView, isSuperViewStack: Bool = false, snapshot: Bool? = nil) {
+  func setupView(_ view: UIView, snapshot: Bool? = nil) {
 
     view.accessibilityIdentifier = id
     view.backgroundColor = backgroundColor
@@ -118,9 +118,13 @@ public extension ViewModelProtocol {
     if let _position = layout.position {
       view.positionSetToSuperView(isSafeArea: isSafeArea, position: _position)
     }
+
+    let isSuperViewScroll = view.superview is UIScrollView
     if let _margin = layout.margin {
-      view.edgesEqualToSuperView(isSafeArea: isSafeArea, margin: _margin)
+      view.edgesEqualToSuperView(isSafeArea: isSafeArea, margin: isSuperViewScroll ? nil : _margin)
     }
+
+    let isSuperViewStack = view.superview is UIStackView
     if !isSuperViewStack && !layout.isSetEdge {
       view.edgesEqualToSuperView(isSafeArea: isSafeArea)
     }

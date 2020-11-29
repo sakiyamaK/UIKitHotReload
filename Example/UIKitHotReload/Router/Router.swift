@@ -30,13 +30,13 @@ final class Router {
     show(from: from, to: to, animated: animated)
   }
 
-  static func showTable(from: UIViewController, animated: Bool = true) {
-    let to = TableViewController()
+  static func showTextFields(from: UIViewController, animated: Bool = true) {
+    let to = TextFieldsViewController()
     show(from: from, to: to, animated: animated)
   }
 
-  static func showTextField(from: UIViewController, animated: Bool = true) {
-    let to = TextFieldViewController()
+  static func showTable(from: UIViewController, animated: Bool = true) {
+    let to = TableViewController()
     show(from: from, to: to, animated: animated)
   }
 

@@ -62,14 +62,12 @@ public extension UIView {
       let fileUrl = URL(fileURLWithPath: path)
       let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
       let viewModel = try JSONDecoder().decode(RootViewModel.self, from: data)
-      guard let view = viewModel.view else {
+      guard viewModel.view != nil else {
         let error = NSError.init(domain: "no view", code: 110, userInfo: nil)
         completion?(.failure(error))
         return
       }
-      self.subviews.filter { $0.accessibilityIdentifier == view.accessibilityIdentifier }.first?.removeFromSuperview()
-      self.addSubview(view)
-      view.edgesEqualToSuperView(isSafeArea: viewModel.isSafeArea)
+      viewModel.setupRootView(superview: self, snapshot: false)
       completion?(.success(()))
     } catch(let error) {
       completion?(.failure(error))

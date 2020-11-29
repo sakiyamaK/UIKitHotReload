@@ -10,9 +10,10 @@ import UIKit
 
 extension UIView {
 
-  func edgesEqual(to: UILayoutGuide, margin: LayoutModel.EdgeModel? = nil) {
+  func edgesEqual(to: UILayoutGuide, margin: LayoutModel.EdgeModel? = nil, isReverseMargin: Bool = false) {
 
     let margin = margin ?? .allDefault
+    let reverse: CGFloat = isReverseMargin ? -1.0 : 1.0
 
     self.translatesAutoresizingMaskIntoConstraints = false
 
@@ -31,13 +32,13 @@ extension UIView {
     }
 
     if !(margin.trailing?.remove ?? false) {
-      let trailing = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: margin.trailing?.value ?? 0.0)
+      let trailing = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: reverse * (margin.trailing?.value ?? 0.0))
       trailing.priority = margin.trailing?.priority ?? .required
       constraints.append(trailing)
     }
 
     if !(margin.bottom?.remove ?? false) {
-      let bottom = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: margin.bottom?.value ?? 0.0)
+      let bottom = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: reverse * (margin.bottom?.value ?? 0.0))
       bottom.priority = margin.bottom?.priority ?? .required
       constraints.append(bottom)
     }
@@ -45,9 +46,10 @@ extension UIView {
     NSLayoutConstraint.activate(constraints)
   }
 
-  func edgesEqual(to: UIView, margin: LayoutModel.EdgeModel? = nil) {
+  func edgesEqual(to: UIView, margin: LayoutModel.EdgeModel? = nil, isReverseMargin: Bool = false) {
 
     let margin = margin ?? .allDefault
+    let reverse: CGFloat = isReverseMargin ? -1.0 : 1.0
 
     self.translatesAutoresizingMaskIntoConstraints = false
 
@@ -61,18 +63,18 @@ extension UIView {
     leading.priority = margin.leading?.priority ?? .required
     constraints.append(leading)
 
-    let trailing = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: margin.trailing?.value ?? 0.0)
+    let trailing = to.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: reverse * (margin.trailing?.value ?? 0.0))
     trailing.priority = margin.trailing?.priority ?? .required
     constraints.append(trailing)
 
-    let bottom = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: margin.bottom?.value ?? 0.0)
+    let bottom = to.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: reverse * (margin.bottom?.value ?? 0.0))
     bottom.priority = margin.bottom?.priority ?? .required
     constraints.append(bottom)
 
     NSLayoutConstraint.activate(constraints)
   }
 
-  func edgesEqual(to view: UIView, isSafeArea: Bool = true, margin: LayoutModel.EdgeModel? = nil) {
+  func edgesEqual(to view: UIView, isSafeArea: Bool = true, margin: LayoutModel.EdgeModel? = nil, isReverseMargin: Bool = false) {
     if isSafeArea {
       edgesEqual(to: view.safeAreaLayoutGuide, margin: margin)
     } else {
@@ -80,7 +82,7 @@ extension UIView {
     }
   }
 
-  func edgesEqualToSuperView(isSafeArea: Bool = true, margin: LayoutModel.EdgeModel? = nil) {
+  func edgesEqualToSuperView(isSafeArea: Bool = true, margin: LayoutModel.EdgeModel? = nil, isReverseMargin: Bool = false) {
     guard let _superview = superview else { return }
     self.edgesEqual(to: _superview, isSafeArea: isSafeArea, margin: margin)
   }

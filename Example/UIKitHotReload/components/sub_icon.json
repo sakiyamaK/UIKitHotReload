@@ -17,6 +17,7 @@
     "subviews": [
       {
         "class": "imageview",
+        "id": "sub_icon",
         "hidden": false,
         "image": {
           "url": "https://eiga.k-img.com/images/buzz/86934/75ac09efb90a70c0/640.jpg"

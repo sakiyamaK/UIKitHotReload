@@ -9,13 +9,13 @@
 import UIKit
 import UIKitHotReload
 
-final class TextFieldViewController: UIViewController {
+final class TextFieldsViewController: UIViewController {
 
   private var textField: UITextField? { self.view.hotReloadView(id: "text_field") as? UITextField }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.loadHotReload(dirName: "views", jsonFileName: "text_field") { result in
+    self.view.loadHotReload(dirName: "views", jsonFileName: "text_fields") { result in
       switch result {
       case .failure(let error):
         print(error.localizedDescription)

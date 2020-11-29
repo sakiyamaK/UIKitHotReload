@@ -78,10 +78,6 @@ extension TableViewController: UITableViewDataSource {
         }
       }
     }
-//    guard let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCellHotReload1") as? TableViewCellHotReload1 else {
-//      return UITableViewCell()
-//    }
-//    cell.configure(name: name)
     return cell
   }
 }

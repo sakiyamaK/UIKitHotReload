@@ -31,7 +31,7 @@
           "content_mode": "fill",
           "circle": {
             "rad": 100,
-            "width": 5,
+            "width": 0,
             "color": [
               0,
               0,
