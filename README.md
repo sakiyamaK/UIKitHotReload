@@ -50,14 +50,14 @@ jsonを保存すると同時にスクリプトを実行するためのアドオ�
 
 ```sh
 {
-"emeraldwalk.runonsave":{
-"commands": [
-{
-"match": ".json$",
-"cmd": "node upload_json.js ${file} <path/to/serviceAccountKey.json> <admin_database_url>"
-}
-]
-}
+  "emeraldwalk.runonsave":{
+    "commands": [
+      {
+        "match": ".json$",
+        "cmd": "node upload_json.js ${file} <path/to/serviceAccountKey.json> <admin_database_url>"
+      }
+    ]
+  }
 }
 ```
 `<path/to/serviceAccountKey.json>`はfirebaseのサービスアカウントページの`秘密鍵の生成`から生成したものです。
@@ -83,6 +83,8 @@ npm install firebase-admin --save
 
 #### ViewController
 
+`MainViewController.swift`
+
 ```swift 
 import UIKit
 import UIKitHotReload
@@ -107,6 +109,8 @@ final class MainViewController: UIViewController {
 ```
 
 #### Layout
+
+`views/main.json`
 
 ```json
 {
