@@ -5,9 +5,9 @@
 
 ### Table Of Contents
 
-### [0 - Info & Install](0.Informations.md)
+### [0 - Info & Install](0.informations.md)
 
-- [Installation](0.Informations.md#installation)
+- [Installation](0.informations.md#installation)
 
 ### [1 - AutoLayout](1.autolayout.md)
 

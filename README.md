@@ -7,7 +7,7 @@
 
 
 ## Contents
-
+- [Document](Documentation/index.md)
 - [Installation](#Installation)
 - [HotReload](#HotReload)
 - [Usage](#Usage)
