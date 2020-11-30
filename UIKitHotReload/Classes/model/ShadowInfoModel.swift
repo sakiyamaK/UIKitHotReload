@@ -11,6 +11,7 @@ public struct ShadowInfoModel: Decodable {
   private var _color: [CGFloat]?
   private var _opacity: Float?
   private var _radius: CGFloat?
+  private var _rad: CGFloat?
   private var _offset: [CGFloat]?
 
   private enum CodingKeys: String, CodingKey {
@@ -18,11 +19,12 @@ public struct ShadowInfoModel: Decodable {
       _color = "color",
       _opacity = "opacity",
       _radius = "radius",
+      _rad = "rad",
       _offset = "offset"
   }
 
   var color: UIColor { _color?.uiColor ?? .clear }
   var opacity: Float { _opacity ?? 0.0 }
-  var radius: CGFloat { _radius ?? 0.0 }
+  var radius: CGFloat { [_radius, _rad].first{$0 != nil} as? CGFloat ?? 0.0  }
   var offset: CGSize { _offset?.cgSize ?? .zero }
 }
