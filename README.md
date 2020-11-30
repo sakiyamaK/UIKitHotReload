@@ -7,7 +7,7 @@
 
 
 ## Contents
-- [Document](Documentation/index.md)
+- [Document](#Documentation)
 - [Installation](#Installation)
 - [HotReload](#HotReload)
 - [Usage](#Usage)
@@ -17,6 +17,10 @@ UIKitHotReloadはjsonファイルでiOSアプリのレイアウトを組むラ�
 ホットリロード機能を備えており、ビルド後や実機転送後でもXcodeを使うことなくリアルタイムにレイアウトが反映されます。
 
 Releaseビルドの場合は内部にBundleされたjsonファイルを読み込むため、ホットリロードは機能しません。
+
+## Documentation
+
+[詳しくはこちら](Documentation/index.md)
 
 ## Installation
 

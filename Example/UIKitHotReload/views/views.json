@@ -49,12 +49,8 @@
             },
             {
               "class": "view",
-              "json_file_path": "components/view_in_view"
-            },
-            {
-              "class": "view",
               "corner": {
-                "radius": 40,
+                "radius": 50,
                 "masks": [
                   "min_max",
                   "max_min"
@@ -101,6 +97,10 @@
                   }
                 }
               }
+            },
+            {
+              "class": "view",
+              "json_file_path": "components/view_in_view"
             },
             {
               "class": "view",
