@@ -28,7 +28,7 @@
 ### [5 - button](5.button.md) (UIButton)
 - [parameter](5.button.md#parameter)
 
-### [6 - stack](5.button.md) (UIStackView & UIScrollView)
+### [6 - stack](6.stack.md) (UIStackView & UIScrollView)
 - [parameter](6.stack.md#parameter)
 
 #### Other Links
