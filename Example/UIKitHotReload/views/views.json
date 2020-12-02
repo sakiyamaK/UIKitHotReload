@@ -81,11 +81,11 @@
               ],
               "border": {
                 "color": [
-                  0,
                   1,
+                  0,
                   0
                 ],
-                "width": 6
+                "width": 4
               },
               "layout": {
                 "size": {

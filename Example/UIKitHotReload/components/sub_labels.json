@@ -1,6 +1,6 @@
 {
   "class": "stack",
-  "axis": "horizontal",
+  "axis": "h",
   "distribution": "fill",
   "alignment": "fill",
   "scroll_enabled": true,

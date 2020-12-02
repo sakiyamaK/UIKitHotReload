@@ -92,7 +92,7 @@
                       "class": "label",
                       "id": "name_label",
                       "font": {
-                        "size": 20,
+                        "size": 22,
                         "weight": "bold"
                       },
                       "number_of_lines": 1
@@ -116,7 +116,7 @@
                   "clip": true,
                   "content_mode": "fill",
                   "corner": {
-                    "rad": 10,
+                    "rad": 20,
                     "masks": [
                       "all"
                     ]
