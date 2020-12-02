@@ -34,7 +34,7 @@ pod 'UIKitHotReload'
 
 ## HotReload
 
-UIKitHotReloadは[firestore/cloud firestore](https://firebase.google.com/docs/firestore?hl=ja)のリアルタイムアップデートの機能を利用することでホットリロードを実現しています。
+UIKitHotReloadは[firebase/cloud firestore](https://firebase.google.com/docs/firestore?hl=ja)のリアルタイムアップデートの機能を利用することでホットリロードを実現しています。
 
 [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code/)などのアドオン機能を使ってjsonが更新される度にfirestoreにuploadするスクリプトを実行させます。
 
