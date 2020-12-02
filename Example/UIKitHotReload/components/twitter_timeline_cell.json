@@ -1,44 +1,156 @@
 {
   "class": "stack",
-  "axis": "v",
   "is_scroll_enabled": false,
+  "axis": "v",
+  "layout": {
+    "margin": {
+      "bottom": {
+        "v": 0,
+        "p": 750
+      }
+    }
+  },
   "subviews": [
     {
-      "class": "label",
-      "id": "test_cell_label1",
-      "text_alignment": "left",
-      "huggings": [
+      "class": "view",
+      "name": "contents",
+      "subviews": [
         {
-          "axis": "v",
-          "p": 1000
+          "class": "stack",
+          "is_scroll_enabled": false,
+          "axis": "h",
+          "spacing": 8,
+          "layout": {
+            "margin": {
+              "top": {
+                "v": 8
+              },
+              "left": {
+                "v": 8
+              },
+              "bottom": {
+                "v": 8
+              },
+              "right": {
+                "v": 8
+              }
+            }
+          },
+          "subviews": [
+            {
+              "class": "stack",
+              "name": "contents_left_stack",
+              "is_scroll_enabled": false,
+              "axis": "v",
+              "subviews": [
+                {
+                  "class": "imageview",
+                  "content_mode": "fit",
+                  "id": "icon_image_view",
+                  "circle": {
+                    "rad": 40
+                  },
+                  "background_color": [
+                    0.5,
+                    0.5,
+                    0.5
+                  ],
+                  "layout": {
+                    "size": {
+                      "height": {
+                        "v": 80
+                      },
+                      "width": {
+                        "v": 80
+                      }
+                    }
+                  }
+                },
+                {
+                  "class": "view",
+                  "name": "icon_bottom_view",
+                  "alpha": 0
+                }
+              ]
+            },
+            {
+              "class": "stack",
+              "name": "contents_right_stack",
+              "is_scroll_enabled": false,
+              "axis": "v",
+              "spacing": 12,
+              "subviews": [
+                {
+                  "class": "stack",
+                  "name": "top_text",
+                  "is_scroll_enabled": false,
+                  "axis": "h",
+                  "subviews": [
+                    {
+                      "class": "label",
+                      "id": "name_label",
+                      "font": {
+                        "size": 20
+                      },
+                      "number_of_lines": 1
+                    }
+                  ]
+                },
+                {
+                  "class": "label",
+                  "id": "main_text_label",
+                  "number_of_lines": 0,
+                  "huggings": [
+                    {
+                      "axis": "v",
+                      "p": 1000
+                    }
+                  ]
+                },
+                {
+                  "class": "imageview",
+                  "id": "option_image_view",
+                  "clip": true,
+                  "content_mode": "fill",
+                  "corner": {
+                    "rad": 10,
+                    "masks": [
+                      "all"
+                    ]
+                  },
+                  "layout": {
+                    "size": {
+                      "height": {
+                        "v": 200
+                      }
+                    }
+                  }
+                },
+                {
+                  "class": "view",
+                  "name": "space"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
-      "class": "label",
-      "text": "右です",
-      "id": "test_cell_label2",
-      "text_alignment": "center",
-      "huggings": [
-        {
-          "axis": "v",
-          "p": 1000
+      "class": "view",
+      "name": "bottom_border",
+      "background_color": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "layout": {
+        "size": {
+          "height": {
+            "v": 0.5
+          }
         }
-      ]
-    }
-  ],
-  "layout": {
-    "margin": {
-      "top": {
-        "v": 8
-      },
-      "left": {
-        "v": 16
-      },
-      "bottom": {
-        "v": 16,
-        "p": 750
       }
     }
-  }
+  ]
 }

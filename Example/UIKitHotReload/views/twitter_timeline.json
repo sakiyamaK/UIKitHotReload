@@ -1,6 +1,7 @@
 {
   "class": "tableview",
-  "id": "twitter_timeline",
+  "id": "tableview",
+  "separator_style": "none",
   "background_color": [
     1,
     1,

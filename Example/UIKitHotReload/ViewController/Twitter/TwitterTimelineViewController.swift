@@ -29,7 +29,7 @@ final class DemoAPI {
     do {
       let fileUrl = URL(fileURLWithPath: path)
       let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
-      let timelines = try JSONDecoder().decode([TwitterTimelineModel].self, from: data)
+      let timelines = try decoder.decode([TwitterTimelineModel].self, from: data)
       completion?(.success(timelines))
     } catch(let error) {
       completion?(.failure(error))
@@ -45,6 +45,7 @@ final class TwitterTimelineModel: Codable {
   var timeAgo: String?
   var mainText: String?
   var iconImageUrlStr: String?
+  var optionImageUrlStr: String?
 }
 
 final class TwitterTimelineCell: UITableViewCell {
@@ -53,26 +54,47 @@ final class TwitterTimelineCell: UITableViewCell {
   private var atNameLabel: UILabel? { self.hotReloadView(id: "at_name_label") as? UILabel }
   private var timeAgoLabel: UILabel? { self.hotReloadView(id: "time_ago_label") as? UILabel }
   private var mainTextLabel: UILabel? { self.hotReloadView(id: "main_text_label") as? UILabel }
-  private var optionImageView: UIImageView? { self.hotReloadView(id: "option_iamge_view") as? UIImageView }
-  private var iconImageView: UIImageView? { self.hotReloadView(id: "icon_iamge_view") as? UIImageView }
+  private var optionImageView: UIImageView? { self.hotReloadView(id: "option_image_view") as? UIImageView }
+  private var iconImageView: UIImageView? { self.hotReloadView(id: "icon_image_view") as? UIImageView }
 
   override func prepareForReuse() {
     super.prepareForReuse()
     self.nameLabel?.text = nil
+    self.nameLabel?.isHidden = true
     self.atNameLabel?.text = nil
+    self.atNameLabel?.isHidden = true
     self.timeAgoLabel?.text = nil
+    self.timeAgoLabel?.isHidden = true
     self.mainTextLabel?.text = nil
+    self.mainTextLabel?.isHidden = true
     self.iconImageView?.image = nil
-//    self.optionImageView
+    self.optionImageView?.image = nil
+    self.optionImageView?.isHidden = true
   }
 
   func configure(user: TwitterTimelineModel) {
-    self.nameLabel?.text = user.name
-    self.atNameLabel?.text = user.atName
-    self.timeAgoLabel?.text = user.timeAgo
-    self.mainTextLabel?.text = user.mainText
+    if let name = user.name, !name.isEmpty {
+      self.nameLabel?.text = name
+      self.nameLabel?.isHidden = false
+    }
+    if let atName = user.atName, !atName.isEmpty {
+      self.atNameLabel?.text = atName
+      self.atNameLabel?.isHidden = false
+    }
+    if let timeAgo = user.timeAgo, !timeAgo.isEmpty {
+      self.timeAgoLabel?.text = user.timeAgo
+      self.timeAgoLabel?.isHidden = false
+    }
+    if let mainText = user.mainText, !mainText.isEmpty {
+      self.mainTextLabel?.text = mainText
+      self.mainTextLabel?.isHidden = false
+    }
     if let urlStr = user.iconImageUrlStr, let url = URL.init(string: urlStr) {
       self.iconImageView?.kf.setImage(with: url)
+    }
+    if let urlStr = user.optionImageUrlStr, let url = URL.init(string: urlStr) {
+      self.optionImageView?.isHidden = false
+      self.optionImageView?.kf.setImage(with: url)
     }
   }
 }
@@ -83,7 +105,7 @@ final class TwitterTimelineViewController: UIViewController {
 
   private var dataSources: [TwitterTimelineModel] = []
 
-  private var tableView: UITableView? { self.view.hotReloadView(id: "table_view") as? UITableView }
+  private var tableView: UITableView? { self.view.hotReloadView(id: "tableview") as? UITableView }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -97,11 +119,12 @@ final class TwitterTimelineViewController: UIViewController {
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
         DemoAPI.shared.getTwitterTimelines { result in
+          print(result)
           switch result {
           case .failure(let error):
             print(error.localizedDescription)
           case .success(let timelines):
-            self.dataSources = timelines
+            self.dataSources = Array(1...100).map { _ in  timelines.randomElement()! }
             self.tableView?.reloadData()
           }
         }
