@@ -27,7 +27,7 @@
                 "v": 8
               },
               "left": {
-                "v": 8
+                "v": 12
               },
               "bottom": {
                 "v": 8
@@ -50,7 +50,7 @@
                   "content_mode": "fit",
                   "id": "icon_image_view",
                   "circle": {
-                    "rad": 50
+                    "rad": 40
                   },
                   "bg_color": [
                     0.5,
@@ -60,10 +60,10 @@
                   "layout": {
                     "size": {
                       "height": {
-                        "v": 100
+                        "v": 80
                       },
                       "width": {
-                        "v": 100
+                        "v": 80
                       }
                     }
                   }
@@ -92,7 +92,8 @@
                       "class": "label",
                       "id": "name_label",
                       "font": {
-                        "size": 20
+                        "size": 20,
+                        "weight": "bold"
                       },
                       "number_of_lines": 1
                     }
