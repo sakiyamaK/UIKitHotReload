@@ -28,6 +28,7 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       shadow = "shadow",
       circle = "circle",
       _backgroundColor = "background_color",
+      _bgColor = "bg_color",
       _alpha = "alpha",
       _isHidden = "is_hidden", _hidden = "hidden",
       _huggings = "huggings",
@@ -38,6 +39,9 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       _layout = "layout",
       _clipToBounds = "clip_to_bounds",
       _clip = "clip",
+      _isUserInteractionEnabled = "is_user_interaction_enabled",
+      _userInteractionEnabled = "user_interaction_enabled",
+      _enabled = "enabled",
       //StackViewModelProtocol
       _alignment = "alignment",
       _distribution = "distribution",
@@ -98,6 +102,7 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var shadow: ShadowInfoModel?
   public var circle: CircleModel?
   public var _backgroundColor: [CGFloat]?
+  public var _bgColor: [CGFloat]?
   public var _alpha: CGFloat?
   public var _isHidden, _hidden: Bool?
   public var _huggings: [HuggingModel]?
@@ -109,6 +114,9 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var _layout: LayoutModel?
   public var _clipToBounds: Bool?
   public var _clip: Bool?
+  public var _isUserInteractionEnabled: Bool?
+  public var _userInteractionEnabled: Bool?
+  public var _enabled: Bool?
 
   //StackViewModelProtocol
   public var _alignment: String?

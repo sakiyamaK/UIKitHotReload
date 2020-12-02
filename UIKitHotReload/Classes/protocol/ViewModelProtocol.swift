@@ -22,6 +22,7 @@ public protocol ViewModelProtocol {
   var circle: CircleModel? { get }
 
   var _backgroundColor: [CGFloat]?  { get }
+  var _bgColor: [CGFloat]?  { get }
   var _contentMode: String? { get }
   var _alpha: CGFloat? { get }
   var _isHidden: Bool? { get }
@@ -34,13 +35,16 @@ public protocol ViewModelProtocol {
   var _tintColor: [CGFloat]?  { get }
   var _clipToBounds: Bool? { get }
   var _clip: Bool? { get }
+  var _isUserInteractionEnabled: Bool? { get }
+  var _userInteractionEnabled: Bool? { get }
+  var _enabled: Bool? { get }
   var _subViewModelProtocols: [Self]? { get }
 
   func setupView(_ view: UIView, snapshot: Bool?)
 }
 
 public extension ViewModelProtocol {
-  var backgroundColor: UIColor { _backgroundColor?.uiColor ?? .clear }
+  var backgroundColor: UIColor { ([_backgroundColor, _bgColor].first { $0 != nil} as? [CGFloat])?.uiColor ?? .clear }
   var contentMode: UIView.ContentMode { (_contentMode ?? "").contentMode }
   var viewModelType: ViewModelType? { ViewModelType(rawValue: className?.lowercased() ?? "") }
   var layout: LayoutModel { _layout ?? LayoutModel() }
@@ -49,6 +53,7 @@ public extension ViewModelProtocol {
   var isSafeArea: Bool { [_isSafeArea, _safeArea].first{$0 == true} as? Bool ?? false }
   var alpha: CGFloat { _alpha ?? 1.0 }
   var isHidden: Bool { [_isHidden, _hidden].first{$0 == true} as? Bool ?? false }
+  var isUserInteractionEnabled: Bool {  [_isUserInteractionEnabled, _userInteractionEnabled, _enabled].first{$0 != nil } as? Bool ?? true }
   var tintColor: UIColor { _tintColor?.uiColor ?? UIColor.clear }
   var clipToBounds: Bool { [_clipToBounds, _clip].first{$0 != nil} as? Bool ?? false }
 
@@ -61,6 +66,7 @@ public extension ViewModelProtocol {
     view.isHidden = isHidden
     view.tintColor = tintColor
     view.clipsToBounds = clipToBounds
+    view.isUserInteractionEnabled = isUserInteractionEnabled
     if let corner = corner {
       view.layer.cornerRadius = corner.radius
       view.layer.maskedCorners = corner.maskedCorners

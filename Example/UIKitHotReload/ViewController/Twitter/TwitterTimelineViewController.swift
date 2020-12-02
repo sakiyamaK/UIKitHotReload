@@ -124,7 +124,7 @@ final class TwitterTimelineViewController: UIViewController {
           case .failure(let error):
             print(error.localizedDescription)
           case .success(let timelines):
-            self.dataSources = Array(1...100).map { _ in  timelines.randomElement()! }
+            self.dataSources = timelines + Array(1...97).map { _ in  timelines.randomElement()! }
             self.tableView?.reloadData()
           }
         }
@@ -134,7 +134,10 @@ final class TwitterTimelineViewController: UIViewController {
 }
 
 extension TwitterTimelineViewController: UITableViewDelegate {
-
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let user = dataSources[indexPath.row]
+    Router.showAlert(message: "\(user.name ?? "no name")です", vc: self)
+  }
 }
 
 extension TwitterTimelineViewController: UITableViewDataSource {

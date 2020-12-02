@@ -1,6 +1,7 @@
 {
   "class": "stack",
-  "is_scroll_enabled": false,
+  "scroll_enabled": false,
+  "enabled": false,
   "axis": "v",
   "layout": {
     "margin": {
@@ -17,7 +18,7 @@
       "subviews": [
         {
           "class": "stack",
-          "is_scroll_enabled": false,
+          "scroll_enabled": false,
           "axis": "h",
           "spacing": 8,
           "layout": {
@@ -40,7 +41,7 @@
             {
               "class": "stack",
               "name": "contents_left_stack",
-              "is_scroll_enabled": false,
+              "scroll_enabled": false,
               "hidden": false,
               "axis": "v",
               "subviews": [
@@ -51,7 +52,7 @@
                   "circle": {
                     "rad": 50
                   },
-                  "background_color": [
+                  "bg_color": [
                     0.5,
                     0.5,
                     0.5
@@ -77,14 +78,14 @@
             {
               "class": "stack",
               "name": "contents_right_stack",
-              "is_scroll_enabled": false,
+              "scroll_enabled": false,
               "axis": "v",
               "spacing": 12,
               "subviews": [
                 {
                   "class": "stack",
                   "name": "top_text",
-                  "is_scroll_enabled": false,
+                  "scroll_enabled": false,
                   "axis": "h",
                   "subviews": [
                     {
