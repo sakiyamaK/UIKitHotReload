@@ -11,10 +11,11 @@
 
 ### [1 - layout](1.layout.md) (AutoLayout)
 - [parameter](1.layout.md#parameter)
-  - [Size](1.layout.md#size)
-  - [Center](1.layout.md#center)
-  - [Postion](1.layout.md#position)
-  - [Margin](1.layout.md#margin)
+  - [size](1.layout.md#size)
+  - [aspect_ratio](1.layout.md#aspect_ratio)
+  - [center](1.layout.md#center)
+  - [postion](1.layout.md#position)
+  - [margin](1.layout.md#margin)
 
 ### [2 - view](2.view.md) (UIView)
 - [parameter](2.view.md#parameter)

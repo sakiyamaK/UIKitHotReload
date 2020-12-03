@@ -92,7 +92,7 @@
                       "class": "label",
                       "id": "name_label",
                       "font": {
-                        "size": 22,
+                        "size": 20,
                         "weight": "bold"
                       },
                       "number_of_lines": 1

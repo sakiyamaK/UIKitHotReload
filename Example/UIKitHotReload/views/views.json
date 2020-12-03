@@ -14,13 +14,6 @@
       "alignment": "fill",
       "scroll_enabled": true,
       "spacing": 50,
-      "layout": {
-        "margin": {
-          "top": {
-            "v": 20
-          }
-        }
-      },
       "subviews": [
         {
           "class": "stack",
@@ -38,12 +31,12 @@
               ],
               "layout": {
                 "size": {
-                  "width": {
-                    "v": 50
-                  },
                   "height": {
-                    "v": 50
+                    "v": 100
                   }
+                },
+                "ratio": {
+                  "v": 1.6
                 }
               }
             },

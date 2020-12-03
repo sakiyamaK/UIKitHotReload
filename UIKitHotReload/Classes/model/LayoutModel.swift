@@ -66,10 +66,23 @@ public struct LayoutModel: Decodable {
     }
   }
 
+  private enum CodingKeys: String, CodingKey {
+    case
+      size = "size",
+      center = "center",
+      position = "position",
+      _aspectRatio = "aspect_ratio",
+      _ratio = "ratio"
+  }
+
   public var size: SizeModel?
   public var center: CenterModel?
   public var position: EdgeModel?
   public var margin: EdgeModel?
+  private var _aspectRatio: ValueAndPriority?
+  private var _ratio: ValueAndPriority?
 
+  public var aspectRatio: ValueAndPriority? { [_aspectRatio, _ratio].first{$0 != nil} as? ValueAndPriority }
   public var isSetEdge: Bool { position != nil || margin != nil || center != nil }
+  public var isSetWidthHeight: Bool { size?.width != nil && size?.height != nil }
 }

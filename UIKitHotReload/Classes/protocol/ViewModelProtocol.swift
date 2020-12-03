@@ -115,6 +115,10 @@ public extension ViewModelProtocol {
       view.heightEqual(constant: _height.value, priority: _height.priority)
     }
 
+    if !layout.isSetWidthHeight, let _aspectRatio = layout.aspectRatio {
+      view.aspectRatio(_aspectRatio.value, priority: _aspectRatio.priority, isSetWidth: layout.size?.width != nil)
+    }
+
     if let _centerX = layout.center?.x {
       view.centerXEqualToSuperView(isSafeArea: isSafeArea, constant: _centerX.value, priority: _centerX.priority)
     }

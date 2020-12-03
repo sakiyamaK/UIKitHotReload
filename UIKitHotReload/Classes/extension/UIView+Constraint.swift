@@ -301,3 +301,18 @@ extension UIView {
     c.isActive = true
   }
 }
+
+extension UIView {
+  func aspectRatio(_ aspectRatio: CGFloat, priority: UILayoutPriority = .required, isSetWidth: Bool = true) {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    if isSetWidth {
+      let c = self.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: aspectRatio)
+      c.priority = priority
+      c.isActive = true
+    } else {
+      let c = self.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: aspectRatio)
+      c.priority = priority
+      c.isActive = true
+    }
+  }
+}
