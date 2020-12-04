@@ -18,6 +18,8 @@ UIKitHotReloadはjsonファイルでiOSアプリのレイアウトを組むラ�
 
 Releaseビルドの場合は内部にBundleされたjsonファイルを読み込むため、ホットリロードは機能しません。
 
+<img src="https://i.gyazo.com/c660f221b1897c56ae1abbfed558da9f.gif" />
+
 ## Documentation
 
 [詳しくはこちら](Documentation/index.md)
