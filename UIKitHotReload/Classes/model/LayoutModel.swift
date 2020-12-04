@@ -71,6 +71,7 @@ public struct LayoutModel: Decodable {
       size = "size",
       center = "center",
       position = "position",
+      margin = "margin",
       _aspectRatio = "aspect_ratio",
       _ratio = "ratio"
   }
