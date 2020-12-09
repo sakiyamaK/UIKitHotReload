@@ -31,11 +31,11 @@ subviews:
         ratio:
           v: 1.6
     - class: view
-      corner:
-        radius: 50
-        masks:
-        - min_max
-        - max_min
+      # corner:
+      #   radius: 50
+      #   masks:
+      #   - min_max
+      #   - max_min
       background_color:
       - 0
       - 0

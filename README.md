@@ -60,7 +60,15 @@ jsonを保存すると同時にスクリプトを実行するためのアドオ�
     "commands": [
       {
         "match": ".json$",
-        "cmd": "node upload_json.js ${file} <path/to/serviceAccountKey.json> <admin_database_url>"
+        "cmd": "node ./upload_admin.js ${file} <path/to/serviceAccountKey.json> <admin_database_url>"
+      },
+      {
+        "match": ".yml$",
+        "cmd": "node ./upload_admin.js ${file} <path/to/serviceAccountKey.json> <admin_database_url>"
+      },
+      {
+        "match": ".yaml$",
+        "cmd": "node ./upload_admin.js ${file} <path/to/serviceAccountKey.json> <admin_database_url>"
       }
     ]
   }
@@ -70,19 +78,8 @@ jsonを保存すると同時にスクリプトを実行するためのアドオ�
 
 `<admin_database_url>`はfirebaseのサービスアカウントページに記載されたものです。
 
-
-### Installation firebase-admin
-
-firestoreにuploadするためにfirebase-adminをインストールします。
-
-```sh
-npm install firebase-admin --save
-npm install js-yaml --save
-```
-
-### Setting Javascript
-
-プロジェクトのルートに`upload_json.js`というファイル名で[このスクリプト](https://gist.githubusercontent.com/sakiyamaK/972bac65e7f4b82364c97d418b563c06/raw/2aa375e96c2605367d96a5cb1ec2f2009c0bb6a3/upload_json_to_firestore.js)を保存します。
+詳しくは[firebaseの公式ドキュメント](https://firebase.google.com/docs/admin/setup?hl=ja#initialize-sdk
+)を確認してください。
 
 ## Usage
 

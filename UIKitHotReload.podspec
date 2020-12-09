@@ -7,8 +7,9 @@
 #
 
 Pod::Spec.new do |s|
+
   s.name             = 'UIKitHotReload'
-  s.version          = '0.1.9'
+  s.version          = '0.1.10'
   s.summary          = <<-DESC
   This is summary
   DESC
@@ -38,9 +39,16 @@ Pod::Spec.new do |s|
 
   s.static_framework = true
 
+  s.prepare_command = <<-PREPARE_COMMAND_END
+    cp -f ./script/upload_admin.js ./upload_admin.js
+    cp -f ./script/package.json ./package.json
+    cp -f ./script/package-lock.json ./package-lock.json
+    npm install
+  PREPARE_COMMAND_END
+
   # s.resource_bundles = {
   #   'HotreloadUIKit' => ['HotreloadUIKit/Assets/*.png']
-  # }
+  # } 
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
