@@ -12,11 +12,11 @@
 - [HotReload](#HotReload)
 - [Usage](#Usage)
 
-UIKitHotReloadはjsonファイルでiOSアプリのレイアウトを組むライブラリです。
+UIKitHotReloadはjson/ymlファイルでiOSアプリのレイアウトを組むライブラリです。
 
 ホットリロード機能を備えており、ビルド後や実機転送後でもXcodeを使うことなくリアルタイムにレイアウトが反映されます。
 
-Releaseビルドの場合は内部にBundleされたjsonファイルを読み込むため、ホットリロードは機能しません。
+Releaseビルドの場合は内部にBundleされたjson/ymlファイルを読み込むため、ホットリロードは機能しません。
 
 <img src="https://i.gyazo.com/c660f221b1897c56ae1abbfed558da9f.gif" />
 
@@ -82,7 +82,7 @@ npm install js-yaml --save
 
 ### Setting Javascript
 
-プロジェクトのルートに`upload_json.js`というファイル名で[このスクリプト](https://gist.githubusercontent.com/sakiyamaK/972bac65e7f4b82364c97d418b563c06/raw/c1ccc4e0a96dd91691df0d193aff8bcf8ac5f24e/upload_json_to_firestore.js)を保存します。
+プロジェクトのルートに`upload_json.js`というファイル名で[このスクリプト](https://gist.githubusercontent.com/sakiyamaK/972bac65e7f4b82364c97d418b563c06/raw/2aa375e96c2605367d96a5cb1ec2f2009c0bb6a3/upload_json_to_firestore.js)を保存します。
 
 ## Usage
 
