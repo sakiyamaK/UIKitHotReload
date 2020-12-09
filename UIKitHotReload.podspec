@@ -48,4 +48,5 @@ Pod::Spec.new do |s|
   s.dependency 'Firebase/Firestore'
   s.dependency 'FirebaseFirestoreSwift'
   s.dependency 'Kingfisher'
+  s.dependency 'Yams'
 end

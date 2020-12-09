@@ -15,7 +15,7 @@ public protocol ViewModelProtocol {
   var width: CGFloat? { get }
   var height: CGFloat? { get }
   var view: UIView? { get }
-  var jsonFilePath: String? { get }
+  var filePath: String? { get }
   var corner: CornerModel? { get }
   var border: BorderModel? { get }
   var shadow: ShadowInfoModel? { get }
@@ -40,7 +40,7 @@ public protocol ViewModelProtocol {
   var _enabled: Bool? { get }
   var _subViewModelProtocols: [Self]? { get }
 
-  func setupView(_ view: UIView, snapshot: Bool?)
+  func setupView(_ view: UIView, fileType: FileType, snapshot: Bool?)
 }
 
 public extension ViewModelProtocol {
@@ -57,7 +57,7 @@ public extension ViewModelProtocol {
   var tintColor: UIColor { _tintColor?.uiColor ?? UIColor.clear }
   var clipToBounds: Bool { [_clipToBounds, _clip].first{$0 != nil} as? Bool ?? false }
 
-  func setupView(_ view: UIView, snapshot: Bool? = nil) {
+  func setupView(_ view: UIView, fileType: FileType, snapshot: Bool?) {
 
     view.accessibilityIdentifier = id
     view.backgroundColor = backgroundColor
@@ -88,14 +88,22 @@ public extension ViewModelProtocol {
       view.layer.borderColor = circle.borderColor.cgColor
     }
 
-    if let (dirName, jsonFileName) = jsonFilePath?.viewPath {
-      view.loadHotReload(dirName: dirName, jsonFileName: jsonFileName, snapshot: snapshot) { result in
+    if let (dirName, fileName) = filePath?.viewPath {
+      let completion: ((Result<Void, Error>) -> Void) = { result in
         switch result {
         case .failure(let error):
-          print("\(dirName)/\(jsonFileName): \(error.localizedDescription)")
+          print("\(dirName)/\(fileName): \(error.localizedDescription)")
         default:
           break
         }
+      }
+      switch fileType {
+      case .json:
+        view.loadHotReload(dirName: dirName, jsonFileName: fileName, snapshot: snapshot, completion: completion)
+      case .yaml:
+        view.loadHotReload(dirName: dirName, yamlFileName: fileName, snapshot: snapshot, completion: completion)
+      case .yml:
+        view.loadHotReload(dirName: dirName, ymlFileName: fileName, snapshot: snapshot, completion: completion)
       }
       return
     }

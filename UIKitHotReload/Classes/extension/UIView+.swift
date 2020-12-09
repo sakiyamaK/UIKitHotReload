@@ -22,7 +22,7 @@ public extension UIView {
 
 public extension UIView {
 
-  private func loadHotReload(documentRef: DocumentReference, completion: (((Result<Void, Error>)) -> Void)? = nil) {
+  private func loadHotReload(documentRef: DocumentReference, fileType: FileType, completion: (((Result<Void, Error>)) -> Void)? = nil) {
     documentRef.addSnapshotListener { (docSnapshot, error) in
       if let _error = error {
         print("Error getting documents: \(_error)")
@@ -44,7 +44,7 @@ public extension UIView {
           completion?(.failure(error))
           return
         }
-        viewModel.setupRootView(superview: self, snapshot: true)
+        viewModel.setupRootView(superview: self, fileType: fileType, snapshot: true)
         completion?(.success(()))
       } catch(let error) {
         completion?(.failure(error))
@@ -52,8 +52,8 @@ public extension UIView {
     }
   }
 
-  private func load(dirName: String, jsonFileName: String, completion: (((Result<Void, Error>)) -> Void)? = nil) {
-    guard let path = Bundle.main.path(forResource: jsonFileName, ofType: "json") else {
+  private func load(dirName: String, fileName: String, fileType: FileType = .json, completion: (((Result<Void, Error>)) -> Void)? = nil) {
+    guard let path = Bundle.main.path(forResource: fileName, ofType: fileType.rawValue) else {
       let error = NSError.init(domain: "no file", code: 120, userInfo: nil)
       completion?(.failure(error))
       return
@@ -61,20 +61,26 @@ public extension UIView {
     do {
       let fileUrl = URL(fileURLWithPath: path)
       let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
-      let viewModel = try JSONDecoder().decode(RootViewModel.self, from: data)
+      let viewModel: RootViewModel
+      switch fileType {
+      case .json:
+        viewModel = try HotReloadDecoder().jsonDecoder.decode(RootViewModel.self, from: data)
+      default:
+        viewModel = try HotReloadDecoder().ymlDecoder.decode(RootViewModel.self, from: data)
+      }
       guard viewModel.view != nil else {
         let error = NSError.init(domain: "no view", code: 110, userInfo: nil)
         completion?(.failure(error))
         return
       }
-      viewModel.setupRootView(superview: self, snapshot: false)
+      viewModel.setupRootView(superview: self, fileType: fileType, snapshot: false)
       completion?(.success(()))
     } catch(let error) {
       completion?(.failure(error))
     }
   }
 
-  func loadHotReload(collectionName: String, documentName: String, snapshot: Bool? = nil, completion: (((Result<Void, Error>)) -> Void)? = nil) {
+  func loadHotReload(collectionName: String, documentName: String, fileType: FileType = .json, snapshot: Bool? = nil, completion: (((Result<Void, Error>)) -> Void)? = nil) {
     #if DEBUG
     let snapshot = snapshot ?? true
     #else
@@ -82,13 +88,22 @@ public extension UIView {
     #endif
     if snapshot {
       let docRef: DocumentReference = db.collection(collectionName).document(documentName)
-      loadHotReload(documentRef: docRef, completion: completion)
+      loadHotReload(documentRef: docRef, fileType: fileType, completion: completion)
     } else {
-      load(dirName: collectionName, jsonFileName: documentName, completion: completion)
+      load(dirName: collectionName, fileName: documentName, fileType: fileType, completion: completion)
     }
   }
 
   func loadHotReload(dirName: String, jsonFileName: String, snapshot: Bool? = nil, completion: ((Result<Void, Error>) -> Void)? = nil) {
     loadHotReload(collectionName: dirName, documentName: jsonFileName, snapshot: snapshot, completion: completion)
   }
+
+  func loadHotReload(dirName: String, ymlFileName: String, snapshot: Bool? = nil, completion: ((Result<Void, Error>) -> Void)? = nil) {
+    loadHotReload(collectionName: dirName, documentName: ymlFileName, fileType: .yml, snapshot: snapshot, completion: completion)
+  }
+
+  func loadHotReload(dirName: String, yamlFileName: String, snapshot: Bool? = nil, completion: ((Result<Void, Error>) -> Void)? = nil) {
+    loadHotReload(collectionName: dirName, documentName: yamlFileName, fileType: .yaml, snapshot: snapshot, completion: completion)
+  }
+
 }

@@ -22,7 +22,7 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       id = "id",
       width = "width",
       height = "height",
-      jsonFilePath = "json_file_path",
+      filePath = "file_path",
       corner = "corner",
       border = "border",
       shadow = "shadow",
@@ -96,7 +96,7 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var id: String?
   public var width: CGFloat?
   public var height: CGFloat?
-  public var jsonFilePath: String?
+  public var filePath: String?
   public var corner: CornerModel?
   public var border: BorderModel?
   public var shadow: ShadowInfoModel?
@@ -176,7 +176,7 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
 
   public var view: UIView? { viewModelType?.view }
 
-  public func setupRootView(superview: UIView, isTop: Bool = true, snapshot: Bool? = nil) {
+  public func setupRootView(superview: UIView, isTop: Bool = true, fileType: FileType, snapshot: Bool? = nil) {
     guard let view = view else { return }
     if superview is UIScrollView {
       if let stackView = superview.subviews.first(where: {$0 is UIStackView}) as? UIStackView {
@@ -201,7 +201,7 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       superview.addSubview(view)
     }
 
-    setupView(view, snapshot: snapshot)
+    setupView(view, fileType: fileType, snapshot: snapshot)
 
     if let label = view as? UILabel {
       setupLabel(label)
@@ -218,7 +218,7 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
     }
 
     _subViewModelProtocols?.forEach({ subViewModel in
-      subViewModel.setupRootView(superview: view, isTop: false, snapshot: snapshot)
+      subViewModel.setupRootView(superview: view, isTop: false, fileType: fileType, snapshot: snapshot)
     })
   }
 }
