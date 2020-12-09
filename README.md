@@ -77,6 +77,7 @@ firestoreにuploadするためにfirebase-adminをインストールします。
 
 ```sh
 npm install firebase-admin --save
+npm install js-yaml --save
 ```
 
 ### Setting Javascript
