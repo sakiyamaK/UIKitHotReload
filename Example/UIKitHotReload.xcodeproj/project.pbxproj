@@ -33,11 +33,7 @@
 		B679B28F2562BBBE003A16EC /* LabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B28E2562BBBE003A16EC /* LabelsViewController.swift */; };
 		B679B2932562BC1A003A16EC /* labels.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B2922562BC1A003A16EC /* labels.json */; };
 		B679B3002563B236003A16EC /* ViewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B2FF2563B236003A16EC /* ViewsViewController.swift */; };
-		B679B3042563B39D003A16EC /* views.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B3032563B39D003A16EC /* views.json */; };
 		B68B98602568122D005CE8FE /* sub_icon.json in Resources */ = {isa = PBXBuildFile; fileRef = B68B985B2568122D005CE8FE /* sub_icon.json */; };
-		B68B98612568122D005CE8FE /* shadow_view.json in Resources */ = {isa = PBXBuildFile; fileRef = B68B985C2568122D005CE8FE /* shadow_view.json */; };
-		B68B98632568122D005CE8FE /* sub_labels.json in Resources */ = {isa = PBXBuildFile; fileRef = B68B985E2568122D005CE8FE /* sub_labels.json */; };
-		B68B98642568122D005CE8FE /* view_in_view.json in Resources */ = {isa = PBXBuildFile; fileRef = B68B985F2568122D005CE8FE /* view_in_view.json */; };
 		B68B98812568A1EE005CE8FE /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68B98802568A1EE005CE8FE /* TableViewController.swift */; };
 		B68B98CE2568A7A1005CE8FE /* table.json in Resources */ = {isa = PBXBuildFile; fileRef = B68B98CD2568A7A1005CE8FE /* table.json */; };
 		B6EDB44B2565307C008F0ADB /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EDB44A2565307C008F0ADB /* ImagesViewController.swift */; };
@@ -91,11 +87,7 @@
 		B679B28E2562BBBE003A16EC /* LabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
 		B679B2922562BC1A003A16EC /* labels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = labels.json; sourceTree = "<group>"; };
 		B679B2FF2563B236003A16EC /* ViewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsViewController.swift; sourceTree = "<group>"; };
-		B679B3032563B39D003A16EC /* views.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = views.json; sourceTree = "<group>"; };
 		B68B985B2568122D005CE8FE /* sub_icon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sub_icon.json; sourceTree = "<group>"; };
-		B68B985C2568122D005CE8FE /* shadow_view.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shadow_view.json; sourceTree = "<group>"; };
-		B68B985E2568122D005CE8FE /* sub_labels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sub_labels.json; sourceTree = "<group>"; };
-		B68B985F2568122D005CE8FE /* view_in_view.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = view_in_view.json; sourceTree = "<group>"; };
 		B68B98802568A1EE005CE8FE /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B68B98CD2568A7A1005CE8FE /* table.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = table.json; sourceTree = "<group>"; };
 		B6EDB44A2565307C008F0ADB /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
@@ -240,7 +232,6 @@
 				B679B16325613CDF003A16EC /* buttons.json */,
 				B679B2832562B6EB003A16EC /* main.json */,
 				B679B2922562BC1A003A16EC /* labels.json */,
-				B679B3032563B39D003A16EC /* views.json */,
 				B6EDB45025653201008F0ADB /* images.json */,
 				B68B98CD2568A7A1005CE8FE /* table.json */,
 				B628D737256EADBB008E2353 /* twitter_timeline.json */,
@@ -275,10 +266,7 @@
 		B68B985425681194005CE8FE /* components */ = {
 			isa = PBXGroup;
 			children = (
-				B68B985C2568122D005CE8FE /* shadow_view.json */,
 				B68B985B2568122D005CE8FE /* sub_icon.json */,
-				B68B985E2568122D005CE8FE /* sub_labels.json */,
-				B68B985F2568122D005CE8FE /* view_in_view.json */,
 				B63A8F4E256ACF000049234E /* table_cell1.json */,
 				B628D72F256EA90D008E2353 /* twitter_timeline_cell.json */,
 				B63B6E732580D37D002996A8 /* view_in_view.yml */,
@@ -300,6 +288,7 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				542C32809FD8C1A7F23A4B38 /* [CP] Embed Pods Frameworks */,
+				B63B6FD5258224CB002996A8 /* Run Script(SwiftLint) */,
 			);
 			buildRules = (
 			);
@@ -376,9 +365,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B68B98642568122D005CE8FE /* view_in_view.json in Resources */,
-				B679B3042563B39D003A16EC /* views.json in Resources */,
-				B68B98632568122D005CE8FE /* sub_labels.json in Resources */,
 				B679B2842562B6EB003A16EC /* main.json in Resources */,
 				B63A8F4F256ACF000049234E /* table_cell1.json in Resources */,
 				B628D73D256EAE91008E2353 /* twitter_timelines.json in Resources */,
@@ -390,7 +376,6 @@
 				B679B2932562BC1A003A16EC /* labels.json in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				B628D730256EA90D008E2353 /* twitter_timeline_cell.json in Resources */,
-				B68B98612568122D005CE8FE /* shadow_view.json in Resources */,
 				B68B98602568122D005CE8FE /* sub_icon.json in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 				B61FF4732580C47700AA14E0 /* views.yml in Resources */,
@@ -492,6 +477,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B63B6FD5258224CB002996A8 /* Run Script(SwiftLint) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script(SwiftLint)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		BDDA63691EB471559C9B55DD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

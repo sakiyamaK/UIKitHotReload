@@ -59,4 +59,3 @@ private extension MainViewController {
     toButtons.forEach { $0?.addTarget(self, action: #selector(tapButton), for: .touchUpInside) }
   }
 }
-
