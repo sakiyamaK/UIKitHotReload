@@ -7,7 +7,7 @@
 
 
 ## Contents
-- [Document](#Documentation)
+- [Document](#documentation)
 - [Installation](#Installation)
 - [HotReload](#HotReload)
 - [Usage](#Usage)
