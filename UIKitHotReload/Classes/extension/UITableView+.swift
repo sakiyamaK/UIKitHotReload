@@ -8,12 +8,17 @@
 import UIKit
 
 public extension UITableView {
-  func dequeueOrRegisterCellHotReload<T: UITableViewCell>(type: T.Type, style: UITableViewCell.CellStyle, dirName: String, jsonFileName: String, reuseIdentifier: String, snapshot: Bool? = nil, completion:((Result<(T, Bool), Error>) -> Void)? = nil) -> T {
+  func dequeueOrRegisterCellHotReload<T: UITableViewCell>(type: T.Type, style: UITableViewCell.CellStyle, reuseIdentifier: String,
+                                                          dirName: String, fileName: String, fileType: FileType = .json,
+                                                          snapshot: Bool? = nil,
+                                                          completion:((Result<(T, Bool), Error>) -> Void)? = nil) -> T {
     if let cell = self.dequeueReusableCell(withIdentifier: reuseIdentifier) as? T {
       completion?(.success((cell, false)))
       return cell
     } else {
-      let cell = UITableViewCell.initTableViewCellHotReload(type: type, style: style, dirName: dirName, jsonFileName: jsonFileName, reuseIdentifier: reuseIdentifier, snapshot: snapshot) { result in
+      let cell = UITableViewCell.initTableViewCellHotReload(type: type, style: style, reuseIdentifier: reuseIdentifier,
+                                                            dirName: dirName, fileName: fileName, fileType: fileType,
+                                                            snapshot: snapshot) { result in
         switch result {
         case .failure(let error):
           completion?(.failure(error))

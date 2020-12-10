@@ -65,9 +65,11 @@ extension TableViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let name = dataSources[indexPath.row]
-    let cell = tableView.dequeueOrRegisterCellHotReload(type: TableViewCellHotReload1.self, style: .default,
-                                                        dirName: "components", jsonFileName: "table_cell1",
-                                                        reuseIdentifier: "TableViewCellHotReload1") { (result) in
+    let cell = tableView.dequeueOrRegisterCellHotReload(
+      type: TableViewCellHotReload1.self,
+      style: .default,
+      reuseIdentifier: "TableViewCellHotReload1",
+      dirName: "components", fileName: "table_cell1") { (result) in
       switch result {
       case .failure(let error):
         print(error.localizedDescription)

@@ -145,9 +145,11 @@ extension TwitterTimelineViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let user = dataSources[indexPath.row]
-    let cell = tableView.dequeueOrRegisterCellHotReload(type: TwitterTimelineCell.self, style: .default,
-                                                        dirName: "components", jsonFileName: "twitter_timeline_cell",
-                                                        reuseIdentifier: "TwitterTimelineCell") { (result) in
+    let cell = tableView.dequeueOrRegisterCellHotReload(
+      type: TwitterTimelineCell.self,
+      style: .default,
+      reuseIdentifier: "TwitterTimelineCell",
+      dirName: "components", fileName: "twitter_timeline_cell") { (result) in
       switch result {
       case .failure(let error):
         print(error.localizedDescription)
