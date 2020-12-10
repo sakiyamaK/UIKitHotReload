@@ -8,9 +8,9 @@
 
 ## Contents
 - [Document](#documentation)
-- [Installation](#Installation)
-- [HotReload](#HotReload)
-- [Usage](#Usage)
+- [Installation](#installation)
+- [HotReload](#hotReload)
+- [Usage](#usage)
 
 UIKitHotReloadはjson/ymlファイルでiOSアプリのレイアウトを組むライブラリです。
 
@@ -22,7 +22,7 @@ Releaseビルドの場合は内部にBundleされたjson/ymlファイルを読�
 
 ## Documentation
 
-[詳しくはこちら](Documentation/index.md)
+[詳しくはこちら](https://github.com/sakiyamaK/UIKitHotReload/blob/main/Documentation/index.md)
 
 ## Installation
 
