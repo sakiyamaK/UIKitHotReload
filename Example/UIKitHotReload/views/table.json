@@ -1,7 +1,8 @@
 {
   "class": "tableview",
   "id": "table_view",
-  "i_style": "black",
+  "i_style": "white",
+  "s_style": "none",
   "background_color": [
     1,
     1,

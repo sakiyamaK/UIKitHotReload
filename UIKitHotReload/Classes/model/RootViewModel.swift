@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 
 public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtocol,
                              LabelModelProtocol, ImageViewModelProtocol, ButtonModelProtocol,
-                             TableViewModelProtocol, TableViewCellModelProtocol,
+                             TableViewModelProtocol,
                              TextFieldModelProtocol {
 
   private enum CodingKeys: String, CodingKey {
@@ -68,15 +68,10 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       _backgroundImageInfo = "background_image",
       _imageContentMode = "image_content_mode",
       //TableViewModelProtocol
-      cells = "cells",
       _separatorStyle = "separator_style",
       _sStyle = "s_style",
       _indicatorStyle = "indicator_style",
       _iStyle = "i_style",
-      //TableViewCellModelProtocol
-      _reuseIdentifier = "reuse_identifier",
-      _reuseId = "reuse_id",
-      _selectedBackgroundColor = "selected_background_color",
       //TextFieldModelProtocol
       placeholder = "placeholder",
       _borderStyle = "border_style",
@@ -157,9 +152,9 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var _iStyle: String?
 
   //TableViewCellModelProtocol
-  public var _reuseIdentifier: String?
-  public var _reuseId: String?
-  public var _selectedBackgroundColor: [CGFloat]?
+//  public var _reuseIdentifier: String?
+//  public var _reuseId: String?
+//  public var _selectedBackgroundColor: [CGFloat]?
 
   //TextFieldModelProtocol
   public var placeholder: String?

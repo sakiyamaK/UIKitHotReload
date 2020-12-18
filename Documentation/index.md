@@ -1,7 +1,7 @@
 ## Documentation
 
-- Reference Version: **0.0.4**
-- Last Update: **2020/12/10**
+- Reference Version: **0.0.5**
+- Last Update: **2020/12/18**
 
 ### Table Of Contents
 
@@ -9,42 +9,51 @@
 
 - [Installation](0.informations.md#installation)
 
-### [1 - layout](1.layout.md) (AutoLayout)
-- [parameter](1.layout.md#parameter)
-  - [size](1.layout.md#size)
-  - [aspect_ratio](1.layout.md#aspect_ratio)
-  - [center](1.layout.md#center)
-  - [postion](1.layout.md#position)
-  - [margin](1.layout.md#margin)
+### Swift
+#### [1 - 1 UIView](1-1.UIView.md)
+- [loadHotReload](1-1.UIView.md##loadHotReload)
+- [hotReloadView](1-1.UIView.md##hotReloadView)
 
-### [2 - view](2.view.md) (UIView)
-- [parameter](2.view.md#parameter)
-- [example](2.view.md#example)
+#### [1 - 999 parameter](1-9.parameter.md)
+- [FileType](1-999.parameter.md#FileType)
 
-### [3 - label](3.label.md) (UILabel)
+### json/yml
+### [2 - 1 layout](2-1.layout.md) (AutoLayout)
+- [parameter](2-1.layout.md#parameter)
+  - [size](2-1.layout.md#size)
+  - [aspect_ratio](2-1.layout.md#aspect_ratio)
+  - [center](2-1.layout.md#center)
+  - [postion](2-1.layout.md#position)
+  - [margin](2-1.layout.md#margin)
+
+### [2 - 2 view](2-2.view.md) (UIView)
+- [parameter](2-2.view.md#parameter)
+- [example](2-2.view.md#example)
+
+### [2 - 3 label](3.label.md) (UILabel)
 - [parameter](3.label.md#parameter)
 - [example](3.label.md#example)
 
-### [4 - imageview](4.imageview.md) (UIImageView)
-- [parameter](4.imageview.md#parameter)
-- [example](4.imageview.md#example)
+### [2 - 4 imageview](2-4.imageview.md) (UIImageView)
+- [parameter](2-4.imageview.md#parameter)
+- [example](2-4.imageview.md#example)
 
-### [5 - button](5.button.md) (UIButton)
-- [parameter](5.button.md#parameter)
-- [example](5.button.md#example)
+### [2 - 5 button](2-5.button.md) (UIButton)
+- [parameter](2-5.button.md#parameter)
+- [example](2-5.button.md#example)
 
-### [6 - stack](6.stack.md) (UIStackView & UIScrollView)
-- [parameter](6.stack.md#parameter)
-- [example](6.stack.md#example)
+### [2 - 6 stack](2-6.stack.md) (UIStackView & UIScrollView)
+- [parameter](2-6.stack.md#parameter)
+- [example](2-6.stack.md#example)
 
-### [999 - other parameters](999.parameter.md)
-- [border](999.parameter.md#border)
-- [corner](999.parameter.md#corner)
-- [hugging](999.parameter.md#hugging)
-- [compression_resistance](999.parameter.md#compression_resistance)
-- [font](999.parameter.md#font)
-- [corner](999.parameter.md#corner)
-- [edge_inset](999.parameter.md#edge_inset)
-- [image](999.parameter.md#image)
+### [2 - 999 parameters](2-999.parameter.md)
+- [border](2-999.parameter.md#border)
+- [corner](2-999.parameter.md#corner)
+- [hugging](2-999.parameter.md#hugging)
+- [compression_resistance](2-999.parameter.md#compression_resistance)
+- [font](2-999.parameter.md#font)
+- [corner](2-999.parameter.md#corner)
+- [edge_inset](2-999.parameter.md#edge_inset)
+- [image](2-999.parameter.md#image)
 
 #### Other Links

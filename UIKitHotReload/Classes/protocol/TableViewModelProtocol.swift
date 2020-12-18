@@ -8,10 +8,6 @@
 import UIKit
 
 public protocol TableViewModelProtocol: ViewModelProtocol {
-  associatedtype TableViewCellModel: TableViewCellModelProtocol
-  var cells: [TableViewCellModel]? { get }
-//  var header: String? { get }
-//  var footer: String? { get }
   var _separatorStyle: String? { get }
   var _sStyle: String? { get }
   var _indicatorStyle: String? { get }

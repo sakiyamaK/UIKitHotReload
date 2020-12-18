@@ -1,7 +1,8 @@
 {
   "class": "stack",
   "axis": "v",
-  "is_scroll_enabled": false,
+  "scroll_enabled": false,
+  "enabled": false,
   "subviews": [
     {
       "class": "label",
