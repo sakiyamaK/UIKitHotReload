@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 public enum ViewModelType: String {
   case uistackview, stackview, stack
@@ -17,6 +18,7 @@ public enum ViewModelType: String {
   case uitableview, tableview
   case uitextview, textview
   case uitextfield, textfield
+  case wkWebview, webview
 
   public var view: UIView? {
     switch self {
@@ -35,6 +37,8 @@ public enum ViewModelType: String {
       return UITextView()
     case .uitableview, .tableview:
       return UITableView()
+    case .wkWebview, .webview:
+      return WKWebView()
     default:
       return UIView()
     }

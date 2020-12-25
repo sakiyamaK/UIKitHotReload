@@ -48,6 +48,11 @@
         },
         {
           "class": "button",
+          "id": "to_webview",
+          "text": "WKWebView Sample"
+        },
+        {
+          "class": "button",
           "id": "to_twitter",
           "text": "Twitter Clone"
         }

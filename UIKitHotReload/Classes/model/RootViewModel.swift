@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import WebKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtocol,
                              LabelModelProtocol, ImageViewModelProtocol, ButtonModelProtocol,
-                             TableViewModelProtocol,
-                             TextFieldModelProtocol {
+                             TableViewModelProtocol, TextFieldModelProtocol, WebViewModelProtocol {
 
   private enum CodingKeys: String, CodingKey {
     case
@@ -83,7 +83,9 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       _isSecureTextEntry = "is_secure_text_entry",
       _secureTextEntry = "secure_text_entry",
       _secure = "secure",
-      _enablesReturnKeyAutomatically = "enables_return_key_automatically"
+      _enablesReturnKeyAutomatically = "enables_return_key_automatically",
+      //WebViewModelProtocol
+      requestURLStr = "url"
   }
 
   //ViewModelProtocol
@@ -151,11 +153,6 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var _indicatorStyle: String?
   public var _iStyle: String?
 
-  //TableViewCellModelProtocol
-//  public var _reuseIdentifier: String?
-//  public var _reuseId: String?
-//  public var _selectedBackgroundColor: [CGFloat]?
-
   //TextFieldModelProtocol
   public var placeholder: String?
   public var _borderStyle: String?
@@ -168,6 +165,9 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var _secureTextEntry: Bool?
   public var _secure: Bool?
   public var _enablesReturnKeyAutomatically: Bool?
+
+  //WebViewModelProtocol
+  public var requestURLStr: String?
 
   public var view: UIView? { viewModelType?.view }
 
@@ -210,6 +210,8 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       setupTableView(tableView)
     } else if let scrollView = view as? UIScrollView {
       setupScrollView(scrollView)
+    } else if let webView = view as? WKWebView {
+      setupWebView(webView)
     }
 
     _subViewModelProtocols?.forEach({ subViewModel in

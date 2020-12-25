@@ -40,6 +40,11 @@ final class Router {
     show(from: from, to: to, animated: animated)
   }
 
+  static func showWebView(from: UIViewController, animated: Bool = true) {
+    let to = WebViewController()
+    show(from: from, to: to, animated: animated)
+  }
+
   static func showTwitter(from: UIViewController, animated: Bool = true) {
     let to = TwitterTimelineViewController()
     show(from: from, to: to, animated: animated)
