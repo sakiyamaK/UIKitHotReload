@@ -1,0 +1,7 @@
+{
+  "lockfileVersion": 1,
+  "dependencies": {
+    "firebase-admin": "^9.4.1",
+    "js-yaml": "^3.14.1"
+  }
+}
