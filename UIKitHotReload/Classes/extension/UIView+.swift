@@ -24,15 +24,14 @@ public extension UIView {
 
   private func loadHotReload(documentRef: DocumentReference, fileType: FileType, completion: (((Result<Void, Error>)) -> Void)? = nil) {
     documentRef.addSnapshotListener { (docSnapshot, error) in
-      if let _error = error {
-        print("Error getting documents: \(_error)")
-        completion?(.failure(_error))
+      if error != nil {
+        completion?(.failure(UIKitHotReloadError.notGettingDocuments))
         return
       }
 
       guard
         let data = docSnapshot?.data() else {
-        let error = NSError.init(domain: "no data", code: 100, userInfo: nil)
+        let error = UIKitHotReloadError.notFoundData
         completion?(.failure(error))
         return
       }
@@ -40,7 +39,7 @@ public extension UIView {
       do {
         let viewModel = try Firestore.Decoder().decode(RootViewModel.self, from: data)
         guard viewModel.view != nil else {
-          let error = NSError.init(domain: "no rootView", code: 110, userInfo: nil)
+          let error = UIKitHotReloadError.notFoundRootView
           completion?(.failure(error))
           return
         }
@@ -54,7 +53,7 @@ public extension UIView {
 
   private func load(dirName: String, fileName: String, fileType: FileType = .json, completion: (((Result<Void, Error>)) -> Void)? = nil) {
     guard let path = Bundle.main.path(forResource: fileName, ofType: fileType.rawValue) else {
-      let error = NSError.init(domain: "no file", code: 120, userInfo: nil)
+      let error = UIKitHotReloadError.notFoundFile
       completion?(.failure(error))
       return
     }
@@ -69,7 +68,7 @@ public extension UIView {
         viewModel = try HotReloadDecoder().ymlDecoder.decode(RootViewModel.self, from: data)
       }
       guard viewModel.view != nil else {
-        let error = NSError.init(domain: "no view", code: 110, userInfo: nil)
+        let error = UIKitHotReloadError.notFoundRootView
         completion?(.failure(error))
         return
       }

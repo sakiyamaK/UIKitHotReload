@@ -44,7 +44,7 @@ public protocol ViewModelProtocol {
 }
 
 public extension ViewModelProtocol {
-  var backgroundColor: UIColor { ([_backgroundColor, _bgColor].first { $0 != nil} as? [CGFloat])?.uiColor ?? .clear }
+  var backgroundColor: UIColor { ([_backgroundColor, _bgColor].first { $0 != nil} as? [CGFloat])?.uiColor ?? .white }
   var contentMode: UIView.ContentMode { (_contentMode ?? "").contentMode }
   var viewModelType: ViewModelType? { ViewModelType(rawValue: className?.lowercased() ?? "") }
   var layout: LayoutModel { _layout ?? LayoutModel() }

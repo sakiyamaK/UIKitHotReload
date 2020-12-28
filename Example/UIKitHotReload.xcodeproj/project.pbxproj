@@ -102,7 +102,7 @@
 		B6EDB45025653201008F0ADB /* images.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = images.json; sourceTree = "<group>"; };
 		B6F12ADC25961910001C6504 /* web.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = web.yml; sourceTree = "<group>"; };
 		B6F12AE0259619A9001C6504 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		F8C136D317DCB6B7941BF560 /* UIKitHotReload.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = UIKitHotReload.podspec; path = ../UIKitHotReload.podspec; sourceTree = "<group>"; };
+		F8C136D317DCB6B7941BF560 /* UIKitHotReload.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = UIKitHotReload.podspec; path = ../UIKitHotReload.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

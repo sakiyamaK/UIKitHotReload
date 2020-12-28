@@ -1,11 +1,21 @@
 {
-  "class": "tableview",
-  "id": "table_view",
-  "i_style": "white",
-  "s_style": "none",
-  "background_color": [
-    1,
-    1,
-    1
+  "class": "view",
+  "subviews": [
+    {
+      "class": "stack",
+      "safe_area": true,
+      "scroll_enabled": false,
+      "subviews": [
+        {
+          "class": "searchbar"
+        },
+        {
+          "class": "tableview",
+          "id": "table_view",
+          "i_style": "white",
+          "s_style": "none"
+        }
+      ]
+    }
   ]
 }

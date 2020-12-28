@@ -1,4 +1,13 @@
 ---
-class: webview
-id: webview
-url: "https://google.com"
+class: view
+subviews:
+- class: stack
+  safe_area: true
+  distribution: fill
+  alignment: fill
+  scroll_enabled: false
+  spacing: 50
+  subviews:
+    - class: searchbar
+    - class: webview
+      id: webview

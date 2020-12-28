@@ -13,7 +13,8 @@ import FirebaseFirestoreSwift
 
 public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtocol,
                              LabelModelProtocol, ImageViewModelProtocol, ButtonModelProtocol,
-                             TableViewModelProtocol, TextFieldModelProtocol, WebViewModelProtocol {
+                             TableViewModelProtocol, TextFieldModelProtocol, WebViewModelProtocol,
+                             SearchBarModelProtocol {
 
   private enum CodingKeys: String, CodingKey {
     case
@@ -206,12 +207,14 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       setupImageView(imageView)
     } else if let textField = view as? UITextField {
       setupTextField(textField)
+    } else if let searchBar = view as? UISearchBar {
+      setupSearchBar(searchBar)
     } else if let tableView = view as? UITableView {
       setupTableView(tableView)
-    } else if let scrollView = view as? UIScrollView {
-      setupScrollView(scrollView)
     } else if let webView = view as? WKWebView {
       setupWebView(webView)
+    }  else if let scrollView = view as? UIScrollView {
+      setupScrollView(scrollView)
     }
 
     _subViewModelProtocols?.forEach({ subViewModel in

@@ -1,7 +1,7 @@
 ## Documentation
 
-- Reference Version: **0.0.6**
-- Last Update: **2020/12/25**
+- Reference Version: **0.0.7**
+- Last Update: **2020/12/28**
 
 ### Table Of Contents
 
@@ -53,6 +53,14 @@
 ### [2 - 8 webview](2-8.webview.md) (WKWebView)
 - [parameter](2-8.webview.md#parameter)
 - [example](2-8.webview.md#example)
+
+### [2 - 9 searchbar](2-9.searchbar.md) (UISearchbar)
+- [parameter](2-9.searchbar.md#parameter)
+- [example](2-9.searchbar.md#example)
+
+### [2 - 10 textfield](2-10.textfield.md) (UITextField)
+- [parameter](2-10.textfield.md#parameter)
+- [example](2-10.textfield.md#example)
 
 ### [2 - 999 parameters](2-999.parameter.md)
 - [border](2-999.parameter.md#border)
