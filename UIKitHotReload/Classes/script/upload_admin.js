@@ -26,6 +26,7 @@ let col_name = arr[1]
 //ファイル拡張子
 let ext = exts[0]
 var set_data = null;
+
 if (ext == "json") {
   let raw_data = fs.readFileSync(path);
   set_data = JSON.parse(raw_data);
@@ -39,10 +40,10 @@ if (ext == "json") {
 }
 
 //firebase-adminの設定
-const serviceAccount = require(service_key);
+const service_account = require("./" + service_key);
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(service_account)
 });
 
 //firestoreを取得

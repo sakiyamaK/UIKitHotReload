@@ -32,17 +32,23 @@ UIKitHotReloadは[firebase/cloud firestore](https://firebase.google.com/docs/fir
 
 推奨する設定方法を記載します。
 
+### firestore
+[firestore](https://firebase.google.com/docs/firestore?hl=ja)の設定をします。
+
 ### Xcode
 
-1. In Xcode: Click on your project in the file list, choose your target under TARGETS, click the Build Phases tab and add a New Run Script Phase by clicking the little plus icon in the top left
-2. Drag the new Run Script phase above the Compile Sources phase and below Check Pods Manifest.lock, expand it and paste the following script:
+1. nodeをインストールします。(すでにインストール済みの場合は不要です)
+2. Xcodeファイルリストからプロジェクトを選択し、TARGETSの中から対象のアプリを選択します。Build Phasesタブを選択し、左上の小さい+ボタンを押し、`New Run Script Phases`を選択します。
+3. `new Run Script phase`を`Compile Sources phase`より上で`Check Pods Manifest.lock`より下にドラッグします。`new Run Script phase`を開き、以下のscriptをペーストします。
 
 ```
-cp -f $PODS_ROOT/UIKitHotReload/Classes/script/upload_admin.js ./upload_admin.js
-cp -f $PODS_ROOT/UIKitHotReload/Classes/script/package.json ./package.json
-cp -f $PODS_ROOT/UIKitHotReload/Classes/script/package-lock.json ./package-lock.json
+cp -f $PODS_ROOT/UIKitHotReload/UIKitHotReload/Classes/script/upload_admin.js ./upload_admin.js
+cp -f $PODS_ROOT/UIKitHotReload/UIKitHotReload/Classes/script/package.json ./package.json
+cp -f $PODS_ROOT/UIKitHotReload/UIKitHotReload/Classes/script/package-lock.json ./package-lock.json
 npm install
 ```
+
+4. プロジェクトをビルドし、$SRCROOTのフォルダの中に`package.json`, `package-lock.json` , `upload_admin.js`があることを確認します。
 
 ### Visual Studio Code
 
