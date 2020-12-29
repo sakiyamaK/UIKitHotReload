@@ -2,16 +2,14 @@ const fs = require('fs');
 const admin = require("firebase-admin");
 const { database } = require('firebase-admin');
  
-// JSONのパスを取得する
-if (process.argv.length < 5) {
+// ファイルパスを取得する
+if (process.argv.length < 4) {
     console.log('error 1');
     process.exit(0);
 }
 
 //set path/to/servicekey.json
 const service_key = process.argv[3]
-//set databse_url
-const database_url = process.argv[4]
 
 const path = process.argv[2];
 const arr = path.split("/").reverse();
@@ -44,8 +42,7 @@ if (ext == "json") {
 const serviceAccount = require(service_key);
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: database_url
+  credential: admin.credential.cert(serviceAccount)
 });
 
 //firestoreを取得
@@ -57,5 +54,3 @@ db.collection(col_name).doc(doc_name).set(set_data).then(function (docRef) {
 }, function(err){
     console.log(err);
 });
-
-

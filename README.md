@@ -24,16 +24,6 @@ Releaseビルドの場合は内部にBundleされたjson/ymlファイルを読�
 
 [詳しくはこちら](https://github.com/sakiyamaK/UIKitHotReload/blob/main/Documentation/index.md)
 
-## Installation
-
-### CocoaPods
-
-UIKitHotReload is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
-
-```ruby
-pod 'UIKitHotReload'
-```
-
 ## HotReload
 
 UIKitHotReloadは[firebase/cloud firestore](https://firebase.google.com/docs/firestore?hl=ja)のリアルタイムアップデートの機能を利用することでホットリロードを実現しています。
@@ -41,6 +31,18 @@ UIKitHotReloadは[firebase/cloud firestore](https://firebase.google.com/docs/fir
 [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code/)などのアドオン機能を使ってjsonが更新される度にfirestoreにuploadするスクリプトを実行させます。
 
 推奨する設定方法を記載します。
+
+### Xcode
+
+1. In Xcode: Click on your project in the file list, choose your target under TARGETS, click the Build Phases tab and add a New Run Script Phase by clicking the little plus icon in the top left
+2. Drag the new Run Script phase above the Compile Sources phase and below Check Pods Manifest.lock, expand it and paste the following script:
+
+```
+cp -f $PODS_ROOT/UIKitHotReload/Classes/script/upload_admin.js ./upload_admin.js
+cp -f $PODS_ROOT/UIKitHotReload/Classes/script/package.json ./package.json
+cp -f $PODS_ROOT/UIKitHotReload/Classes/script/package-lock.json ./package-lock.json
+npm install
+```
 
 ### Visual Studio Code
 
@@ -60,15 +62,15 @@ jsonを保存すると同時にスクリプトを実行するためのアドオ�
     "commands": [
       {
         "match": ".json$",
-        "cmd": "node ./upload_admin.js ${file} <path/to/serviceAccountKey.json> <admin_database_url>"
+        "cmd": "node ./upload_admin.js ${file} <path/to/serviceAccountKey.json>"
       },
       {
         "match": ".yml$",
-        "cmd": "node ./upload_admin.js ${file} <path/to/serviceAccountKey.json> <admin_database_url>"
+        "cmd": "node ./upload_admin.js ${file} <path/to/serviceAccountKey.json>"
       },
       {
         "match": ".yaml$",
-        "cmd": "node ./upload_admin.js ${file} <path/to/serviceAccountKey.json> <admin_database_url>"
+        "cmd": "node ./upload_admin.js ${file} <path/to/serviceAccountKey.json>"
       }
     ]
   }
@@ -76,16 +78,14 @@ jsonを保存すると同時にスクリプトを実行するためのアドオ�
 ```
 `<path/to/serviceAccountKey.json>`はfirebaseのサービスアカウントページの`秘密鍵の生成`から生成したものです。
 
-`<admin_database_url>`はfirebaseのサービスアカウントページに記載されたものです。
-
 詳しくは[firebaseの公式ドキュメント](https://firebase.google.com/docs/admin/setup?hl=ja#initialize-sdk
 )を確認してください。
 
-## Usage
+### Usage
 
-### Quick Start
+#### Quick Start
 
-#### ViewController
+##### ViewController
 
 `MainViewController.swift`
 
@@ -112,7 +112,7 @@ final class MainViewController: UIViewController {
   }
 ```
 
-#### Layout
+##### Layout
 
 `views/main.json`
 
