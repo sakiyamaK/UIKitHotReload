@@ -86,7 +86,13 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       _secure = "secure",
       _enablesReturnKeyAutomatically = "enables_return_key_automatically",
       //WebViewModelProtocol
-      requestURLStr = "url"
+      requestURLStr = "url",
+      _allowsBack = "allows_back",
+      _canBack = "can_back",
+      _allowsLinkPreview = "allows_link_preview",
+      _canPreview = "can_preview",
+      _customUserAgent = "custom_user_agent",
+      _customUA = "custom_ua"
   }
 
   //ViewModelProtocol
@@ -169,6 +175,12 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
 
   //WebViewModelProtocol
   public var requestURLStr: String?
+  public var _allowsBack: Bool?
+  public var _canBack: Bool?
+  public var _allowsLinkPreview: Bool?
+  public var _canPreview: Bool?
+  public var _customUserAgent: String?
+  public var _customUA: String?
 
   public var view: UIView? { viewModelType?.view }
 
