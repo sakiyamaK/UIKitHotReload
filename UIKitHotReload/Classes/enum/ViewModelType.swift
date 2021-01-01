@@ -19,7 +19,9 @@ public enum ViewModelType: String {
   case uitextview, textview
   case uitextfield, textfield
   case wkWebview, webview
-  case searchbar
+  case uisearchbar, searchbar
+  case uiactivityindicatorview, activityindicatorview,
+       activityindicator, aiview
 
   public var view: UIView? {
     switch self {
@@ -42,6 +44,11 @@ public enum ViewModelType: String {
       return WKWebView()
     case .searchbar:
       return UISearchBar()
+    case .uiactivityindicatorview,
+         .activityindicatorview,
+         .activityindicator,
+         .aiview:
+      return UIActivityIndicatorView()
     default:
       return UIView()
     }

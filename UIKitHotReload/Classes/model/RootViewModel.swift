@@ -14,7 +14,7 @@ import FirebaseFirestoreSwift
 public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtocol,
                              LabelModelProtocol, ImageViewModelProtocol, ButtonModelProtocol,
                              TableViewModelProtocol, TextFieldModelProtocol, WebViewModelProtocol,
-                             SearchBarModelProtocol {
+                             SearchBarModelProtocol, ActivityIndicatorViewModelProtocol {
 
   private enum CodingKeys: String, CodingKey {
     case
@@ -92,7 +92,14 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       _allowsLinkPreview = "allows_link_preview",
       _canPreview = "can_preview",
       _customUserAgent = "custom_user_agent",
-      _customUA = "custom_ua"
+      _customUA = "custom_ua",
+      //ActivityIndicatorViewModelProtocol
+      _activityIndicatorStyle = "activity_indicator_style",
+      _aiStyle = "ai_style",
+      _activityIndicatorColor = "activity_indicator_color",
+      _aiColor = "ai_color",
+      _hidesWhenStopped = "hides_when_stopped",
+      _hides_ws = "hides_ws"
   }
 
   //ViewModelProtocol
@@ -182,6 +189,14 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var _customUserAgent: String?
   public var _customUA: String?
 
+  //ActivityIndicatorViewModelProtocol
+  public var _activityIndicatorStyle: String?
+  public var _aiStyle: String?
+  public var _activityIndicatorColor: [CGFloat]?
+  public var _aiColor: [CGFloat]?
+  public var _hidesWhenStopped: Bool?
+  public var _hides_ws: Bool?
+
   public var view: UIView? { viewModelType?.view }
 
   public func setupRootView(superview: UIView, isTop: Bool = true, fileType: FileType, snapshot: Bool? = nil) {
@@ -225,7 +240,9 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       setupTableView(tableView)
     } else if let webView = view as? WKWebView {
       setupWebView(webView)
-    }  else if let scrollView = view as? UIScrollView {
+    }  else if let activityIndicatorView = view as? UIActivityIndicatorView {
+      setupActivityIndicatorView(activityIndicatorView)
+    } else if let scrollView = view as? UIScrollView {
       setupScrollView(scrollView)
     }
 

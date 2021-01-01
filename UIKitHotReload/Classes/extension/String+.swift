@@ -306,3 +306,18 @@ extension String {
     }
   }
 }
+
+extension String {
+  var activityIndicatorViewStyle: UIActivityIndicatorView.Style {
+    switch self.lowercased() {
+    case "gray", "g":
+      return .gray
+    case "white", "w":
+      return .white
+    case "white_large", "w_l":
+      return .whiteLarge
+    default:
+      return .white
+    }
+  }
+}

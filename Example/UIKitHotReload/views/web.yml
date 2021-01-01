@@ -1,5 +1,6 @@
 ---
 class: view
+bg_color: [0, 0, 0]
 subviews:
 - class: stack
   safe_area: true
@@ -11,3 +12,21 @@ subviews:
     - class: searchbar
     - class: webview
       id: webview
+      alpha: 0
+- class: aiview
+  id: indicator
+  ai_color: [0, 0, 1]
+  ai_style: white_large
+  hides_ws: false
+  layouts: [
+    {
+      center: {
+        x: {
+          v: 0
+        },
+        y: {
+          v: 0
+        }
+      }
+    }
+  ]

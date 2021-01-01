@@ -13,6 +13,7 @@ import WebKit
 final class WebViewController: UIViewController {
 
   private var webView: WKWebView? { self.view.hotReloadView(id: "webview") as? WKWebView }
+  private var indicator: UIActivityIndicatorView? { self.view.hotReloadView(id: "indicator") as? UIActivityIndicatorView }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -21,14 +22,21 @@ final class WebViewController: UIViewController {
       case .failure(let error):
         print(error.localizedDescription)
       default:
-        self.webView?.uiDelegate = self
-        self.webView?.navigationDelegate = self
+        DispatchQueue.main.async {
+          self.indicator?.startAnimating()
+          self.webView?.uiDelegate = self
+          self.webView?.navigationDelegate = self
+        }
       }
     }
   }
 }
 
 extension WebViewController: WKNavigationDelegate {
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    webView.alpha = 1.0
+    indicator?.isHidden = true
+  }
 
 }
 
