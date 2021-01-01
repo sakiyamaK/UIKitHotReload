@@ -9,9 +9,9 @@
 Pod::Spec.new do |s|
 
   s.name             = 'UIKitHotReload'
-  s.version          = '0.1.17'
+  s.version          = '0.1.18'
   s.summary          = <<-DESC
-  This is summary
+  Xcodeを使わずUIKitでHotReloadをするライブラリ
   DESC
 
   # This description is used to generate tags and improve search results.
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-  TODO: Add long description of the pod here.
+  Xcodeを使わずUIKitでHotReloadをするライブラリ
   DESC
 
   s.homepage         = 'https://github.com/sakiyamaK/UIKitHotReload'
