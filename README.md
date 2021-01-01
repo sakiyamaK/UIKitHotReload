@@ -163,16 +163,18 @@ final class MainViewController: UIViewController {
           "image": {
             "name": "image_file_name"
           },
-          "layout": {
-            "size": {
-              "width": {
-                "v": 200
-              },
-              "height": {
-                "v": 200
+          "layouts": [
+            {
+              "size": {
+                "width": {
+                  "v": 200
+                },
+                "height": {
+                  "v": 200
+                }
               }
             }
-          }
+          ]
         }
       ]
     }
