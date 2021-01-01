@@ -15,22 +15,24 @@
       "alignment": "fill",
       "scroll_enabled": false,
       "spacing": 30,
-      "layout": {
-        "margin": {
-          "top": {
-            "v": 12
-          },
-          "left": {
-            "v": 12
-          },
-          "right": {
-            "v": 12
-          },
-          "bottom": {
-            "v": 12
+      "layouts": [
+        {
+          "margin": {
+            "top": {
+              "v": 12
+            },
+            "left": {
+              "v": 12
+            },
+            "right": {
+              "v": 12
+            },
+            "bottom": {
+              "v": 12
+            }
           }
         }
-      },
+      ],
       "subviews": [
         {
           "class": "button",

@@ -3,14 +3,16 @@
   "scroll_enabled": false,
   "enabled": false,
   "axis": "v",
-  "layout": {
-    "margin": {
-      "bottom": {
-        "v": 0,
-        "p": 750
+  "layouts": [
+    {
+      "margin": {
+        "bottom": {
+          "v": 0,
+          "p": 750
+        }
       }
     }
-  },
+  ],
   "subviews": [
     {
       "class": "view",
@@ -21,22 +23,24 @@
           "scroll_enabled": false,
           "axis": "h",
           "spacing": 8,
-          "layout": {
-            "margin": {
-              "top": {
-                "v": 8
-              },
-              "left": {
-                "v": 12
-              },
-              "bottom": {
-                "v": 8
-              },
-              "right": {
-                "v": 8
+          "layouts": [
+            {
+              "margin": {
+                "top": {
+                  "v": 8
+                },
+                "left": {
+                  "v": 12
+                },
+                "bottom": {
+                  "v": 8
+                },
+                "right": {
+                  "v": 8
+                }
               }
             }
-          },
+          ],
           "subviews": [
             {
               "class": "stack",
@@ -57,16 +61,18 @@
                     0.5,
                     0.5
                   ],
-                  "layout": {
-                    "size": {
-                      "height": {
-                        "v": 80
-                      },
-                      "width": {
-                        "v": 80
+                  "layouts": [
+                    {
+                      "size": {
+                        "height": {
+                          "v": 80
+                        },
+                        "width": {
+                          "v": 80
+                        }
                       }
                     }
-                  }
+                  ]
                 },
                 {
                   "class": "view",
@@ -121,13 +127,15 @@
                       "all"
                     ]
                   },
-                  "layout": {
-                    "size": {
-                      "height": {
-                        "v": 200
+                  "layouts": [
+                    {
+                      "size": {
+                        "height": {
+                          "v": 200
+                        }
                       }
                     }
-                  }
+                  ]
                 },
                 {
                   "class": "view",
@@ -147,13 +155,15 @@
         0.5,
         0.5
       ],
-      "layout": {
-        "size": {
-          "height": {
-            "v": 0.5
+      "layouts": [
+        {
+          "size": {
+            "height": {
+              "v": 0.5
+            }
           }
         }
-      }
+      ]
     }
   ]
 }

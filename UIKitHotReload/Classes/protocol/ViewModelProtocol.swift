@@ -9,9 +9,8 @@
 import UIKit
 import FirebaseFirestore
 
-public protocol ViewModelProtocol {
+public protocol ViewModelProtocol: IDProtocol {
   var className: String? { get }
-  var id: String? { get }
   var width: CGFloat? { get }
   var height: CGFloat? { get }
   var view: UIView? { get }
@@ -27,7 +26,7 @@ public protocol ViewModelProtocol {
   var _alpha: CGFloat? { get }
   var _isHidden: Bool? { get }
   var _hidden: Bool? { get }
-  var _layout: LayoutModel? { get }
+  var _layouts: [LayoutModel]? { get }
   var _huggings: [HuggingModel]?  { get }
   var _compressionResistances: [CompressionResistanceModel]?  { get }
   var _isSafeArea: Bool? { get }
@@ -47,7 +46,7 @@ public extension ViewModelProtocol {
   var backgroundColor: UIColor { ([_backgroundColor, _bgColor].first { $0 != nil} as? [CGFloat])?.uiColor ?? .white }
   var contentMode: UIView.ContentMode { (_contentMode ?? "").contentMode }
   var viewModelType: ViewModelType? { ViewModelType(rawValue: className?.lowercased() ?? "") }
-  var layout: LayoutModel { _layout ?? LayoutModel() }
+  var layouts: [LayoutModel] { _layouts ?? [LayoutModel()] }
   var huggings: [HuggingModel] { _huggings ?? [] }
   var compressionResistances: [CompressionResistanceModel]  { _compressionResistances ?? [] }
   var isSafeArea: Bool { [_isSafeArea, _safeArea].first{$0 == true} as? Bool ?? false }
@@ -97,6 +96,7 @@ public extension ViewModelProtocol {
           break
         }
       }
+
       switch fileType {
       case .json:
         view.loadHotReload(dirName: dirName, jsonFileName: fileName, snapshot: snapshot, completion: completion)
@@ -116,35 +116,37 @@ public extension ViewModelProtocol {
       view.setContentCompressionResistancePriority(compressionResistance.priority, for: compressionResistance.axis)
     }
 
-    if let _width = layout.size?.width {
-      view.widthEqual(constant: _width.value, priority: _width.priority)
-    }
-    if let _height = layout.size?.height {
-      view.heightEqual(constant: _height.value, priority: _height.priority)
-    }
+    for layout in layouts {
+      if let _width = layout.size?.width {
+        view.widthEqual(id: _width.id, isActive: _width.active, constant: _width.value, priority: _width.priority)
+      }
+      if let _height = layout.size?.height {
+        view.heightEqual(id: _height.id, isActive: _height.active, constant: _height.value, priority: _height.priority)
+      }
 
-    if !layout.isSetWidthHeight, let _aspectRatio = layout.aspectRatio {
-      view.aspectRatio(_aspectRatio.value, priority: _aspectRatio.priority, isSetWidth: layout.size?.width != nil)
-    }
+      if !layout.isSetWidthHeight, let _aspectRatio = layout.aspectRatio {
+        view.aspectRatio(id: _aspectRatio.id, isActive: _aspectRatio.active, aspectRatio: _aspectRatio.value, priority: _aspectRatio.priority, isSetWidth: layout.size?.width != nil)
+      }
 
-    if let _centerX = layout.center?.x {
-      view.centerXEqualToSuperView(isSafeArea: isSafeArea, constant: _centerX.value, priority: _centerX.priority)
-    }
-    if let _centerY = layout.center?.y {
-      view.centerYEqualToSuperView(isSafeArea: isSafeArea, constant: _centerY.value, priority: _centerY.priority)
-    }
-    if let _position = layout.position {
-      view.positionSetToSuperView(isSafeArea: isSafeArea, position: _position)
-    }
+      if let _centerX = layout.center?.x {
+        view.centerXEqualToSuperView(id: _centerX.id, isSafeArea: isSafeArea,  isActive: _centerX.active, constant: _centerX.value, priority: _centerX.priority)
+      }
+      if let _centerY = layout.center?.y {
+        view.centerYEqualToSuperView(id: _centerY.id, isSafeArea: isSafeArea, isActive: _centerY.active, constant: _centerY.value, priority: _centerY.priority)
+      }
+      if let _position = layout.position {
+        view.positionSetToSuperView(isSafeArea: isSafeArea, position: _position)
+      }
 
-    let isSuperViewScroll = view.superview is UIScrollView
-    if let _margin = layout.margin {
-      view.edgesEqualToSuperView(isSafeArea: isSafeArea, margin: isSuperViewScroll ? nil : _margin)
-    }
+      let isSuperViewScroll = view.superview is UIScrollView
+      if let _margin = layout.margin {
+        view.edgesEqualToSuperView(isSafeArea: isSafeArea, margin: isSuperViewScroll ? nil : _margin)
+      }
 
-    let isSuperViewStack = view.superview is UIStackView
-    if !isSuperViewStack && !layout.isSetEdge {
-      view.edgesEqualToSuperView(isSafeArea: isSafeArea)
+      let isSuperViewStack = view.superview is UIStackView
+      if !isSuperViewStack && !layout.isSetEdge {
+        view.edgesEqualToSuperView(isSafeArea: isSafeArea)
+      }
     }
   }
 }

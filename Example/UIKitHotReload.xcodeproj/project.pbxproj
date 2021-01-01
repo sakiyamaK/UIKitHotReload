@@ -27,6 +27,7 @@
 		B63B6FF82582676B002996A8 /* DemoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B6FF72582676B002996A8 /* DemoAPI.swift */; };
 		B63B6FFF258267A1002996A8 /* TwitterTimelineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B6FFE258267A1002996A8 /* TwitterTimelineModel.swift */; };
 		B63B700725826806002996A8 /* TwitterTimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63B700625826806002996A8 /* TwitterTimelineCell.swift */; };
+		B6589668259DA56D00A37CDD /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6589667259DA56D00A37CDD /* AnimationViewController.swift */; };
 		B679B10C255ED7BD003A16EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B679B10B255ED7BD003A16EC /* GoogleService-Info.plist */; };
 		B679B1412560E7A6003A16EC /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B679B1402560E7A6003A16EC /* ButtonsViewController.swift */; };
 		B679B16425613CDF003A16EC /* buttons.json in Resources */ = {isa = PBXBuildFile; fileRef = B679B16325613CDF003A16EC /* buttons.json */; };
@@ -86,6 +87,7 @@
 		B63B6FF72582676B002996A8 /* DemoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAPI.swift; sourceTree = "<group>"; };
 		B63B6FFE258267A1002996A8 /* TwitterTimelineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterTimelineModel.swift; sourceTree = "<group>"; };
 		B63B700625826806002996A8 /* TwitterTimelineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterTimelineCell.swift; sourceTree = "<group>"; };
+		B6589667259DA56D00A37CDD /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		B679B10B255ED7BD003A16EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B679B1402560E7A6003A16EC /* ButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
 		B679B16325613CDF003A16EC /* buttons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = buttons.json; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				B68B98802568A1EE005CE8FE /* TableViewController.swift */,
 				B628D7D32571549B008E2353 /* TextFieldsViewController.swift */,
 				B6F12AE0259619A9001C6504 /* WebViewController.swift */,
+				B6589667259DA56D00A37CDD /* AnimationViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				B6EDB44B2565307C008F0ADB /* ImagesViewController.swift in Sources */,
 				B6F12AE1259619A9001C6504 /* WebViewController.swift in Sources */,
+				B6589668259DA56D00A37CDD /* AnimationViewController.swift in Sources */,
 				B68B98812568A1EE005CE8FE /* TableViewController.swift in Sources */,
 				B679B2802562B6BC003A16EC /* MainViewController.swift in Sources */,
 			);

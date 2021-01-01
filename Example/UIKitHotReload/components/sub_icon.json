@@ -4,16 +4,18 @@
       "url": "https://stat.ameba.jp/user_images/20200711/03/crossfieldbio/3a/90/j/o0540054014787134008.jpg?caw=800"
     },
     "content_mode": "fill",
-    "layout": {
-      "size": {
-        "width": {
-          "v": 200
-        },
-        "height": {
-          "v": 200
+    "layouts": [
+      {
+        "size": {
+          "width": {
+            "v": 200
+          },
+          "height": {
+            "v": 200
+          }
         }
       }
-    },
+    ],
     "subviews": [
       {
         "class": "imageview",
@@ -25,24 +27,26 @@
         "circle": {
           "rad": 50
         },
-        "layout": {
-          "size": {
-            "width": {
-              "v": 100
+        "layouts": [
+          {
+            "size": {
+              "width": {
+                "v": 100
+              },
+              "height": {
+                "v": 100
+              }
             },
-            "height": {
-              "v": 100
-            }
-          },
-          "position": {
-            "bottom": {
-              "v": -20
-            },
-            "right": {
-              "v": -20
+            "position": {
+              "bottom": {
+                "v": -20
+              },
+              "right": {
+                "v": -20
+              }
             }
           }
-        }
+        ]
       }
     ]
   }

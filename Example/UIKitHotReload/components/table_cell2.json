@@ -11,19 +11,21 @@
         1,
         0
       ],
-      "layout": {
-        "size": {
-          "height": {
-            "v": 100,
-            "p": 750
-          }
-        },
-        "margin": {
-          "left": {
-            "v": 32
+      "layouts": [
+        {
+          "size": {
+            "height": {
+              "v": 100,
+              "p": 750
+            }
+          },
+          "margin": {
+            "left": {
+              "v": 32
+            }
           }
         }
-      }
+      ]
     }
   ]
 }

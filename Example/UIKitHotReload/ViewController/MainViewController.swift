@@ -19,7 +19,8 @@ final class MainViewController: UIViewController {
   private var textField: UIButton? { self.view.hotReloadView(id: "to_text_fields") as? UIButton }
   private var webview: UIButton? { self.view.hotReloadView(id: "to_webview") as? UIButton }
   private var twitter: UIButton? { self.view.hotReloadView(id: "to_twitter") as? UIButton }
-  private var toButtons: [UIButton?] { [views, buttons, labels, images, table, textField, webview, twitter] }
+  private var animation: UIButton? { self.view.hotReloadView(id: "to_animation") as? UIButton }
+  private var toButtons: [UIButton?] { [views, buttons, labels, images, table, textField, webview, twitter, animation] }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -51,6 +52,8 @@ final class MainViewController: UIViewController {
       Router.showWebView(from: self)
     case twitter:
       Router.showTwitter(from: self)
+    case animation:
+      Router.showAnimation(from: self)
     default:
       break
     }

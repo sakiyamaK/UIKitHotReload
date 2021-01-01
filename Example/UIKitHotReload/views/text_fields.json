@@ -14,19 +14,21 @@
       "alignment": "fill",
       "scroll_enabled": true,
       "spacing": 20,
-      "layout": {
-        "margin": {
-          "top": {
-            "v": 16
-          },
-          "left": {
-            "v": 8
-          },
-          "right": {
-            "v": 8
+      "layouts": [
+        {
+          "margin": {
+            "top": {
+              "v": 16
+            },
+            "left": {
+              "v": 8
+            },
+            "right": {
+              "v": 8
+            }
           }
         }
-      },
+      ],
       "subviews": [
         {
           "class": "textfield",
@@ -58,39 +60,45 @@
           "id": "text_field3",
           "placeholder": "ああああ",
           "secure": true,
-          "layout": {
-            "size": {
-              "height": {
-                "v": 30
+          "layouts": [
+            {
+              "size": {
+                "height": {
+                  "v": 30
+                }
               }
             }
-          }
+          ]
         },
         {
           "class": "textfield",
           "id": "text_field4",
           "placeholder": "ああああ",
           "keyboard_type": "number",
-          "layout": {
-            "size": {
-              "height": {
-                "v": 30
+          "layouts": [
+            {
+              "size": {
+                "height": {
+                  "v": 30
+                }
               }
             }
-          }
+          ]
         },
         {
           "class": "textfield",
           "id": "text_field5",
           "placeholder": "ああああ",
           "return_key_type": "google",
-          "layout": {
-            "size": {
-              "height": {
-                "v": 30
+          "layouts": [
+            {
+              "size": {
+                "height": {
+                  "v": 30
+                }
               }
             }
-          }
+          ]
         }
       ]
     }

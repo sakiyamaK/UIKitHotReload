@@ -1,71 +1,73 @@
----
 class: view
 id: views
-background_color:
-- 1
-- 1
-- 1
+background_color: [1, 1, 1]
 subviews:
-- class: stack
+- class: view
   safe_area: true
-  distribution: fill
-  alignment: fill
-  scroll_enabled: true
-  spacing: 50
   subviews:
   - class: stack
     distribution: fill
-    alignment: center
+    alignment: fill
+    scroll_enabled: true
     spacing: 50
-    scroll_enabled: false
     subviews:
+    - class: stack
+      distribution: fill
+      alignment: center
+      spacing: 50
+      scroll_enabled: false
+      subviews:
+      - class: view
+        background_color: [1, 0, 0]
+        layouts:
+          - size:
+              height:
+                v: 100
+            ratio:
+              v: 1.6
+      - class: view
+        corner:
+          radius: 50
+          masks:
+            - min_max 
+            - max_min
+        background_color: [0, 0, 0]
+        layouts:
+          - size:
+              width:
+                v: 100
+              height:
+                v: 100
+      - class: view
+        background_color: [0, 0, 0]
+        border:
+          color: [1, 0, 0]
+          width: 4
+        layouts:
+          - size:
+              width:
+                v: 100
+              height:
+                v: 100
+      - class: view
+        file_path: components/view_in_view
+      - class: view
+        file_path: components/shadow_view
     - class: view
-      background_color:
-      - 1
-      - 0
-      - 0
-      layout:
-        size:
-          height:
-            v: 100
-        ratio:
-          v: 1.6
-    - class: view
-      # corner:
-      #   radius: 50
-      #   masks:
-      #   - min_max
-      #   - max_min
-      background_color:
-      - 0
-      - 0
-      - 0
-      layout:
-        size:
-          width:
-            v: 100
-          height:
-            v: 100
-    - class: view
-      background_color:
-      - 0
-      - 0
-      - 0
-      border:
-        color:
-        - 1
-        - 0
-        - 0
-        width: 4
-      layout:
-        size:
-          width:
-            v: 100
-          height:
-            v: 100
-    - class: view
-      file_path: components/view_in_view
-    - class: view
-      file_path: components/shadow_view
+      file_path: components/sub_labels
   - class: view
-    file_path: components/sub_labels
+    background_color: [0.5 ,0.5, 0.5]
+    corner:
+    layouts:
+      - position:
+          right:
+            v: 8
+            id: def_right_constraint
+          bottom:
+            v: 8
+            id: def_bottom_constraint
+        size:
+          width:
+            v: 64
+          height:
+            v: 64

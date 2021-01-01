@@ -18,6 +18,13 @@ public extension UIView {
     let subviews = (self is UIStackView) ? (self as! UIStackView).arrangedSubviews : self.subviews
     return subviews.map{ $0.hotReloadView(id: id) }.first{$0 != nil} ?? nil
   }
+
+  func hotReloadConstraint(id: String) -> NSLayoutConstraint? {
+    if let constraint = self.constraints.first(where: { $0.identifier == id }) { return constraint }
+    let subviews = (self is UIStackView) ? (self as! UIStackView).arrangedSubviews : self.subviews
+    return subviews.map{ $0.hotReloadConstraint(id: id) }.first{$0 != nil} ?? nil
+
+  }
 }
 
 public extension UIView {

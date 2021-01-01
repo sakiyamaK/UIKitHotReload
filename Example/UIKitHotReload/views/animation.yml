@@ -1,0 +1,47 @@
+class: view
+subviews:
+  - class: view
+    safe_area: true
+    subviews:
+    - class: view
+      id: animation_view
+      background_color: [0, 0, 1]
+      layouts:
+        - size:
+            width:
+              id: def_width_const
+              v: 100
+            height:
+              id: def_height_const
+              v: 100
+          position:
+            left:
+              id: def_left_const
+              v: 16
+            top:
+              id: def_top_const
+              v: 16
+        - size:
+            width:
+              v: 200
+              p: 750
+            height:
+              v: 200
+              p: 750
+          center: 
+            x:
+              v: 0
+              p: 750
+            y:
+              v: 0
+              p: 750
+          # position:
+          #   right:
+          #     id: change_right_const
+          #     v: 16
+          #     p: 750
+          #   bottom:
+          #     id: change_bottom_const
+          #     v: 16
+          #     p: 750
+        

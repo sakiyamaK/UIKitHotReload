@@ -55,6 +55,11 @@
           "class": "button",
           "id": "to_twitter",
           "text": "Twitter Clone"
+        },
+        {
+          "class": "button",
+          "id": "to_animation",
+          "text": "Animation Sample"
         }
       ]
     }

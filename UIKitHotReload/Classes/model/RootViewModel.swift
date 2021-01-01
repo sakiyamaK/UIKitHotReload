@@ -37,7 +37,7 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
       _contentMode = "content_mode",
       _subViewModelProtocols = "subviews",
       _isSafeArea = "is_safe_area", _safeArea = "safe_area",
-      _layout = "layout",
+      _layouts = "layouts",
       _clipToBounds = "clip_to_bounds",
       _clip = "clip",
       _isUserInteractionEnabled = "is_user_interaction_enabled",
@@ -109,7 +109,7 @@ public struct RootViewModel: Decodable, ViewModelProtocol, StackViewModelProtoco
   public var _subViewModelProtocols: [Self]?
   public var _isSafeArea, _safeArea: Bool?
   public var _tintColor: [CGFloat]?
-  public var _layout: LayoutModel?
+  public var _layouts: [LayoutModel]?
   public var _clipToBounds: Bool?
   public var _clip: Bool?
   public var _isUserInteractionEnabled: Bool?

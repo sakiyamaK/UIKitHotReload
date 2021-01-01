@@ -50,6 +50,11 @@ final class Router {
     show(from: from, to: to, animated: animated)
   }
 
+  static func showAnimation(from: UIViewController, animated: Bool = true) {
+    let to = AnimationViewController()
+    show(from: from, to: to, animated: animated)
+  }
+
   private static func show(from: UIViewController, to: UIViewController, animated: Bool = true) {
     if let navigationController = from.navigationController {
       navigationController.pushViewController(to, animated: animated)

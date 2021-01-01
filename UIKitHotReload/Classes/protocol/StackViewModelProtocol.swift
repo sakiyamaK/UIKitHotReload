@@ -63,21 +63,23 @@ public extension StackViewModelProtocol {
     stackView.axis = axis
     stackView.spacing = spacing
 
-    stackView.edgesEqual(to: scrollView.contentLayoutGuide, margin: layout.margin, isReverseMargin: true)
-    if !scrollView.isScrollEnabled {
-      let widthConstant = (layout.margin?.leading?.value ?? 0) + (layout.margin?.trailing?.value ?? 0)
-      let heightConstant = (layout.margin?.top?.value ?? 0) + (layout.margin?.bottom?.value ?? 0)
-      stackView.widthEqual(to: scrollView.frameLayoutGuide, constant: -widthConstant)
-      stackView.heightEqual(to: scrollView.frameLayoutGuide, constant: -heightConstant)
-      return
-    }
+    for layout in layouts {
+      stackView.edgesEqual(to: scrollView.contentLayoutGuide, margin: layout.margin, isReverseMargin: true)
+      if !scrollView.isScrollEnabled {
+        let widthConstant = (layout.margin?.leading?.value ?? 0) + (layout.margin?.trailing?.value ?? 0)
+        let heightConstant = (layout.margin?.top?.value ?? 0) + (layout.margin?.bottom?.value ?? 0)
+        stackView.widthEqual(to: scrollView.frameLayoutGuide, constant: -widthConstant)
+        stackView.heightEqual(to: scrollView.frameLayoutGuide, constant: -heightConstant)
+        return
+      }
 
-    if axis == .vertical {
-      let constant = (layout.margin?.leading?.value ?? 0) + (layout.margin?.trailing?.value ?? 0)
-      stackView.widthEqual(to: scrollView.frameLayoutGuide, constant: -constant)
-    } else {
-      let constant = (layout.margin?.top?.value ?? 0) + (layout.margin?.bottom?.value ?? 0)
-      stackView.heightEqual(to: scrollView.frameLayoutGuide, constant: -constant)
+      if axis == .vertical {
+        let constant = (layout.margin?.leading?.value ?? 0) + (layout.margin?.trailing?.value ?? 0)
+        stackView.widthEqual(to: scrollView.frameLayoutGuide, constant: -constant)
+      } else {
+        let constant = (layout.margin?.top?.value ?? 0) + (layout.margin?.bottom?.value ?? 0)
+        stackView.heightEqual(to: scrollView.frameLayoutGuide, constant: -constant)
+      }
     }
   }
 }

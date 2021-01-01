@@ -7,19 +7,26 @@
 
 import Foundation
 
-public struct ValueAndPriority: Decodable {
+public struct ValueAndPriority: Decodable, IDProtocol {
+
   private enum CodingKeys: String, CodingKey {
     case
+      id = "id",
       _value = "value", _v = "v",
       _priority = "priority", _p = "p",
-      _remove = "remove", _r = "r"
+      _remove = "remove", _r = "r",
+      _isActive = "is_active", _active = "active", _a = "a"
   }
+  public var id: String?
   private var _value: CGFloat?
   private var _v: CGFloat?
   private var _priority: Float?
   private var _p: Float?
   private var _remove: Bool?
   private var _r: Bool?
+  private var _isActive: Bool?
+  private var _active: Bool?
+  private var _a: Bool?
 
   public var value: CGFloat { [_value, _v].first{$0 != nil} as? CGFloat ?? 0.0 }
   public var priority: UILayoutPriority {
@@ -28,6 +35,7 @@ public struct ValueAndPriority: Decodable {
     )
   }
   public var remove: Bool { [_remove, _r].first{$0 != nil} as? Bool ?? false }
+  public var active: Bool { [_isActive, _active, _a].first{$0 != nil} as? Bool ?? true }
 }
 
 public struct LayoutModel: Decodable {
