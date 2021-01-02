@@ -34,6 +34,6 @@ subviews:
           v: 30
       position:
         right:
-          v: 10
+          v: -10
         bottom:
-          v: 10
+          v: -10

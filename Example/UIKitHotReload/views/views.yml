@@ -61,10 +61,10 @@ subviews:
     layouts:
       - position:
           right:
-            v: 8
+            v: -16
             id: def_right_constraint
           bottom:
-            v: 8
+            v: -16
             id: def_bottom_constraint
         size:
           width:

@@ -122,7 +122,7 @@ extension UIView {
     }
 
     if let vp = position.trailing {
-      let constraint = to.trailingAnchorHR.constraint(equalTo: self.trailingAnchor, constant: vp.value)
+      let constraint = self.trailingAnchor.constraint(equalTo: to.trailingAnchorHR, constant: vp.value)
       constraint.identifier = vp.id
       constraint.priority = vp.priority
       constraint.isActive = vp.active
@@ -130,7 +130,7 @@ extension UIView {
     }
 
     if let vp = position.bottom {
-      let constraint = to.bottomAnchorHR.constraint(equalTo: self.bottomAnchor, constant: vp.value)
+      let constraint = self.bottomAnchor.constraint(equalTo: to.bottomAnchorHR, constant: vp.value)
       constraint.identifier = vp.id
       constraint.priority = vp.priority
       constraint.isActive = vp.active
