@@ -20,6 +20,10 @@
 		B628D73D256EAE91008E2353 /* twitter_timelines.json in Resources */ = {isa = PBXBuildFile; fileRef = B628D73C256EAE91008E2353 /* twitter_timelines.json */; };
 		B628D7D42571549B008E2353 /* TextFieldsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B628D7D32571549B008E2353 /* TextFieldsViewController.swift */; };
 		B628D7D8257154CC008E2353 /* text_fields.json in Resources */ = {isa = PBXBuildFile; fileRef = B628D7D7257154CC008E2353 /* text_fields.json */; };
+		B630919025AC301300735260 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B630918F25AC301300735260 /* BaseViewController.swift */; };
+		B630919425AC301C00735260 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B630919325AC301C00735260 /* ContentViewController.swift */; };
+		B630919825AC380300735260 /* container_base.yml in Resources */ = {isa = PBXBuildFile; fileRef = B630919725AC380300735260 /* container_base.yml */; };
+		B630919C25AC384400735260 /* container_content.yml in Resources */ = {isa = PBXBuildFile; fileRef = B630919B25AC384400735260 /* container_content.yml */; };
 		B63A8F4F256ACF000049234E /* table_cell1.json in Resources */ = {isa = PBXBuildFile; fileRef = B63A8F4E256ACF000049234E /* table_cell1.json */; };
 		B63B6E742580D37D002996A8 /* view_in_view.yml in Resources */ = {isa = PBXBuildFile; fileRef = B63B6E732580D37D002996A8 /* view_in_view.yml */; };
 		B63B6E782580D3A6002996A8 /* shadow_view.yml in Resources */ = {isa = PBXBuildFile; fileRef = B63B6E772580D3A6002996A8 /* shadow_view.yml */; };
@@ -80,6 +84,10 @@
 		B628D73C256EAE91008E2353 /* twitter_timelines.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = twitter_timelines.json; sourceTree = "<group>"; };
 		B628D7D32571549B008E2353 /* TextFieldsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsViewController.swift; sourceTree = "<group>"; };
 		B628D7D7257154CC008E2353 /* text_fields.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = text_fields.json; sourceTree = "<group>"; };
+		B630918F25AC301300735260 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		B630919325AC301C00735260 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		B630919725AC380300735260 /* container_base.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = container_base.yml; sourceTree = "<group>"; };
+		B630919B25AC384400735260 /* container_content.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = container_content.yml; sourceTree = "<group>"; };
 		B63A8F4E256ACF000049234E /* table_cell1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = table_cell1.json; sourceTree = "<group>"; };
 		B63B6E732580D37D002996A8 /* view_in_view.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = view_in_view.yml; sourceTree = "<group>"; };
 		B63B6E772580D3A6002996A8 /* shadow_view.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = shadow_view.yml; sourceTree = "<group>"; };
@@ -240,6 +248,15 @@
 			path = DemoData;
 			sourceTree = "<group>";
 		};
+		B630918E25AC2FF900735260 /* ContainerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B630918F25AC301300735260 /* BaseViewController.swift */,
+				B630919325AC301C00735260 /* ContentViewController.swift */,
+			);
+			path = ContainerViewController;
+			sourceTree = "<group>";
+		};
 		B63B6FF625826759002996A8 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +276,7 @@
 		B679B104255ED7A4003A16EC /* views */ = {
 			isa = PBXGroup;
 			children = (
+				B630919725AC380300735260 /* container_base.yml */,
 				B61FF4722580C47700AA14E0 /* views.yml */,
 				B679B16325613CDF003A16EC /* buttons.json */,
 				B679B2832562B6EB003A16EC /* main.json */,
@@ -275,6 +293,7 @@
 		B679B13E2560E78D003A16EC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B630918E25AC2FF900735260 /* ContainerViewController */,
 				B628D72C256EA7A7008E2353 /* Twitter */,
 				B679B1402560E7A6003A16EC /* ButtonsViewController.swift */,
 				B679B27F2562B6BC003A16EC /* MainViewController.swift */,
@@ -300,6 +319,7 @@
 		B68B985425681194005CE8FE /* components */ = {
 			isa = PBXGroup;
 			children = (
+				B630919B25AC384400735260 /* container_content.yml */,
 				B68B985B2568122D005CE8FE /* sub_icon.json */,
 				B63A8F4E256ACF000049234E /* table_cell1.json */,
 				B628D72F256EA90D008E2353 /* twitter_timeline_cell.json */,
@@ -415,9 +435,11 @@
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 				B61FF4732580C47700AA14E0 /* views.yml in Resources */,
 				B63B6E7C2580D3C1002996A8 /* sub_labels.yml in Resources */,
+				B630919C25AC384400735260 /* container_content.yml in Resources */,
 				B68B98CE2568A7A1005CE8FE /* table.json in Resources */,
 				B679B16425613CDF003A16EC /* buttons.json in Resources */,
 				B63B6E742580D37D002996A8 /* view_in_view.yml in Resources */,
+				B630919825AC380300735260 /* container_base.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,8 +593,10 @@
 				B679B28F2562BBBE003A16EC /* LabelsViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				B6EDB44B2565307C008F0ADB /* ImagesViewController.swift in Sources */,
+				B630919425AC301C00735260 /* ContentViewController.swift in Sources */,
 				B6F12AE1259619A9001C6504 /* WebViewController.swift in Sources */,
 				B6589668259DA56D00A37CDD /* AnimationViewController.swift in Sources */,
+				B630919025AC301300735260 /* BaseViewController.swift in Sources */,
 				B68B98812568A1EE005CE8FE /* TableViewController.swift in Sources */,
 				B679B2802562B6BC003A16EC /* MainViewController.swift in Sources */,
 			);

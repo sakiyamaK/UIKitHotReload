@@ -60,6 +60,11 @@
           "class": "button",
           "id": "to_animation",
           "text": "Animation Sample"
+        },
+        {
+          "class": "button",
+          "id": "to_container",
+          "text": "ContainerView Sample"
         }
       ]
     }

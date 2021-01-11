@@ -1,0 +1,29 @@
+class: view
+id: container_base
+subviews:
+- class: view
+  safe_area: true
+  subviews:
+  - class: stack
+    distribution: fill
+    alignment: fill
+    scroll_enabled: false
+    subviews:
+      - class: view
+        id: container_view
+        layouts:
+          - size:
+              height:
+                v: 150
+      - class: view
+        corner:
+          radius: 50
+          masks:
+            - min_max 
+            - max_min
+        background_color: [0.5, 0, 0]
+        layouts:
+          - size:
+              height:
+                v: 200
+      - class: view

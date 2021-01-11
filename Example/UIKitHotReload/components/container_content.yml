@@ -1,0 +1,15 @@
+class: view
+id: container_content
+subviews:
+- class: view
+  background_color: [0, 1, 0]
+  layouts:
+    - margin:
+        top:
+          v: 10
+        left:
+          v: 10
+        right:
+          v: 10
+        bottom:
+          v: 10
